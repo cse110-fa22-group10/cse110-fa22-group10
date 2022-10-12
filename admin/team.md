@@ -78,6 +78,7 @@
 
 </div>
 
+<h2 align="center">Glad you reach the bottom of the page : ) </h2>
 
 
 
