@@ -62,7 +62,10 @@
 <div>
 
 - Jennifer Jiang        
-  - Self-Overview:  
+  - Third year Math–CS major
+  - Has a variety of experience in frontend and backend web development, Android app development, and art/design
+  - Originally from the SF bay area
+  - Has the cutest corgi!
   - Click the [link](https://github.com/jennifer-jiang) to get to the personal Github page. 
 
 </div>
