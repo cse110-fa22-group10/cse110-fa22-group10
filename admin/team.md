@@ -1,0 +1,89 @@
+<h1 align="center"> Team Page </h1>
+
+<h2>Team Name:</h2>
+
+<h2>Team Brand:</h2>
+
+<h2>Team Value:</h2>
+
+<h2>Team Member:</h2>
+
+<div>
+
+- Alexander G.Arias  
+  - Self-Overview:  
+  - Click the [link](https://github.com/MathElderGod) to get to the personal Github page. 
+
+</div>
+
+<div>
+
+- Alexander Olsen  
+  - Self-Overview:  
+  - Click the [link](https://github.com/aolsen07) to get to the personal Github page. 
+
+</div>
+
+<div>
+
+- Antonio Peso Vilella  
+  - Self-Overview:  
+  - Click the [link](https://github.com/apesovilella) to get to the personal Github page. 
+  
+</div>
+
+<div>
+
+- Buwei Wu    
+  - Third year student at UCSD
+  - Major in computer engineering under ECE department
+  - Interested in extensive field ranging from guitar, sports or rap to esports, animes or talk shows.
+  - Favorite emoji is displayed in the repository "Lab 0 & 1" within the github profile
+  - Click the [link](https://github.com/Yr-Nemsis) to get to the personal Github page. 
+
+</div>
+
+<div>
+
+- Charles Young      
+  - Self-Overview:  
+  - Click the [link](https://github.com/agctute) to get to the personal Github page. 
+
+</div>
+
+<div>
+
+- Hyunmin Lim      
+  - Self-Overview:  
+  - Click the [link](https://github.com/hm10000) to get to the personal Github page. 
+
+</div>
+
+<div>
+
+- Jennifer Jiang        
+  - Self-Overview:  
+  - Click the [link](https://github.com/jennifer-jiang) to get to the personal Github page. 
+
+</div>
+
+<div>
+
+- Xiaoyu Chen        
+  - UCSD third year student
+  - Major in Computer Science
+  - Love music, coding, basketball, and video game
+  - Came from Wuhan, China  
+  - Click the [link](https://github.com/kevinchen772) to get to the personal Github page. 
+
+</div>
+
+
+
+
+
+
+
+
+
+
