@@ -19,7 +19,10 @@
 <div>
 
 - Alexander Olsen
-  - Self-Overview:
+  - Third year computer science major
+  - Interested in full stack development
+  - Favorite emoji is the cowboy one
+  - Grew up in San Diego County
   - Click the [link](https://github.com/aolsen07) to get to the personal Github page.
 
 </div>
