@@ -11,7 +11,11 @@
 <div>
 
 - Alexander G.Arias
-  - Self-Overview:
+  - 5th year transfer student majoring in Computer Science
+  - Interested in Computer Graphics and Video Game Design
+  - My kids are my life, and I try my best for them all the time.
+  - Grew up in Imperial Valley, Served in the Army, Fought Cancer - and won!
+  - First Generation University Student.
   - Click the [link](https://github.com/MathElderGod) to get to the personal Github page.
 
 </div>
