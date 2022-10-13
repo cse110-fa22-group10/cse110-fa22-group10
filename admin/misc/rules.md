@@ -25,7 +25,8 @@ Antonio Peso Vilella - apesovilella@ucsd.edu
 **Communication**
 - Questions and logistics should be responded to within a day, preferably as soon as possible
   - On weekends, it should still hold when deadlines are in the midst
-- Acknowledge messages when you can (ex. adding an emoji reaction, letting the team know that you have to get back to them later, etc.)
+- Acknowledge messages when you can 
+  - Ex) Add an emoji reaction, let the team know that you have to get back to them later, etc.
 
 **Meetups**
 - Tuesday 11:00AM—12:00PM required weekly meeting
@@ -34,8 +35,8 @@ Antonio Peso Vilella - apesovilella@ucsd.edu
 
 ## Meeting Schedule
 
-Required: Tuesday 11:00AM-12:00PM
-Optional: Wednesday 8:00-8:50PM
+- Required: Tuesday 11:00AM-12:00PM
+- Optional: Wednesday 8:00-8:50PM
 
 ## Responsibilities for Everyone
 
@@ -45,18 +46,17 @@ Optional: Wednesday 8:00-8:50PM
 
 ## Responsibilities by Role
 
-Frontend: working with HTML, CSS, JavaScript
-Backend: managing databases, get, post requests
-Team Leads: guides towards the weekly long term and short term decisions.
+- Frontend: working with HTML, CSS, JavaScript
+- Backend: managing databases, get, post requests
+- Team Leads: guides towards the weekly long term and short term decisions.
 
 ## Conflict Resolution
 
-When conflict arises, it is best to analyze the situation, deescalate while avoiding further escalation.
-Understanding that everyone is dealing with a human experience, is the best way to grasp different points of views, while avoiding conflict.
-Respect each others space, while maintaining a professional environment.
-Frustrations, concerns, and any other external factors that can cause conflict should be communicated thoroughly to team leads to ensure the best conflict resolution can be applied
-
-When it comes to disagreements regarding implementation and design choices, list out pros cons, do a poll, and pick the majority option.
+- When conflict arises, it is best to analyze the situation, deescalate while avoiding further escalation.
+- Understanding that everyone is dealing with a human experience, is the best way to grasp different points of views, while avoiding conflict.
+- Respect each others space, while maintaining a professional environment.
+- Frustrations, concerns, and any other external factors that can cause conflict should be communicated thoroughly to team leads to ensure the best conflict resolution can be applied
+- When it comes to disagreements regarding implementation and design choices, list out pros cons, do a poll, and pick the majority option.
 
 ## Your Signature Here:
 
