@@ -10,7 +10,7 @@
 
 <div>
 
-- Alexander G.Arias
+- Alexander G. Arias
   - 5th year transfer student majoring in Computer Science
   - Interested in Computer Graphics and Video Game Design
   - My kids are my life, and I try my best for them all the time.
