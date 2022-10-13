@@ -16,8 +16,6 @@ Hyunmin Lim - hmlim@ucsd.edu
 
 Buwei Wu - buwu@ucsd.edu
 
-Amaan Singh - amsingh@ucsd.edu
-
 Antonio Peso Vilella - apesovilella@ucsd.edu
 
 ## Expectations on Communication and Meetups
