@@ -26,7 +26,7 @@ Antonio Peso Vilella - apesovilella@ucsd.edu
 - Questions and logistics should be responded to within a day, preferably as soon as possible
   - On weekends, it should still hold when deadlines are in the midst
 - Acknowledge messages when you can 
-  - Ex) Add an emoji reaction, let the team know that you have to get back to them later, etc.
+  - This could look like: adding an emoji reaction or letting the team know that you have to get back to them later
 
 **Meetups**
 - Tuesday 11:00AM—12:00PM required weekly meeting
@@ -48,7 +48,7 @@ Antonio Peso Vilella - apesovilella@ucsd.edu
 
 - Frontend: working with HTML, CSS, JavaScript
 - Backend: managing databases, get, post requests
-- Team Leads: guides towards the weekly long term and short term decisions.
+- Team Leads: guiding the group towards the weekly long term and short term goals
 
 ## Conflict Resolution
 
