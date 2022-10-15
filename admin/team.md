@@ -58,7 +58,11 @@
 <div>
 
 - Antonio Peso Vilella
-  - Self-Overview:
+  - Exchange mathematics student (4th year back home)
+  - Interested in learning computer science
+  - Born and raised in Barcelona, Spain
+  - Bachelors in Indurtial Engineering
+  - Favourite emoji is the upside down smiley
   - Click the [link](https://github.com/apesovilella) to get to the personal Github page.
 
 </div>
