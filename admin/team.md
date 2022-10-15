@@ -12,6 +12,8 @@
     <img src="https://github.com/cse110-fa22-group10/cse110-fa22-group10/blob/main/admin/branding/teamlogo.png"
      alt="Team Logo"
      width=200, height=200/>
+  
+  - Team Mascot: Kunai
 
 </div>
 
