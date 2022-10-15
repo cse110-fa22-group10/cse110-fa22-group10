@@ -81,7 +81,10 @@
 <div>
 
 - Charles Young
-  - Self-Overview:
+  - Fourth year Math-CS major at UCSD
+  - Born and raised in the Bay Area
+  - Exercises and plays videogames in free time
+  - Passionate about data science, more specifically metaheuristics
   - Click the [link](https://github.com/agctute) to get to the personal Github page.
 
 </div>
