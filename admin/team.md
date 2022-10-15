@@ -1,12 +1,32 @@
 <h1 align="center"> Team Page </h1>
 
 <h2>Team Name:</h2>
+<h3><i><strong>ASUMA</strong></i></h3>
 
 <h2>Team Brand:</h2>
+<div>
 
-<h2>Team Value:</h2>
+  - Team Colors: Red, Gray, and White
+  - Team Logo: 
+    
+    ![Team Logo](admin/branding/teamlogo.png)
 
-<h2>Team Member:</h2>
+</div>
+
+<h2>Team Values:</h2>
+<div>
+
+  - Loyalty
+  - Duty
+  - Respect
+  - Selflessness
+  - Honor
+  - Integrity
+  - Courage
+
+</div>
+
+<h2>Team Members:</h2>
 
 <div>
 
