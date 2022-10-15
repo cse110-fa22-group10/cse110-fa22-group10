@@ -11,7 +11,7 @@
     
     <img src="https://github.com/cse110-fa22-group10/cse110-fa22-group10/blob/main/admin/branding/teamlogo.png"
      alt="Team Logo"
-     width=100, height=100/>
+     width=200, height=200/>
 
 </div>
 
