@@ -9,7 +9,9 @@
   - Team Colors: Red, Gray, and White
   - Team Logo: 
     
-    ![Team Logo](admin/branding/teamlogo.png)
+    <img src="https://github.com/cse110-fa22-group10/cse110-fa22-group10/blob/main/admin/branding/teamlogo.png"
+     alt="Team Logo"
+     width=100, height=100/>
 
 </div>
 
