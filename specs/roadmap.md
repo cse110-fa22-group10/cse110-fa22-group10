@@ -20,7 +20,12 @@ Week 5：Starting Pitch
 Week 6: Finish prototype
 - Complete figma board
 - Finalize interafce design decisions
-Week 7: 
+---
+Week 7: Landing Page
+- Build HTML elements 
+- Write CSS
+- Do Javascript 
+---
 Week 8: 
 Week 9: 
 Week 10: Final Project Review
