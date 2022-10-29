@@ -8,7 +8,7 @@ Week 3: Group Assignment Start
 - Group branding 
 - Group page and Video
 - Group Contract
----
+--- 
 Week 4: Brainstorming Activity
 - Group Kickoff
 - Group Repo
@@ -26,6 +26,18 @@ Week 7: Landing Page
 - Write CSS
 - Do Javascript 
 ---
-Week 8: 
-Week 9: 
+Week 8: Continuing on Building Project 
+- Build HTML elements 
+- Write CSS
+- Do Javascript 
+- Testing 
+---
+Week 9: Testing 
+- Test project functionality 
+- Last Minute Edits 
+- Finalize the project 
+---
 Week 10: Final Project Review
+- ADR (Architectural Decision Records)
+- Final Project Video
+- Final Interview
