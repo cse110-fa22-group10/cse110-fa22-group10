@@ -121,5 +121,4 @@
   - Click the [link](https://github.com/kevinchen772) to get to the personal Github page.
 
 </div>
-
 <h2 align="center">Glad you reach the bottom of the page : ) </h2>
