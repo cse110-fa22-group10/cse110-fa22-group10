@@ -17,7 +17,9 @@ Week 4: Brainstorming Activity
 Week 5：Starting Pitch
 - Finishing 8 Page Starting Pitch
 ---
-Week 6: 
+Week 6: Finish prototype
+- Complete figma board
+- Finalize interafce design decisions
 Week 7: 
 Week 8: 
 Week 9: 
