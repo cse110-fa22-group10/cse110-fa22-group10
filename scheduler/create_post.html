@@ -5,7 +5,7 @@
         <title>Post Creation Form</title>
         <link rel="icon" property="icon" type="image/x-icon" href="./assets/favicon.ico">
         <link rel="stylesheet" href="./create_post.css" />
-        <script src="./create_post.js"></script>
+        <script src="./create_post.js" type="module"></script>
     </head>
     <body>
         <main>
@@ -15,18 +15,25 @@
                 <input id="title" name="title" type="text" 
                 placeholder="Post Title">
                 
-                <!-- UNRESOLVED: Should a IMG input go here? If so how? -->
+                <label for="image-input"></label>
+                <input id="image-input" name="image-input" type="image">
+
                 <label for="desc-input"></label>
                 <input id="desc-input" name="desc-input" type="text" 
                 placeholder="Post Description">
                 
+                <!-- Input for what platform this post is for
+                This doesn't have to be the way to set what kind of post this is,
+                but I'm putting this here for now -Charles -->
                 <label for="tag"></label>
-                <select name="tag" id="tag">
+                <select id="tag" name="tag">
                     <option value="facebook">Facebook</option>
                     <option value="twitter">Twitter</option>
                     <option value="instagram">Instagram</option>
                 </select>
             </form>
+            <button id="back">Back</button>
+            <button id="submit">Submit</button>
         </main>
     </body>
 </html>
