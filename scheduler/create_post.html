@@ -5,6 +5,28 @@
         <title>Post Creation Form</title>
         <link rel="icon" property="icon" type="image/x-icon" href="./assets/favicon.ico">
         <link rel="stylesheet" href="./create_post.css" />
-        
+        <script src="./create_post.js"></script>
     </head>
+    <body>
+        <main>
+            <!-- This is the main form for the post creation-->
+            <form id="post-creator"> 
+                <label for="title"></label>
+                <input id="title" name="title" type="text" 
+                placeholder="Post Title">
+                
+                <!-- UNRESOLVED: Should a IMG input go here? If so how? -->
+                <label for="desc-input"></label>
+                <input id="desc-input" name="desc-input" type="text" 
+                placeholder="Post Description">
+                
+                <label for="tag"></label>
+                <select name="tag" id="tag">
+                    <option value="facebook">Facebook</option>
+                    <option value="twitter">Twitter</option>
+                    <option value="instagram">Instagram</option>
+                </select>
+            </form>
+        </main>
+    </body>
 </html>
