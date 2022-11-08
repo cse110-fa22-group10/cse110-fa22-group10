@@ -1,7 +1,3 @@
-/* TODO: Make the containers compatible with the size of the browser.  */
-@media screen and (max-width: 1450px){}
-@media screen and (min-width: 100px){}
-
 .top-bar{
     display: flex;
     flex-direction: row;
@@ -13,10 +9,9 @@
     border-style: solid;
     border-color: black;
     display: flex;
-    flex: 2 1 auto;
     flex-direction: row;
-    height: 1000px;
-    width: 1450px;
+    height: 100vw;
+    width: 100%;
     position: relative;
 }
 
@@ -29,9 +24,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 1000px;
-    width: 150px;
-    margin-left: 1290px;
+    height: 100%;
+    width: 10%;
+    margin-left: 90%;
     position: absolute;
     background-color: gray;
 }
@@ -42,8 +37,8 @@
     border-style: solid;
     border-color: black;
 
-    width: 400px;
-    height: 1000px;
+    width: 28%;
+    height: 100%;
     position: absolute;
     text-align: center;
 
@@ -59,9 +54,9 @@
     border-style: solid;
     border-color: black;
 
-    width: 400px;
-    height: 1000px;
-    margin-left: 430px;
+    width: 28%;
+    height: 100%;
+    margin-left: 30%;
     position: absolute;
     text-align: center;
 
@@ -76,9 +71,9 @@
     border-style: solid;
     border-color: black;
 
-    width: 400px;
-    height: 1000px;
-    margin-left: 860px;
+    width: 28%;
+    height: 100%;
+    margin-left: 60%;
     position: absolute;
     text-align: center;
 
@@ -86,4 +81,8 @@
     flex-direction: column;
 
     background:gray;
+}
+
+.date{
+    height: 10%
 }
