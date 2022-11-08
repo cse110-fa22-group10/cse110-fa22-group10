@@ -1,3 +1,7 @@
+/* TODO: Make the containers compatible with the size of the browser.  */
+@media screen and (max-width: 1450px){}
+@media screen and (min-width: 100px){}
+
 .top-bar{
     display: flex;
     flex-direction: row;
@@ -9,6 +13,7 @@
     border-style: solid;
     border-color: black;
     display: flex;
+    flex: 2 1 auto;
     flex-direction: row;
     height: 1000px;
     width: 1450px;
@@ -28,6 +33,7 @@
     width: 150px;
     margin-left: 1290px;
     position: absolute;
+    background-color: gray;
 }
 
 .finished-posts{
@@ -40,6 +46,11 @@
     height: 1000px;
     position: absolute;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    background:gray;
 }
 
 .upcoming-posts{
@@ -53,6 +64,11 @@
     margin-left: 430px;
     position: absolute;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    background:gray;
 }
 .create-posts{
     /* Used as box to modify the size of the buttons */
@@ -65,4 +81,9 @@
     margin-left: 860px;
     position: absolute;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    background:gray;
 }
