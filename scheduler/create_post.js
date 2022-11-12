@@ -10,15 +10,15 @@ function constraints() {
     let selectedTag = postTag.selectedOptions[0];
 
     // Facebook 63,206char max
-    if(selectedTag == postTag.options[0]) {
+    if (selectedTag == postTag.options[0]) {
         postDescription.maxLength = 63206;
     }
     // Twitter 280char max
-    if(selectedTag == postTag.options[1]) {
+    if (selectedTag == postTag.options[1]) {
         postDescription.maxLength = 280;
     }
     // Instagram 2,200char max
-    if(selectedTag == postTag.options[2]) {
+    if (selectedTag == postTag.options[2]) {
         postDescription.maxLength = 2200;
     }
 }
@@ -30,4 +30,49 @@ postTag.addEventListener('change', constraints);
 
 // TODO: OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
-// be posted
+// be posted 
+const formEle = document.querySelector('form');
+
+//event listener for submit botton
+submitButton.addEventListener('click', () => {
+    let formData = new FormData(formEle);
+
+    //store user entered image, description, data .. into postObject 
+    let postObject = {}; 
+    postObject['title'] = formData.get('title');
+    postObject['desc-input'] = formData.get('desc-input');
+    postObject['time-to-post'] = formData.get('time-to-post');
+    postObject['tag'] = formData.get('tag');
+    if (formData.get('image-input') != null) {
+        postObject['image-input'] = formData.get('image-input');
+    }
+
+    //combine local posts and user entered post, store back into local
+    let postFromLocal = getPostsFromStorage();
+    postFromLocal.push(postObject);
+    savePostsToStorage(postFromLocal);
+});
+
+/**
+ * Reads 'posts' from localStorage and returns an array of
+ * all of the posts found (parsed, not in string form). If
+ * nothing is found in localStorage for 'posts', an empty array
+ * is returned.
+ * @returns {Array<Object>} An array of posts found in localStorage
+ */
+function getPostsFromStorage() {
+    let posts = JSON.parse(localStorage.getItem("posts"));
+    if (posts === null) {
+        return [];
+    }
+    return posts;
+}
+
+/**
+ * Takes in an array of posts, converts it to a string, and then
+ * saves that string to 'posts' in localStorage
+ * @param {Array<Object>} posts An array of posts
+ */
+ function savePostsToStorage(posts) {
+    localStorage.setItem('posts', JSON.stringify(posts));
+ }
