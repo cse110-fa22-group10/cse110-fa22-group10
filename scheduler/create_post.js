@@ -41,6 +41,7 @@ submitButton.addEventListener('click', () => {
     let postObject = {}; 
     postObject['title'] = formData.get('title');
     postObject['desc-input'] = formData.get('desc-input');
+    postObject['date-to-post'] = formData.get('date-to-post');
     postObject['time-to-post'] = formData.get('time-to-post');
     postObject['tag'] = formData.get('tag');
     if (formData.get('image-input') != null) {
