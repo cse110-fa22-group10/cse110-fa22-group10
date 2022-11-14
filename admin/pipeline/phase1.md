@@ -26,3 +26,5 @@ Jest is a JavaScript Testing Framework with a focus on simplicity which can be u
 ## JSDocs (In Progress)
 JSDocs is an API documentation generator for JavaScript. Configured within the main.yml such that the folder to be run unit tests on is ./public/src and the output file goes to ./public/debug for a clearer and more organized view of what goes wrong and use template minami for a better view of the output file. <br/>
 <span style="color:red">Issues</span> to be solved: Unable to be tested due to the failing of Jest. Fix Jest first !!! (For more information, go to Github actions and look at the summary of why build failed)
+
+- Test the functionality CI/CD
