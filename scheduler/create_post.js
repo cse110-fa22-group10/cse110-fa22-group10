@@ -92,7 +92,7 @@ function getPostsFromStorage() {
     if (posts === null) {
         return [];
     }
-    return posts;
+  return posts;
 }
 
 /**
