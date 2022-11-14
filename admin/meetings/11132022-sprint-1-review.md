@@ -43,12 +43,6 @@
   - Kevin (Xiaoyu)
     - Set up local storage upon information entry
     - Discussion on how local storage should work
-- Agile Retrospective via Retrium
-  - Major Items
-    1. Lack of communication
-    2. Teams are not very formed, so pairs would be the best way within the frontend/backend framework
-    3. Prototypes were good
-    4. Issues were not closed or reviewed
 
 ## Decisions
 - Communicate more with teams
