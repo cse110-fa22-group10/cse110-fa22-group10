@@ -44,7 +44,7 @@ function checkImage() {
 function checkText() {
     if (postDescription.value.length > postDescription.maxLength) {
         submitButton.disabled = true;
-        alert("Too many characters!");
+    alert("Too many characters!");
         setTimeout(() => {submitButton.disabled = false}, 1000);
     }
 }
