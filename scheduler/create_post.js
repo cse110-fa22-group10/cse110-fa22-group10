@@ -11,7 +11,7 @@ const submitButton = document.getElementById('submit');
 // Limit the amount of characters permited for every type of posts
 function constraints() {
     let selectedTag = postTag.selectedOptions[0];
-    // Facebook 63,206char max
+  // Facebook 63,206char max
     if (selectedTag == postTag.options[0]) {
         postDescription.maxLength = 63206;
     }
