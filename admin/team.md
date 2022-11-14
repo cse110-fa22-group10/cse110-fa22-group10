@@ -1,12 +1,36 @@
 <h1 align="center"> Team Page </h1>
 
 <h2>Team Name:</h2>
+<h3><i><strong>ASUMA</strong></i></h3>
 
 <h2>Team Brand:</h2>
+<div>
 
-<h2>Team Value:</h2>
+  - Team Colors: Red, Gray, and White
+  - Team Logo: 
+    
+    <img src="https://github.com/cse110-fa22-group10/cse110-fa22-group10/blob/main/admin/branding/teamlogo.png"
+     alt="Team Logo"
+     width=200, height=200/>
+  
+  - Team Mascot: Kunai
 
-<h2>Team Member:</h2>
+</div>
+
+<h2>Team Values:</h2>
+<div>
+
+  - Loyalty
+  - Duty
+  - Respect
+  - Selflessness
+  - Honor
+  - Integrity
+  - Courage
+
+</div>
+
+<h2>Team Members:</h2>
 
 <div>
 
@@ -34,7 +58,11 @@
 <div>
 
 - Antonio Peso Vilella
-  - Self-Overview:
+  - Exchange mathematics student (4th year back home)
+  - Interested in learning computer science
+  - Born and raised in Barcelona, Spain
+  - Bachelors in Indurtial Engineering
+  - Favourite emoji is the upside down smiley
   - Click the [link](https://github.com/apesovilella) to get to the personal Github page.
 
 </div>
@@ -53,7 +81,10 @@
 <div>
 
 - Charles Young
-  - Self-Overview:
+  - Fourth year Math-CS major at UCSD
+  - Born and raised in the Bay Area
+  - Exercises and plays videogames in free time
+  - Passionate about data science, more specifically metaheuristics
   - Click the [link](https://github.com/agctute) to get to the personal Github page.
 
 </div>
@@ -90,5 +121,4 @@
   - Click the [link](https://github.com/kevinchen772) to get to the personal Github page.
 
 </div>
-
 <h2 align="center">Glad you reach the bottom of the page : ) </h2>
