@@ -16,7 +16,7 @@ function constraints() {
         postDescription.maxLength = 63206;
     }
     // Twitter 280char max
-    if (selectedTag == postTag.options[1]) {
+  if (selectedTag == postTag.options[1]) {
         postDescription.maxLength = 280;
     }
     // Instagram 2,200char max and check if there is an image uploaded
