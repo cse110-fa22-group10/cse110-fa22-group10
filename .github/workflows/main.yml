@@ -39,30 +39,6 @@ jobs:
       - name: Run Jest
         # You may pin to the exact commit or the version.
         # uses: stefanoeb/jest-action@f9bb23f509cde20ee9b494f0496d1d3323861cc4
-        uses: stefanoeb/jest-action@1.0.4
-        
-      - name: JSDoc Action
-        # You may pin to the exact commit or the version.
-        # uses: andstor/jsdoc-action@06eafccd94e3fedcbf4ff0a8f23d775c169efdf2
-        uses: andstor/jsdoc-action@v1.2.1
-        with:
-          # Source directory to build documentation from
-          source_dir: ./public/src
-          # Output folder for the generated documentation
-          output_dir: ./public/debug
-          # The JSDoc template to install
-          template: minami
-          # The path to a Markdown file to be used as a the front page
-          front_page: README.md
-          # The relative location of the template files within the template package
-          #template_dir: # optional
-          # Recurse into subdirectories when scanning for source files
-          #recurse: # optional
-          # The path to a JSDoc configuration file
-          #config_file: # optional
-          # This input variable is deprecated in favour of "template"
-          # template_name: minami
-          
-          
+        uses: stefanoeb/jest-action@1.0.4  
           
 
