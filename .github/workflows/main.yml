@@ -62,37 +62,6 @@ jobs:
           #config_file: # optional
           # This input variable is deprecated in favour of "template"
           # template_name: minami
-
-  lint:
-    
-    runs-on: ubuntu-latest
-    
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      
-      # Combination of various linters, written in bash, to help your source code
-      - name: Super-Linter
-        uses: github/super-linter@v4.9.7
-        # Give full access to the repo and run individual linter in check section for each pull request
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Disable the blocking functionality of this linter (CI won't fail even if there are errors) 
-          # DISABLE_ERROS: true
-          ##
-          # Customize which destination output file should go to
-          # OUTPUT_FOLDER: Reports (for example) 
-          ##
-          # Customize the output file 
-          # OUTPUT_DETAILS: detailed
-          ##
-          # Restrict the files that linter run on  and the linter will only parse and lint the newly edited files
-          # VALIDATE_ALL_CODEBASE: false
-          # Disable linter running on specific type of files.
-          # VALIDATE_{TYPE_OF_FILES}: false (i.e: VALIDATE_ARM: false) 
-          ##
-          # Use any specific custom file rules
-          # {TYPE_OF_FILES}_CONFIG_FILE: {PATH_TO_THE_FILE}
           
           
           
