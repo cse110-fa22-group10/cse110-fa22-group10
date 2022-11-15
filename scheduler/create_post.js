@@ -18,7 +18,7 @@ function constraints() {
         postDescription.maxLength = 280;
     }
     // Instagram 2,200char max and check if there is an image uploaded
-    // Instagram 2,200char max
+  // Instagram 2,200char max
     if (selectedTag == postTag.options[2]) {
         postDescription.maxLength = 2200;
         checkImage();
