@@ -99,6 +99,6 @@ function getPostsFromStorage() {
  * saves that string to 'posts' in localStorage
  * @param {Array<Object>} posts An array of posts
  */
- function savePostsToStorage(posts) {
+function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
  }
