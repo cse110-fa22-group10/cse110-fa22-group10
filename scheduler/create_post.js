@@ -11,7 +11,7 @@ function constraints() {
     let selectedTag = postTag.selectedOptions[0];
   // Facebook 63,206char max
     if (selectedTag == postTag.options[0]) {
-        postDescription.maxLength = 1;
+    postDescription.maxLength = 1;
     }
     // Twitter 280char max
   if (selectedTag == postTag.options[1]) {
