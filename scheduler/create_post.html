@@ -16,11 +16,16 @@
                 placeholder="Post Title">
                 
                 <label for="image-input"></label>
-                <input id="image-input" name="image-input" type="file">
+                <!-- Changed the type from image to file and added accepted images -Antonio -->
+                <input id="image-input" name="image-input" type="file" multiple="true" accept=".jpg, .jpeg, .png, .bmp">
 
                 <label for="desc-input"></label>
-                <input id="desc-input" name="desc-input" type="text" 
+                <!-- Added the maxlength atribute and set it to Facebook limitations -Antonio -->
+                <input id="desc-input" name="desc-input" type="text" maxlength="63206"
                 placeholder="Post Description">
+
+                <label for="date-to-post"></label>
+                <input id="date-to-post" name="date-to-post" type="date">
                 
                 <label for="time-to-post"></label>
                 <input id="time-to-post" name="time-to-post" type="time">
@@ -34,9 +39,11 @@
                     <option value="twitter">Twitter</option>
                     <option value="instagram">Instagram</option>
                 </select>
+                <!-- Changed the submit button to a input type='submit' -Antonio -->
+                <input id="submit" name="submit-button" type="submit">
             </form>
             <button id="back">Back</button>
-            <button id="submit">Submit</button>
+            <!--<button id="submit">Submit</button>-->
         </main>
     </body>
 </html>
