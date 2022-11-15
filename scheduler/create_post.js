@@ -74,7 +74,7 @@ submitButton.addEventListener('click', () => {
     }
 
     //combine local posts and user entered post, store back into local
-    let postFromLocal = getPostsFromStorage();
+  let postFromLocal = getPostsFromStorage();
     postFromLocal.push(postObject);
     savePostsToStorage(postFromLocal);
 });
