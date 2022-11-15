@@ -6,14 +6,12 @@ const postTag = document.getElementById('tag');
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 
-
-
 // Limit the amount of characters permited for every type of posts
 function constraints() {
     let selectedTag = postTag.selectedOptions[0];
   // Facebook 63,206char max
     if (selectedTag == postTag.options[0]) {
-        postDescription.maxLength = 63206;
+        postDescription.maxLength = 1;
     }
     // Twitter 280char max
   if (selectedTag == postTag.options[1]) {
@@ -44,8 +42,9 @@ function checkImage() {
 function checkText() {
     if (postDescription.value.length > postDescription.maxLength) {
         submitButton.disabled = true;
-    alert("Too many characters!");
-    setTimeout(() => {
+        alert("Too many characters!");
+        setTimeout(() => {
+        })
     }
 }
 
