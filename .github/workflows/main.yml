@@ -41,4 +41,58 @@ jobs:
         # uses: stefanoeb/jest-action@f9bb23f509cde20ee9b494f0496d1d3323861cc4
         uses: stefanoeb/jest-action@1.0.4  
           
+  lint:
+
+      runs-on: ubuntu-latest
+
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v3
+
+        # Combination of various linters, written in bash, to help your source code
+        - name: Super-Linter
+          uses: github/super-linter@v4.9.7
+          # Give full access to the repo and run individual linter in check section for each pull request
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # Disable the blocking functionality of this linter (CI won't fail even if there are errors) 
+            # DISABLE_ERROS: true
+            ##
+            # Customize which destination output file should go to
+            # OUTPUT_FOLDER: Reports (for example) 
+            ##
+            # Customize the output file 
+            # OUTPUT_DETAILS: detailed
+            ##
+            # Restrict the files that linter run on  and the linter will only parse and lint the newly edited files
+            # VALIDATE_ALL_CODEBASE: false
+            # Disable linter running on specific type of files.
+            # VALIDATE_{TYPE_OF_FILES}: false (i.e: VALIDATE_ARM: false) 
+            ##
+            # Use any specific custom file rules
+            # {TYPE_OF_FILES}_CONFIG_FILE: {PATH_TO_THE_FILE}
+            
+  documentation:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+
+       # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v3
+
+        - name: Build
+          uses: andstor/jsdoc-action@v1
+          with:
+            source_dir: ./scheduler
+            output_dir: ./out
+            ## config_file: conf.json
+            template: minami
+            front_page: README.md
+
+        - name: Deploy
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+            publish_dir: ./out
 
