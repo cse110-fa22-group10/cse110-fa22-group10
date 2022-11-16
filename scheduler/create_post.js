@@ -48,7 +48,7 @@ function checkText() {
 
 // Event listeners
 postTag.addEventListener('change', constraints);
-imageInput.addEventListener('change', constraints);
+imageInput.addEventListener("change", constraints);
 submitButton.addEventListener('click', checkText);
 
 // TODO: OnSubmit - store the formdata into localStorage to wherever we want
