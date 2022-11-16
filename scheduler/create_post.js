@@ -7,6 +7,12 @@ const postTag = document.getElementById('tag');
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 
+window.addEventListener('DOMContentLoaded', init);
+
+function init() {
+    constraints();
+}
+
 // Limit the amount of characters permited for every type of posts
 // Instagram posts must have at least one image
 function constraints() {
