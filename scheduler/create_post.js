@@ -17,7 +17,7 @@ function constraints() {
         submitButton.disabled = false;
     }
 // Twitter 280char max
-    if (selectedTag == postTag.options[1]) {
+  if (selectedTag == postTag.options[1]) {
         postDescription.maxLength = 280;
         submitButton.disabled = false;
     }
