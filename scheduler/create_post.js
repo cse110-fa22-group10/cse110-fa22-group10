@@ -42,7 +42,7 @@ function checkText() {
         alert("Too many characters!");
         setTimeout(() => {
             submitButton.disabled = false;
-        }, 1000);
+    }, 1000);
     }
 }
 
