@@ -1,88 +1,120 @@
-.top-bar{
+body {
+    background-image: url(assets/main-background.png); 
+    min-height: 600px;
+    height: 99vh;
+}
+
+.top-bar {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.center-container{
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
+.main-container {
+    /* border-width: 1px; */
+    /* border-style: solid;
+    border-color: black; */
     display: flex;
     flex-direction: row;
-    height: 100vw;
+    min-height: 65%;
+    height: 100%;
     width: 100%;
     position: relative;
+    margin-top: 2.5vh;
 }
 
-.platform-swicther{
+.main-container > *{
+    border-radius: 20px;
+}
+
+/* .spacer-left {
+    width: 8vw;
+}
+
+.spacer-right {
+    width: 7vw;
+} */
+.finished-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
     border-color: black;
-    /* Real Styling of three icons' sizes */
+
+    width: 25vw;
+    height: 95vh;
+    /* overflow-y: auto; /* makes div scrollable */
+    position: absolute;
+    text-align: center;
+    margin-left: 5vw;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
-    width: 10%;
-    margin-left: 90%;
-    position: absolute;
-    background-color: gray;
+
+    background: gray;
 }
 
-.finished-posts{
+.upcoming-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
     border-color: black;
 
-    width: 28%;
-    height: 100%;
+    width: 25vw;
+    height: 95vh;
+    /* overflow-y: auto; /* makes div scrollable */
+    margin-left: 38vw;
     position: absolute;
     text-align: center;
 
     display: flex;
     flex-direction: column;
 
-    background:gray;
+    background: gray;
 }
 
-.upcoming-posts{
+.create-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
     border-color: black;
 
-    width: 28%;
-    height: 100%;
-    margin-left: 30%;
+    width: 25vw;
+    height: 45vh;
+    /* padding: .5vh; */
+    /* overflow-y: auto; /* makes div scrollable */
+    margin-top: 50vh;
+    margin-left: 70vw;
     position: absolute;
     text-align: center;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 
-    background:gray;
-}
-.create-posts{
-    /* Used as box to modify the size of the buttons */
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-
-    width: 28%;
-    height: 100%;
-    margin-left: 60%;
-    position: absolute;
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-
-    background:gray;
+    background: gray;
 }
 
-.date{
+.date {
     height: 10%
+}
+
+.platform-button>p {
+    font-size: 3vh;
+    margin: 0;
+    justify-content: left;
+}
+
+.platform-button>img {
+    height: 4vh;
+    width: auto;
+}
+
+.platform-button {
+    height: 11vh;
+    margin-top: 1vh;
+    justify-content: left;
+    flex-direction: row;
+}
+
+h2 {
+    font-size: 2.5vh;
 }
