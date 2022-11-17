@@ -2,48 +2,45 @@
 <html lang="en">
     <head>
         <meta charset="=UTF-8" />
-        <title>Post Creation Form</title>
+        <title>Twitter Post Creation Form</title>
         <link rel="icon" property="icon" type="image/x-icon" href="./assets/favicon.ico">
-        <link rel="stylesheet" href="./create_post.css" />
-        <script src="./create_post.js" type="module"></script>
+        <link rel="stylesheet" href="./createTw.css" />
+        <script src="./createTw.js" type="module"></script>
     </head>
     <body>
         <main>
+            <div class="back-button">
+                <button id="back">Back</button>
+            </div>
+            <h1>Plan a Twitter Post</h1>
             <!-- This is the main form for the post creation-->
             <form id="post-creator"> 
-                <label for="title"></label>
-                <input id="title" name="title" type="text" 
-                placeholder="Post Title">
-                
-                <label for="image-input"></label>
-                <!-- Changed the type from image to file and added accepted images -Antonio -->
-                <input id="image-input" name="image-input" type="file" multiple="true" accept=".jpg, .jpeg, .png, .bmp">
+                <!-- Post title and description on the left-->
+                <div class="left">
+                    <label for="title"></label>
+                    <input id="title" name="title" type="text" 
+                    placeholder="Post Title">
 
-                <label for="desc-input"></label>
-                <!-- Added the maxlength atribute and set it to Facebook limitations -Antonio -->
-                <input id="desc-input" name="desc-input" type="text" maxlength="63206"
-                placeholder="Post Description">
+                    <label for="desc-input"></label>
+                    <!-- Added the maxlength atribute and set it to Twitter limitations -->
+                    <textarea id="desc-input" name="desc-input" resize="none" maxlength="280" placeholder="Post Description"></textarea>
+                </div>
+                <!-- Post image, date, and time on the right-->
+                <div class="right">
+                    <label for="image-input"></label>
+                    <!-- Changed the type from image to file and added accepted images -Antonio -->
+                    <input id="image-input" name="image-input" type="file" multiple="true" accept=".jpg, .jpeg, .png, .bmp">
 
-                <label for="date-to-post"></label>
-                <input id="date-to-post" name="date-to-post" type="date">
-                
-                <label for="time-to-post"></label>
-                <input id="time-to-post" name="time-to-post" type="time">
+                    <label for="date-to-post"></label>
+                    <input id="date-to-post" name="date-to-post" type="date">
+                    
+                    <label for="time-to-post"></label>
+                    <input id="time-to-post" name="time-to-post" type="time">
 
-                <!-- Input for what platform this post is for
-                This doesn't have to be the way to set what kind of post this is,
-                but I'm putting this here for now -Charles -->
-                <label for="tag"></label>
-                <select id="tag" name="tag">
-                    <option value="facebook">Facebook</option>
-                    <option value="twitter">Twitter</option>
-                    <option value="instagram">Instagram</option>
-                </select>
-                <!-- Changed the submit button to a input type='submit' -Antonio -->
-                <input id="submit" name="submit-button" type="submit">
+                    <!-- Changed the submit button to a input type='submit' -Antonio -->
+                    <input id="submit" name="submit-button" type="submit">
+                </div>
             </form>
-            <button id="back">Back</button>
-            <!--<button id="submit">Submit</button>-->
         </main>
     </body>
 </html>

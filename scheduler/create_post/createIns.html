@@ -5,10 +5,11 @@
         <title>Post Creation Form</title>
         <link rel="icon" property="icon" type="image/x-icon" href="./assets/favicon.ico">
         <link rel="stylesheet" href="./create_post.css" />
-        <script src="./create_post.js" type="module"></script>
+        <script src="./createIns.js" type="module"></script>
     </head>
     <body>
         <main>
+            <h1>Plan an Instagram Post</h1>
             <!-- This is the main form for the post creation-->
             <form id="post-creator"> 
                 <label for="title"></label>
@@ -21,7 +22,7 @@
 
                 <label for="desc-input"></label>
                 <!-- Added the maxlength atribute and set it to Facebook limitations -Antonio -->
-                <input id="desc-input" name="desc-input" type="text" maxlength="63206"
+                <input id="desc-input" name="desc-input" type="text" maxlength="2200"
                 placeholder="Post Description">
 
                 <label for="date-to-post"></label>

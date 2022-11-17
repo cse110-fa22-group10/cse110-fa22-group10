@@ -1,0 +1,39 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 4px;
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+#post-creator {
+    padding-top: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.back-button {
+    padding: 12px;
+    position: absolute;
+    right: 0%;
+}
+
+#desc-input {
+    height: 100%;
+    resize: none;
+}
