@@ -10,8 +10,8 @@
     border-color: black;
     display: flex;
     flex-direction: row;
-    height: 1000px;
-    width: 1450px;
+    height: 100vw;
+    width: 100%;
     position: relative;
 }
 
@@ -24,10 +24,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 1000px;
-    width: 150px;
-    margin-left: 1290px;
+    height: 100%;
+    width: 10%;
+    margin-left: 90%;
     position: absolute;
+    background-color: gray;
 }
 
 .finished-posts{
@@ -36,10 +37,15 @@
     border-style: solid;
     border-color: black;
 
-    width: 400px;
-    height: 1000px;
+    width: 28%;
+    height: 100%;
     position: absolute;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    background:gray;
 }
 
 .upcoming-posts{
@@ -48,11 +54,16 @@
     border-style: solid;
     border-color: black;
 
-    width: 400px;
-    height: 1000px;
-    margin-left: 430px;
+    width: 28%;
+    height: 100%;
+    margin-left: 30%;
     position: absolute;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    background:gray;
 }
 .create-posts{
     /* Used as box to modify the size of the buttons */
@@ -60,9 +71,18 @@
     border-style: solid;
     border-color: black;
 
-    width: 400px;
-    height: 1000px;
-    margin-left: 860px;
+    width: 28%;
+    height: 100%;
+    margin-left: 60%;
     position: absolute;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    background:gray;
+}
+
+.date{
+    height: 10%
 }
