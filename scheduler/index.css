@@ -1,7 +1,6 @@
 body {
     background-image: url(assets/main-background.png); 
     min-height: 600px;
-    height: 99vh;
 }
 
 .top-bar {
@@ -17,10 +16,9 @@ body {
     display: flex;
     flex-direction: row;
     min-height: 65%;
-    height: 100%;
     width: 100%;
     position: relative;
-    margin-top: 2.5vh;
+    margin-top:2.5vh;
 }
 
 .main-container > *{
