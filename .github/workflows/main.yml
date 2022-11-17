@@ -107,3 +107,17 @@ jobs:
           # You may pin to the exact commit or the version.
           # uses: stefanoeb/jest-action@f9bb23f509cde20ee9b494f0496d1d3323861cc4
           uses: stefanoeb/jest-action@1.0.4
+          
+  validate_html:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+      
+       # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v3
+        
+        - name: HTML5 Validator
+          # You may pin to the exact commit or the version.
+          # uses: Cyb3r-Jak3/html5validator-action@41633d488eb36e18fd1a95ffc83daf1bf22a75bd
+          uses: Cyb3r-Jak3/html5validator-action@v7.2.0
