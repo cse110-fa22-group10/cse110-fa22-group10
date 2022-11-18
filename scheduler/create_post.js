@@ -7,6 +7,7 @@ const postTag = document.getElementById('tag');
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 
+
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
@@ -38,7 +39,6 @@ function constraints() {
         }
     }
 }
-
 // Function called when clicking the submit button to check
 // if the text constraints are respected
 // The submit button is disabled for 1 second
@@ -51,38 +51,42 @@ function checkText() {
     }, 1000);
     }
 }
-
 // Event listeners
 postTag.addEventListener('change', constraints);
 imageInput.addEventListener("change", constraints);
 submitButton.addEventListener('click', checkText);
-
 // TODO: OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
-// be posted 
+// be posted
 const formEle = document.querySelector('form');
-
+let imgElement = document.querySelector("[type='file']");
+let file;
+let dataurl;
+imgElement.addEventListener('change', () => {
+    file = imgElement.files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        dataurl = reader.result;
+    });
+    reader.readAsDataURL(file);
+});
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
+    console.log(dataurl);
     let formData = new FormData(formEle);
-
-    //store user entered image, description, data .. into postObject 
-    let postObject = {}; 
+    //store user entered image, description, data .. into postObject
+    let postObject = {};
     postObject['title'] = formData.get('title');
     postObject['desc-input'] = formData.get('desc-input');
     postObject['date-to-post'] = formData.get('date-to-post');
     postObject['time-to-post'] = formData.get('time-to-post');
     postObject['tag'] = formData.get('tag');
-    if (formData.get('image-input') != null) {
-        postObject['image-input'] = formData.get('image-input');
-    }
-
+    postObject['image-input'] = dataurl;
     //combine local posts and user entered post, store back into local
   let postFromLocal = getPostsFromStorage();
     postFromLocal.push(postObject);
     savePostsToStorage(postFromLocal);
 });
-
 /**
  * Reads 'posts' from localStorage and returns an array of
  * all of the posts found (parsed, not in string form). If
@@ -97,7 +101,6 @@ function getPostsFromStorage() {
     }
   return posts;
 }
-
 /**
  * Takes in an array of posts, converts it to a string, and then
  * saves that string to 'posts' in localStorage
