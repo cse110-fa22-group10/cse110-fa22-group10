@@ -25,54 +25,66 @@ class Post extends HTMLElement {
         postition: relative;
         justify-content: center;
         align-items: center;
-        background-color: rgb(210, 210, 210);
-        border-radius: 10px;
+        background-color: rgb(217,217,217);
+        border-radius: 1vw;
         width: auto;
         height: auto;
-        position: relative;
     }
     .post-head {
         display: flex;
         justify-content: center;
+        font-size: 1.25vw;
     }
     .post-image {
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: rgb(192, 192, 192);
-        border-radius: .25in;
-        padding: .25in;
-        margin: .10in;
+        border-radius: .5vw;
+        padding: .5vw;
+        margin: .5vw;
+        position: relative;
     }
     #main-image {
-        border-radius: .5in;
-        padding: .25in;
-        margin: .10in;
+        position: relative;
+        border-radius: 1vw;
+        margin: .2vw;
+        width: 50%;
+        height: 50%;
     }
     .post-body {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgb(87, 87, 87);;
+        background-color: rgb(115,107,107);
         color: white;
-        border-radius: 5px;
-        margin: 15px;
+        border-radius: 1vw;
+        margin: .5vw;
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    #main-text {
+        postition: relative;
+        font-size: 1.5vw;
     }
     .platform-type {
+        position: relative;
         display: flex;
-        justify-content: center;
         align-items: center;
+        margin: .5vw;
     }
     .platform-title {
-        flex: 1;
-        display: flex;
+        position: relative;
+        font-size: 1vw;
         text-align: center;
-        justify-content: center;
-        transform: translateX(10px);
+        left: 40%;
     }
     #platform-image {
-        height: 25px;
-        width: 25px;
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 40%;
     }
         `;
 
@@ -111,12 +123,15 @@ class Post extends HTMLElement {
         let currentPostIcon;
         switch (currentPostType.toUpperCase()) {
             case "FACEBOOK":
+                data.platType = "FACEBOOK";
                 currentPostIcon = "assets/facebook.png";
                 break;
             case "INSTAGRAM":
+                data.platType = "INSTAGRAM";
                 currentPostIcon = "assets/instagram.png";
                 break;
             case "TWITTER":
+                data.platType = "TWITTER";
                 currentPostIcon = "assets/twitter.png";
                 break;
             default:
