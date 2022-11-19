@@ -8,7 +8,7 @@
     article {
         justify-content: center;
         align-items: center;
-        background-color: white;
+        background-color: rgb(210, 210, 210);
         border-radius: .5in;
         padding: .25in;
         margin: .5in;
@@ -45,7 +45,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgb(56, 56, 56);
+        background-color: rgb(87, 87, 87);
         color: white;
         border-radius: .25in;
         padding: .25in;
@@ -66,4 +66,8 @@
         text-align: center;
         justify-content: center;
         transform: translateX(.50in);
+    }
+    #platform-image {
+        height: auto;
+        width: auto;
     }

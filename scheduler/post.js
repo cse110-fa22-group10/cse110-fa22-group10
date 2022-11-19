@@ -22,14 +22,14 @@ class Post extends HTMLElement {
         // populate the CSS for the article
         styleElement.textContent = `    
     article {
+        postition: relative;
         justify-content: center;
         align-items: center;
-        background-color: white;
-        border-radius: .5in;
-        padding: .25in;
-        margin: .5in;
+        background-color: rgb(210, 210, 210);
+        border-radius: 10px;
         width: auto;
         height: auto;
+        position: relative;
     }
     .post-head {
         display: flex;
@@ -53,11 +53,10 @@ class Post extends HTMLElement {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgb(56, 56, 56);
+        background-color: rgb(87, 87, 87);;
         color: white;
-        border-radius: .25in;
-        padding: .25in;
-        margin: .10in;
+        border-radius: 5px;
+        margin: 15px;
     }
     .platform-type {
         display: flex;
@@ -69,7 +68,11 @@ class Post extends HTMLElement {
         display: flex;
         text-align: center;
         justify-content: center;
-        transform: translateX(.50in);
+        transform: translateX(10px);
+    }
+    #platform-image {
+        height: 25px;
+        width: 25px;
     }
         `;
 
@@ -121,25 +124,45 @@ class Post extends HTMLElement {
                 break;
         }
 
-        articleElement.innerHTML = `
-        <div class="post-head">
-            <p id="post-date-data">${data.dateData}</p>
-        </div>
-        <div class="post-image">
-            <img id="main-image" src="${data.mainImg}" alt="${data.imgAlt}">
-        </div>
-        <div class="post-body">
-            <p id="main-text">${data.mainTxt}</p>
-        </div>
-        <span class="platform-type">
-            <div class="platform-title">
-                <h3 id="platform-name">${data.platType}</h3>
+        if (data.mainImg == "") {
+            articleElement.innerHTML = `
+            <div class="post-head">
+                <p id="post-date-data">${data.dateData}</p>
             </div>
-            <div class="platform-media">
-                <img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+            <div class="post-body">
+                <p id="main-text">${data.mainTxt}</p>
             </div>
-        </span>
-        `;
+            <span class="platform-type">
+                <div class="platform-title">
+                    <h3 id="platform-name">${data.platType}</h3>
+                </div>
+                <div class="platform-media">
+                    <img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                </div>
+            </span>
+            `;
+        } else {
+            articleElement.innerHTML = `
+            <div class="post-head">
+                <p id="post-date-data">${data.dateData}</p>
+            </div>
+            <div class="post-image">
+                <img id="main-image" src="${data.mainImg}" alt="${data.imgAlt}">
+            </div>
+            <div class="post-body">
+                <p id="main-text">${data.mainTxt}</p>
+            </div>
+            <span class="platform-type">
+                <div class="platform-title">
+                    <h3 id="platform-name">${data.platType}</h3>
+                </div>
+                <div class="platform-media">
+                    <img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                </div>
+            </span>
+            `;
+        }
+
     }
 }
 

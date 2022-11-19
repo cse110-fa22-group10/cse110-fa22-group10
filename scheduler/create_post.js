@@ -61,32 +61,37 @@ submitButton.addEventListener('click', checkText);
 const formEle = document.querySelector('form');
 let imgElement = document.querySelector("[type='file']");
 let file;
-let dataurl;
+let dataUrl = "";
 imgElement.addEventListener('change', () => {
     file = imgElement.files[0];
     const reader = new FileReader();
     reader.addEventListener("load", () => {
-        dataurl = reader.result;
+        dataUrl = reader.result;
     });
     reader.readAsDataURL(file);
 });
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
-    console.log(dataurl);
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
-    postObject['title'] = formData.get('title');
-    postObject['desc-input'] = formData.get('desc-input');
-    postObject['date-to-post'] = formData.get('date-to-post');
-    postObject['time-to-post'] = formData.get('time-to-post');
-    postObject['tag'] = formData.get('tag');
-    postObject['image-input'] = dataurl;
+    postObject['mainTxt'] = formData.get('desc-input');
+    postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post') ;
+    postObject['platType'] = formData.get('tag');
+    postObject['mainImg'] = dataUrl; 
+    if(dataUrl === "") {
+        postObject['imgAlt'] = "";
+    } else { 
+        postObject['imgAlt'] = formData.get('tag') + ' image';
+    }
+    dataUrl = ""; //Once the information is stored, set it back to ""
+
     //combine local posts and user entered post, store back into local
-  let postFromLocal = getPostsFromStorage();
+    let postFromLocal = getPostsFromStorage();
     postFromLocal.push(postObject);
     savePostsToStorage(postFromLocal);
 });
+
 /**
  * Reads 'posts' from localStorage and returns an array of
  * all of the posts found (parsed, not in string form). If
