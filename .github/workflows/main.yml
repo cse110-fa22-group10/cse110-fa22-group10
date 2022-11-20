@@ -87,11 +87,11 @@ jobs:
 #             template: minami
 #             front_page: README.md
 
-#         - name: Deploy
-#           uses: peaceiris/actions-gh-pages@v3
-#           with:
-#             deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-#             publish_dir: ./out
+        - name: Deploy
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+            publish_dir: ./out
 
   unit_test:
       # The type of runner that the job will run on
@@ -123,4 +123,4 @@ jobs:
           # uses: Cyb3r-Jak3/html5validator-action@41633d488eb36e18fd1a95ffc83daf1bf22a75bd
           uses: Cyb3r-Jak3/html5validator-action@v7.2.0
 #           with:
-#             root: ../scheduler/index.html
+#             root: ./scheduler
