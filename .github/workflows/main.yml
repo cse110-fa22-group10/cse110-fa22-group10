@@ -75,8 +75,8 @@ jobs:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         - uses: actions/checkout@v3
         
-#         - name: Install
-#           run: npm install -g jsdoc
+        - name: Install
+          run: npm install -g jsdoc
           
         - name: Build
           uses: andstor/jsdoc-action@v1.2.1
