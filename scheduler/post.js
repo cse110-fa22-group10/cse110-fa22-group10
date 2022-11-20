@@ -20,12 +20,39 @@ class Post extends HTMLElement {
         let styleElement = document.createElement("style");
 
         // populate the CSS for the article
-        styleElement.textContent = `    
-    article {
+        styleElement.textContent = `
+    article[post-type=''] {
         postition: relative;
         justify-content: center;
         align-items: center;
-        background-color: rgb(217,217,217);
+        background-color: rgb(24,119,242);
+        border-radius: 1vw;
+        width: auto;
+        height: auto;
+    }    
+    article[post-type='FACEBOOK'] {
+        postition: relative;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(24,119,242);
+        border-radius: 1vw;
+        width: auto;
+        height: auto;
+    }
+    article[post-type='INSTAGRAM'] {
+        postition: relative;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255,216,84);
+        border-radius: 1vw;
+        width: auto;
+        height: auto;
+    }
+    article[post-type='TWITTER'] {
+        postition: relative;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(85,172,238);
         border-radius: 1vw;
         width: auto;
         height: auto;
@@ -64,7 +91,12 @@ class Post extends HTMLElement {
         max-width: 100%;
         max-height: 100%;
     }
+    #summary-of-post {
+        font-size: 1.5vw;
+    }
     #main-text {
+        padding: .5vw;
+        text-align: left;
         postition: relative;
         font-size: 1.5vw;
     }
@@ -101,6 +133,7 @@ class Post extends HTMLElement {
      * @param {Object} data - The data to pass into the <post-card>, must be of the
      *                        following format:
      *                        {
+     *                          "postSummary": "string",
      *                          "dateData": "string",
      *                          "mainImg": "string",
      *                          "imgAlt": "string",
@@ -124,17 +157,21 @@ class Post extends HTMLElement {
         switch (currentPostType.toUpperCase()) {
             case "FACEBOOK":
                 data.platType = "FACEBOOK";
-                currentPostIcon = "assets/facebook.png";
+                articleElement.setAttribute('post-type', "FACEBOOK");
+                currentPostIcon = "assets/facebook-colored-icon.png";
                 break;
             case "INSTAGRAM":
                 data.platType = "INSTAGRAM";
-                currentPostIcon = "assets/instagram.png";
+                currentPostIcon = "assets/instagram-colored-icon.png";
+                articleElement.setAttribute('post-type', "INSTAGRAM");
                 break;
             case "TWITTER":
                 data.platType = "TWITTER";
-                currentPostIcon = "assets/twitter.png";
+                currentPostIcon = "assets/twitter-colored-icon.png";
+                articleElement.setAttribute('post-type', "TWITTER");
                 break;
             default:
+                articleElement.setAttribute('post-type', "");
                 currentPostIcon = "assets/default-icon.png";
                 break;
         }
@@ -145,7 +182,11 @@ class Post extends HTMLElement {
                 <p id="post-date-data">${data.dateData}</p>
             </div>
             <div class="post-body">
-                <p id="main-text">${data.mainTxt}</p>
+                <details id="text-body-details-tab">
+                    <summary id="summary-of-post">${data.postSummary}</summary>
+                    <p id="main-text">${data.mainTxt}</p>
+                </details>
+
             </div>
             <span class="platform-type">
                 <div class="platform-title">
@@ -165,7 +206,10 @@ class Post extends HTMLElement {
                 <img id="main-image" src="${data.mainImg}" alt="${data.imgAlt}">
             </div>
             <div class="post-body">
-                <p id="main-text">${data.mainTxt}</p>
+                <details id="text-body-details-tab">
+                    <summary id="summary-of-post">${data.postSummary}</summary>
+                    <p id="main-text">${data.mainTxt}</p>
+                </details>
             </div>
             <span class="platform-type">
                 <div class="platform-title">
@@ -177,7 +221,6 @@ class Post extends HTMLElement {
             </span>
             `;
         }
-
     }
 }
 

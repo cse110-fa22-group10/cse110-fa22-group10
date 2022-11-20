@@ -23,10 +23,11 @@ function addPostsToMain(posts) {
 
     //populate upcoming posts section
     for (let currentPost = 0; currentPost < posts.length; currentPost++) {
-        
+
         let postcard = document.createElement("post-card");
-        
+
         postcard.data = {
+            'postSummary': posts[currentPost].postSummary,
             'dateData': posts[currentPost].dateData,
             'mainImg': posts[currentPost].mainImg,
             'imgAlt': posts[currentPost].imgAlt,
@@ -44,27 +45,27 @@ function addPostsToMain(posts) {
  * is returned.
  * @returns {Array<Object>} An array of posts found in localStorage
  */
- function getPostsFromStorage() {
+function getPostsFromStorage() {
     let posts = JSON.parse(localStorage.getItem("posts"));
     if (posts === null) {
         return [];
     }
-  return posts;
+    return posts;
 }
 
 // TODO: Once the facebook button is clicked, move to the creation page of the Facebook posts
-function createFb(){
+function createFb() {
     window.location.replace("./create_post.html");
 }
 
 // TODO: Once the instagram button is clicked, move to the creation page of the Instagram posts
-function createIns(){
+function createIns() {
     window.location.replace("./create_post/createIns.html");
 
 }
 
 // TODO: Once the twitter button is clicked, move to the creation page of the Twitter posts
-function createTw(){
+function createTw() {
     window.location.replace("./create_post/createTw.html");
 }
 
@@ -72,6 +73,6 @@ const Fb = document.getElementById('Fb');
 const Ins = document.getElementById('Ins');
 const Tw = document.getElementById('Tw');
 
-Fb.addEventListener('click', ()=>createFb());
-Ins.addEventListener('click', ()=>createIns());
-Tw.addEventListener('click', ()=>createTw());
+Fb.addEventListener('click', () => createFb());
+Ins.addEventListener('click', () => createIns());
+Tw.addEventListener('click', () => createTw());
