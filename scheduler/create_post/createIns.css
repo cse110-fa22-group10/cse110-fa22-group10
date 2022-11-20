@@ -1,0 +1,130 @@
+/*
+ * TODO: Style the Instagram post creation page to look like the Figma
+ * Edited by: Antonio
+*/
+
+/* Text Font */
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 4px;
+}
+
+/* Background */
+body {
+    background-image: url("../assets/create-post-background.png");
+    background-size: cover;
+}
+
+/* Header */
+h1 {
+    font-size: 24px;
+    position: absolute;
+    padding-left: 42vw;
+    padding-top: 2vh;
+}
+
+/* Back button */
+.back-button {
+    padding: 12px;
+    position: absolute;
+    padding-left: 95vw;
+    padding-top: 2vh;
+}
+
+#back {
+    background-color: red;
+    border-radius: 8px;
+    width: 35px;
+    height: 35px;
+    transition-duration: 0.1s;
+    border: none;
+    font-size: 18px;
+}
+
+#back:hover {
+    background-color: white;
+    color: red;
+}
+
+/* Flexbox separeted in left, middle and right */
+#post-creator {
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+    padding-top: 8vh;
+    padding-bottom: 15vh;
+    height: 70vh;
+}
+
+/* Left: Image */
+.left {
+    margin-top: 0.5vh;
+    width: 28%;
+    background-color: white;
+}
+
+/* Image preview */
+.left img { 
+    margin: auto;
+    margin-top: 1.2vh;
+    aspect-ratio: auto;
+    max-width: 95%;
+    max-height: 95%;
+    display: block;   
+}
+
+/* Middle: Post description */
+.middle {
+    width: 28%;
+}
+
+/* Post Description */
+#desc-input {
+    height: 99.5%;
+    width: 100%;
+    resize: none;
+    border: none;
+}
+
+/* Maximum amount of characters */
+#char-limit {
+    position: relative;
+    left: 93%;
+    bottom: 5%;
+}
+
+/* Right */
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-top: 0.5vh;
+    margin-left: 22px;
+    width: 28%;
+    height: 98.1%;
+    background-color: white;
+}
+
+/* Submit Button */
+#submit {
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
+    border-radius: 12px;
+    width: 10vw;
+    height: 6vh;
+    background-color: #736B6B;
+    color: white;
+    box-shadow: 0px 5px #979797;
+    border: none;
+    font-size: 20px;
+    transition-duration: 0.1s;
+}
+
+#submit:hover {
+    background-color: #979797;
+    box-shadow: 0px 5px #736B6B;
+}
