@@ -115,3 +115,8 @@ function getPostsFromStorage() {
 function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
+
+const backButton = document.querySelector("#back");
+backButton.addEventListener('click', () => {
+    window.location.replace("./index.html");
+});

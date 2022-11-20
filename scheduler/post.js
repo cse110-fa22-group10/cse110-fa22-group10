@@ -25,7 +25,7 @@ class Post extends HTMLElement {
         postition: relative;
         justify-content: center;
         align-items: center;
-        background-color: rgb(24,119,242);
+        background-color: rgb(217,217,217);
         border-radius: 1vw;
         width: auto;
         height: auto;
@@ -90,6 +90,7 @@ class Post extends HTMLElement {
         position: relative;
         max-width: 100%;
         max-height: 100%;
+        word-break: break-all;
     }
     #summary-of-post {
         font-size: 1.5vw;
