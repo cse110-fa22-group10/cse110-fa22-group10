@@ -9,33 +9,39 @@
     </head>
     <body>
         <main>
+            <div class="back-button">
+                <button id="back">X</button>
+            </div>
             <h1>Plan a Facebook Post</h1>
             <!-- This is the main form for the post creation-->
             <form id="post-creator"> 
-                <label for="title"></label>
-                <input id="title" name="title" type="text" 
-                placeholder="Post Title">
-                
-                <label for="image-input"></label>
-                <!-- Changed the type from image to file and added accepted images -Antonio -->
-                <input id="image-input" name="image-input" type="file" multiple="true" accept=".jpg, .jpeg, .png, .bmp">
+                <!-- Post title and description on the left-->
+                <div class="left">
+                    <label for="title"></label>
+                    <input id="title" name="title" type="text" placeholder="Post Title">
 
-                <label for="desc-input"></label>
-                <!-- Added the maxlength atribute and set it to Facebook limitations -Antonio -->
-                <input id="desc-input" name="desc-input" type="text" maxlength="63206"
-                placeholder="Post Description">
+                    <label for="desc-input"></label>
+                    <!-- Added the maxlength atribute and set it to Facebook limitations -->
+                    <textarea id="desc-input" name="desc-input" resize="none" maxlength="63206" placeholder="Post Description"></textarea>
+                    
+                    <div id="char-limit">63206</div>
+                </div>
+                <!-- Post image, date, and time on the right-->
+                <div class="right">
+                    <label for="date-to-post">Date:</label>
+                    <input id="date-to-post" name="date-to-post" type="date">
+                    
+                    <label for="time-to-post"> Time:</label>
+                    <input id="time-to-post" name="time-to-post" type="time">
 
-                <label for="date-to-post"></label>
-                <input id="date-to-post" name="date-to-post" type="date">
-                
-                <label for="time-to-post"></label>
-                <input id="time-to-post" name="time-to-post" type="time">
+                    <label for="image-input">Images:</label>
+                    <!-- Changed the type from image to file and added accepted images -Antonio -->
+                    <input id="image-input" name="image-input" type="file" multiple="true" accept=".jpg, .jpeg, .png, .bmp">
 
-                <!-- Changed the submit button to a input type='submit' -Antonio -->
-                <input id="submit" name="submit-button" type="submit">
+                    <!-- Changed the submit button to a input type='submit' -Antonio -->
+                    <input id="submit" name="submit-button" type="submit" value="DONE">
+                </div>
             </form>
-            <button id="back">Back</button>
-            <!--<button id="submit">Submit</button>-->
         </main>
     </body>
 </html>
