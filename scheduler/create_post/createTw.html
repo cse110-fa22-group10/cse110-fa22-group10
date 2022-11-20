@@ -1,49 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="=UTF-8" />
-        <title>Post Creation Form</title>
-        <link rel="icon" property="icon" type="image/x-icon" href="./assets/favicon.ico">
-        <link rel="stylesheet" href="./create_post.css" />
-        <script src="./create_post.js" type="module"></script>
-    </head>
-    <body>
-        <main>
-            <!-- This is the main form for the post creation-->
-            <form id="post-creator"> 
-                <label for="title"></label>
-                <input id="title" name="title" type="text" 
-                placeholder="Post Title">
-                
-                <label for="image-input"></label>
-                <!-- Changed the type from image to file and added accepted images -Antonio -->
-                <input id="image-input" name="image-input" type="file" multiple="true" accept=".jpg, .jpeg, .png, .bmp">
 
-                <label for="desc-input"></label>
-                <!-- Added the maxlength atribute and set it to Facebook limitations -Antonio -->
-                <input id="desc-input" name="desc-input" type="text" maxlength="63206"
-                placeholder="Post Description">
+<head>
+    <meta charset="=UTF-8" />
+    <title>Post Creation Form</title>
+    <link rel="icon" property="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="./create_post.css" />
+    <script src="./create_post.js" type="module"></script>
+</head>
 
-                <label for="date-to-post"></label>
-                <input id="date-to-post" name="date-to-post" type="date">
-                
-                <label for="time-to-post"></label>
-                <input id="time-to-post" name="time-to-post" type="time">
+<body>
+    <main>
+        <!-- This is the main form for the post creation-->
+        <form id="post-creator">
+            <label for="post-summary"></label>
+            <input id="post-summary" name="post-summary" type="text" placeholder="Post Summary">
 
-                <!-- Input for what platform this post is for
+            <label for="image-input"></label>
+            <!-- Changed the type from image to file and added accepted images -Antonio -->
+            <input id="image-input" name="image-input" type="file" multiple="true" accept=".jpg, .jpeg, .png, .bmp">
+
+            <label for="desc-input"></label>
+            <!-- Added the maxlength atribute and set it to Facebook limitations -Antonio -->
+            <input id="desc-input" name="desc-input" type="text" maxlength="63206" placeholder="Post Description">
+
+            <label for="date-to-post"></label>
+            <input id="date-to-post" name="date-to-post" type="date">
+
+            <label for="time-to-post"></label>
+            <input id="time-to-post" name="time-to-post" type="time">
+
+            <!-- Input for what platform this post is for
                 This doesn't have to be the way to set what kind of post this is,
                 but I'm putting this here for now -Charles -->
-                <label for="tag"></label>
-                <select id="tag" name="tag">
-                    <option value="facebook">Facebook</option>
-                    <option value="twitter">Twitter</option>
-                    <option value="instagram">Instagram</option>
-                </select>
-                <!-- Changed the submit button to a input type='submit' -Antonio -->
-                <input id="submit" name="submit-button" type="submit">
-            </form>
-            <button id="back">Back</button>
-            <!--<button id="submit">Submit</button>-->
-        </main>
-    </body>
+            <label for="tag"></label>
+            <select id="tag" name="tag">
+                <option value="facebook">Facebook</option>
+                <option value="twitter">Twitter</option>
+                <option value="instagram">Instagram</option>
+            </select>
+            <!-- Changed the submit button to a input type='submit' -Antonio -->
+            <input id="submit" name="submit-button" type="submit">
+        </form>
+        <button id="back">Back</button>
+        <!--<button id="submit">Submit</button>-->
+    </main>
+</body>
+
 </html>

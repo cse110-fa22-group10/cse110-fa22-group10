@@ -18,17 +18,17 @@ function init() {
 // Instagram posts must have at least one image
 function constraints() {
     let selectedTag = postTag.selectedOptions[0];
-  // Facebook 63,206char max
+    // Facebook 63,206char max
     if (selectedTag == postTag.options[0]) {
         postDescription.maxLength = 63206;
         submitButton.disabled = false;
     }
-// Twitter 280char max
-  if (selectedTag == postTag.options[1]) {
+    // Twitter 280char max
+    if (selectedTag == postTag.options[1]) {
         postDescription.maxLength = 280;
         submitButton.disabled = false;
     }
-// Instagram 2,200char max and check if there is an image uploaded
+    // Instagram 2,200char max and check if there is an image uploaded
     if (selectedTag == postTag.options[2]) {
         postDescription.maxLength = 2200;
         if (imageInput.files.length == 0) {
@@ -48,7 +48,7 @@ function checkText() {
         alert("Too many characters!");
         setTimeout(() => {
             submitButton.disabled = false;
-    }, 1000);
+        }, 1000);
     }
 }
 // Event listeners
@@ -61,32 +61,38 @@ submitButton.addEventListener('click', checkText);
 const formEle = document.querySelector('form');
 let imgElement = document.querySelector("[type='file']");
 let file;
-let dataurl;
+let dataUrl = "";
 imgElement.addEventListener('change', () => {
     file = imgElement.files[0];
     const reader = new FileReader();
     reader.addEventListener("load", () => {
-        dataurl = reader.result;
+        dataUrl = reader.result;
     });
     reader.readAsDataURL(file);
 });
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
-    console.log(dataurl);
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
-    postObject['title'] = formData.get('title');
-    postObject['desc-input'] = formData.get('desc-input');
-    postObject['date-to-post'] = formData.get('date-to-post');
-    postObject['time-to-post'] = formData.get('time-to-post');
-    postObject['tag'] = formData.get('tag');
-    postObject['image-input'] = dataurl;
+    postObject['postSummary'] = formData.get('post-summary');
+    postObject['mainTxt'] = formData.get('desc-input');
+    postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
+    postObject['platType'] = formData.get('tag');
+    postObject['mainImg'] = dataUrl;
+    if (dataUrl === "") {
+        postObject['imgAlt'] = "";
+    } else {
+        postObject['imgAlt'] = formData.get('tag') + ' image';
+    }
+    dataUrl = ""; //Once the information is stored, set it back to ""
+
     //combine local posts and user entered post, store back into local
-  let postFromLocal = getPostsFromStorage();
+    let postFromLocal = getPostsFromStorage();
     postFromLocal.push(postObject);
     savePostsToStorage(postFromLocal);
 });
+
 /**
  * Reads 'posts' from localStorage and returns an array of
  * all of the posts found (parsed, not in string form). If
@@ -99,7 +105,7 @@ function getPostsFromStorage() {
     if (posts === null) {
         return [];
     }
-  return posts;
+    return posts;
 }
 /**
  * Takes in an array of posts, converts it to a string, and then
@@ -108,4 +114,9 @@ function getPostsFromStorage() {
  */
 function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
- }
+}
+
+const backButton = document.querySelector("#back");
+backButton.addEventListener('click', () => {
+    window.location.replace("./index.html");
+});

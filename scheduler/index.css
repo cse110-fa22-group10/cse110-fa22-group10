@@ -1,10 +1,10 @@
-.top-bar{
+.top-bar {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.center-container{
+.center-container {
     border-width: 1px;
     border-style: solid;
     border-color: black;
@@ -15,7 +15,7 @@
     position: relative;
 }
 
-.platform-swicther{
+.platform-swicther {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -31,7 +31,7 @@
     background-color: gray;
 }
 
-.finished-posts{
+.finished-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -45,10 +45,18 @@
     display: flex;
     flex-direction: column;
 
-    background:gray;
+    background: gray;
+
+    overflow: auto;
 }
 
-.upcoming-posts{
+#finished-posts-title {
+    position: relative;
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.upcoming-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -63,9 +71,19 @@
     display: flex;
     flex-direction: column;
 
-    background:gray;
+    background: gray;
+
+    /* accounts for number of posts overflowing the container size */
+    overflow: auto;
 }
-.create-posts{
+
+#upcoming-posts-title {
+    position: relative;
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.create-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -80,9 +98,17 @@
     display: flex;
     flex-direction: column;
 
-    background:gray;
+    background: gray;
+
+    overflow: auto;
 }
 
-.date{
+#create-posts-title {
+    position: relative;
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.date {
     height: 10%
 }
