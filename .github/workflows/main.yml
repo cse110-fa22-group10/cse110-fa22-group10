@@ -123,4 +123,4 @@ jobs:
           # uses: Cyb3r-Jak3/html5validator-action@41633d488eb36e18fd1a95ffc83daf1bf22a75bd
           uses: Cyb3r-Jak3/html5validator-action@v7.2.0
           with:
-            root: ./scheduler/create_post/index.html
+            root: /scheduler/create_post/index.html
