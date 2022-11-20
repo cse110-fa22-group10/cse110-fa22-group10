@@ -17,28 +17,27 @@ body {
 
 /* Header */
 h1 {
-    font-size: 24px;
+    font-size: 3vmin;
     position: absolute;
-    padding-left: 42vw;
-    padding-top: 2vh;
+    margin-left: 42vw;
+    margin-top: 3vh;
 }
 
 /* Back button */
 .back-button {
-    padding: 12px;
     position: absolute;
-    padding-left: 95vw;
-    padding-top: 2vh;
+    margin-left: 93.5%;
+    margin-top: 2vh;
 }
 
 #back {
     background-color: red;
-    border-radius: 8px;
-    width: 35px;
-    height: 35px;
+    border-radius: 1vmin;
+    width: 2.2vw;
+    height: 2.2vw;
     transition-duration: 0.1s;
     border: none;
-    font-size: 18px;
+    font-size: 1.7vmin;
 }
 
 #back:hover {
@@ -49,11 +48,11 @@ h1 {
 /* Flexbox separeted in left, middle and right */
 #post-creator {
     background-color: #d9d9d9;
-    border-radius: 20px;
+    border-radius: 1vmin;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 25px;
+    gap: 3vmin;
     padding-top: 8vh;
     padding-bottom: 15vh;
     height: 70vh;
@@ -92,7 +91,7 @@ h1 {
 /* Maximum amount of characters */
 #char-limit {
     position: relative;
-    left: 93%;
+    left: 26rem;
     bottom: 5%;
 }
 
@@ -102,7 +101,7 @@ h1 {
     flex-direction: column;
     justify-content: space-evenly;
     margin-top: 0.5vh;
-    margin-left: 22px;
+    margin-left: 2.5vmin;
     width: 28%;
     height: 98.1%;
     background-color: white;
@@ -113,14 +112,14 @@ h1 {
     position: absolute;
     right: 5%;
     bottom: 10%;
-    border-radius: 12px;
-    width: 10vw;
-    height: 6vh;
+    border-radius: 1vmin;
+    width: 15vmin;
+    height: 6vmin;
     background-color: #736B6B;
     color: white;
     box-shadow: 0px 5px #979797;
     border: none;
-    font-size: 20px;
+    font-size: 2vmin;
     transition-duration: 0.1s;
 }
 
