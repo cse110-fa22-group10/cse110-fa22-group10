@@ -93,13 +93,6 @@ jobs:
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             publish_dir: ./docs
-            
-        - name: Push
-          uses: ad-m/github-push-action@master
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            branch: pipeline
-            force: true
           
 
   unit_test:
