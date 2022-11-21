@@ -81,9 +81,9 @@ jobs:
         - name: Build
           uses: andstor/jsdoc-action@v1.2.1
           with:
-            source_dir: ./scheduler/
-            output_dir: ./debug/
-            template: minami
+            source_dir: ./scheduler
+            recurse: true
+            output_dir: ./documentation
 #             ## config_file: conf.json
 #             template: minami
 #             front_page: README.md
