@@ -88,11 +88,26 @@ jobs:
              template: minami
              front_page: README.md
       
-        - name: Deploy
-          uses: peaceiris/actions-gh-pages@v3
+#         - name: Deploy
+#           uses: peaceiris/actions-gh-pages@v3
+#           with:
+#             github_token: ${{ secrets.GITHUB_TOKEN }}
+#             publish_dir: ./docs
+      # Commit generated document into repository
+        - name: Commit
+          run: |
+            git config --local user.email "buwu@ucsd.edu"
+            git config --local user.name "Yr-Nemsis"
+            git add ./
+            git commit -m "Updating the Documentation"
+
+        # Push the change
+        - name: Push
+          uses: ad-m/github-push-action@master
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_dir: ./docs
+            branch: pipeline
+            force: true
           
 
   unit_test:
