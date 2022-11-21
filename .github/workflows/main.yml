@@ -83,10 +83,17 @@ jobs:
           with:
              source_dir: ./scheduler
              recurse: true
-#             output_dir: ./out
-#             ## config_file: conf.json
-#             template: minami
-#             front_page: README.md
+             output_dir: ./docs
+             ## config_file: conf.json
+             template: minami
+             front_page: README.md
+      
+        - name: Deploy
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+            publish_dir: ./docs
+          
 
   unit_test:
       # The type of runner that the job will run on
