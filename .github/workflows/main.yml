@@ -78,20 +78,15 @@ jobs:
 #         - name: Install
 #           run: npm install -g jsdoc
           
-#         - name: Build
-#           uses: andstor/jsdoc-action@v1.2.1
+        - name: JSDoc Action
+          uses: andstor/jsdoc-action@v1.2.1
 #           with:
-#             source_dir: ./scheduler
+#             source_dir: ./src
 #             recurse: true
-#             output_dir: ./documentation
+#             output_dir: ./out
 #             ## config_file: conf.json
 #             template: minami
 #             front_page: README.md
-        - name: Generate JSDoc documentation
-          uses: brunokrauss/jsdoc-action@3
-          with:
-            # Path to Javascript File
-            jsdoc-path: ./scheduler
 
   unit_test:
       # The type of runner that the job will run on
