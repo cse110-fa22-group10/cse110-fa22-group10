@@ -5,10 +5,13 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
     // Get the posts from localStorage
     let posts = getPostsFromStorage();
+
     // Add each Post to the <main> element
     addPostsToMain(posts);
-    // Add the event listeners to the form elements
-    //initFormHandler();
+
+    //display date on main page
+    setInterval(displayDate, 100);
+       
 }
 
 /**
@@ -76,3 +79,20 @@ const Tw = document.getElementById('Tw');
 Fb.addEventListener('click', () => createFb());
 Ins.addEventListener('click', () => createIns());
 Tw.addEventListener('click', () => createTw());
+
+/**
+ * get the date from api and display it and the 
+ * main page as a title
+ */
+function displayDate() {
+    //get the date and time
+    let date = new Date();
+    let currentDate = String(date.getMonth() + 1).padStart(2, "0") + "/" 
+        + String(date.getDate()).padStart(2, "0") +  "/" + date.getFullYear();
+    let currentTime = String(date.getHours()).padStart(2, "0") + ":" 
+        + String(date.getMinutes()).padStart(2, "0") + ":" + String(date.getSeconds()).padStart(2, "0") ;
+    let dateTime = currentDate + " " + currentTime;
+
+    //display on the main page
+    document.getElementById("currDate").innerHTML = dateTime;
+}
