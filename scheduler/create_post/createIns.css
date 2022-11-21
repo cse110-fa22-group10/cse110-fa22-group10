@@ -76,6 +76,23 @@ body {
     height: 97.5%;
     font-size: 0.8vw;
     border-radius: 1vw;
+    justify-content: space-evenly;
+}
+
+#post-summary {
+    position: relative;
+    font-size: 0.8vw;
+    border-radius: 0.5vw;
+    border: none;
+    padding: 0.5vw;
+    width: 100%;
+}
+
+#description-container {
+    position: relative;
+    top: 2%;
+    height: 92.5%;
+    width: 100%;
 }
 
 #desc-input {
