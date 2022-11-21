@@ -81,8 +81,8 @@ jobs:
         - name: JSDoc Action
           uses: andstor/jsdoc-action@v1.2.1
           with:
-             source_dir: ./scheduler/*.js
-#             recurse: true
+             source_dir: ./scheduler
+             recurse: true
 #             output_dir: ./out
 #             ## config_file: conf.json
 #             template: minami
