@@ -91,7 +91,7 @@ submitButton.addEventListener('click', () => {
     //combine local posts and user entered post, store back into local
     let postFromLocal = getPostsFromStorage();
     postFromLocal.push(postObject);
-    postFromLocal.sort((post1,post2) => {
+    postFromLocal.sort((post1, post2) => {
         let postDate1 = new Date(post1['dateCompare']);
         let postDate2 = new Date(post2['dateCompare']);
         return postDate1 - postDate2;
