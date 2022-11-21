@@ -1,129 +1,134 @@
-/*
- * TODO: Style the Instagram post creation page to look like the Figma
- * Edited by: Antonio
-*/
-
-/* Text Font */
-* {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 4px;
-}
-
-/* Background */
 body {
-    background-image: url("../assets/create-post-background.png");
+    background: url('../assets/create-post-background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
 }
 
-/* Header */
-h1 {
-    font-size: 3vmin;
-    position: absolute;
-    margin-left: 42vw;
-    margin-top: 3vh;
-}
-
-/* Back button */
-.back-button {
-    position: absolute;
-    margin-left: 93.5%;
-    margin-top: 2vh;
-}
-
-#back {
-    background-color: red;
-    border-radius: 1vmin;
-    width: 2.2vw;
-    height: 2.2vw;
-    transition-duration: 0.1s;
-    border: none;
-    font-size: 1.7vmin;
-}
-
-#back:hover {
-    background-color: white;
-    color: red;
-}
-
-/* Flexbox separeted in left, middle and right */
-#post-creator {
+#post-container {
     background-color: #d9d9d9;
-    border-radius: 1vmin;
+    margin: 2vw;
+    border-radius: 2vw;
+    height: 46vw;
+    width: auto;
+    position: relative;
+}
+
+#upper-tab {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-title {
+    font-size: 2vw;
+}
+
+#back-button {
+    position: relative;
+    background-color: red;
+    border-radius: .5vw;
+    width: 2vw;
+    height: 2vw;
+    border: none;
+    font-size: 1vw;
+    left: 35%;
+}
+
+#post-creator {
+    position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 3vmin;
-    padding-top: 8vh;
-    padding-bottom: 15vh;
-    height: 70vh;
+    gap: 5vw;
+    justify-content: space-evenly;
+    height: 75%;
+    width: 80%;
+    left: 8.5%
 }
 
-/* Left: Image */
-.left {
-    margin-top: 0.5vh;
-    width: 28%;
+#image-label {
+    font-size: 1vw;
+    position: absolute;
+}
+
+#image-input {
+    position: absolute;
+    left: 5vw;
+    font-size: 0.8vw;
+}
+
+.image-container {
+    display: flex;
+    margin-top: 0.5vw;
+    width: 30%;
+    height: 95%;
     background-color: white;
+    font-size: 0.8vw;
+    padding: 1vw;
+    border-radius: 1vw;
 }
 
-/* Image preview */
-.left img { 
-    margin: auto;
-    margin-top: 1.2vh;
-    aspect-ratio: auto;
-    max-width: 95%;
-    max-height: 95%;
-    display: block;   
+.text-container {
+    margin-top: 0.5vw;
+    width: 30%;
+    height: 97.5%;
+    font-size: 0.8vw;
+    border-radius: 1vw;
 }
 
-/* Middle: Post description */
-.middle {
-    width: 28%;
-}
-
-/* Post Description */
 #desc-input {
-    height: 99.5%;
+    height: 100%;
     width: 100%;
     resize: none;
-    border: none;
+    border-color: white;
+    border-radius: 1vw;
+    font-size: 0.8vw;
+    padding: 0.5vw;
 }
 
-/* Maximum amount of characters */
 #char-limit {
     position: relative;
-    left: 26rem;
-    bottom: 5%;
+    left: 14.5vw;
 }
 
-/* Right */
-.right {
+#date-time-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-top: 0.5vh;
-    margin-left: 2.5vmin;
-    width: 28%;
-    height: 98.1%;
+    margin: 0.5vw;
+    width: 30%;
+    height: 97.5%;
     background-color: white;
+    border-radius: 1vw;
 }
 
-/* Submit Button */
+#date-time-container {
+    font-size: 1vw;
+    padding: 0.5vw;
+}
+
+#date-to-post,
+#time-to-post {
+    font-size: 1vw;
+}
+
 #submit {
     position: absolute;
-    right: 5%;
-    bottom: 10%;
-    border-radius: 1vmin;
-    width: 15vmin;
-    height: 6vmin;
+    left: 100%;
+    top: 105%;
+    border-radius: 0.5vw;
+    width: 7vw;
+    height: 3vw;
     background-color: #736B6B;
     color: white;
-    box-shadow: 0px 5px #979797;
+    box-shadow: 0.2vw 0.2vw #979797;
     border: none;
-    font-size: 2vmin;
-    transition-duration: 0.1s;
+    font-size: 1vw;
 }
 
-#submit:hover {
-    background-color: #979797;
+#subit:hover {
+    background-attachment: #970797;
     box-shadow: 0px 5px #736B6B;
 }
