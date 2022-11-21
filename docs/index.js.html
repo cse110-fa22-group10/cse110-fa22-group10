@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>index.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addPostsToMain">addPostsToMain</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createFb">createFb</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createIns">createIns</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createTw">createTw</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getPostsFromStorage">getPostsFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#savePostsToStorage">savePostsToStorage</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Run the init() function when the page has loaded
+window.addEventListener('DOMContentLoaded', init);
+
+// Starts the program, all function calls trace back here
+function init() {
+    // Get the posts from localStorage
+    let posts = getPostsFromStorage();
+    // Add each Post to the &lt;main> element
+    addPostsToMain(posts);
+    // Add the event listeners to the form elements
+    //initFormHandler();
+}
+
+/**
+ * Takes in an array of posts and for each post creates a
+ * new &lt;post-card> element, adds the post data to that card
+ * using element.data = {...}, and then appends that new post
+ * to &lt;main>
+ * @param {Array&lt;Object>} posts An array of posts
+ */
+function addPostsToMain(posts) {
+    let upComingPosts = document.querySelector(".upcoming-posts");
+
+    //populate upcoming posts section
+    for (let currentPost = 0; currentPost &lt; posts.length; currentPost++) {
+
+        let postcard = document.createElement("post-card");
+
+        postcard.data = {
+            'postSummary': posts[currentPost].postSummary,
+            'dateData': posts[currentPost].dateData,
+            'mainImg': posts[currentPost].mainImg,
+            'imgAlt': posts[currentPost].imgAlt,
+            'mainTxt': posts[currentPost].mainTxt,
+            'platType': posts[currentPost].platType
+        };
+        upComingPosts.append(postcard);
+    }
+}
+
+/**
+ * Reads 'posts' from localStorage and returns an array of
+ * all of the posts found (parsed, not in string form). If
+ * nothing is found in localStorage for 'posts', an empty array
+ * is returned.
+ * @returns {Array&lt;Object>} An array of posts found in localStorage
+ */
+function getPostsFromStorage() {
+    let posts = JSON.parse(localStorage.getItem("posts"));
+    if (posts === null) {
+        return [];
+    }
+    return posts;
+}
+
+/**
+ * Once the Facebook button is clicked, the user is redirected
+ * toward the creat post page specicially for Facebook posts 
+ * where they can upload texts, images and etc. 
+ */
+function createFb() {
+    window.location.replace("./create_post.html");
+}
+
+/**
+ * Once the Instagram button is clicked, the user is redirected
+ * toward the creat post page specicially for Instagram posts 
+ * where they can upload texts, images and etc. 
+ */
+function createIns() {
+    window.location.replace("./create_post/createIns.html");
+
+}
+
+/**
+ * Once the Twitter button is clicked, the user is redirected
+ * toward the creat post page specicially for Twitter posts 
+ * where they can upload texts, images and etc. 
+ */
+function createTw() {
+    window.location.replace("./create_post/createTw.html");
+}
+
+const Fb = document.getElementById('Fb');
+const Ins = document.getElementById('Ins');
+const Tw = document.getElementById('Tw');
+
+Fb.addEventListener('click', () => createFb());
+Ins.addEventListener('click', () => createIns());
+Tw.addEventListener('click', () => createTw());
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Mon Nov 21 2022 20:16:23 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
