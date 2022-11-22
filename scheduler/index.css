@@ -19,7 +19,7 @@ body {
     justify-content: center;
 }
 
-.mainContainer {
+.main-container {
     display: flex;
     flex-direction: row;
     min-height: 65%;
@@ -28,11 +28,11 @@ body {
     margin-top:2.5vh;
 }
 
-.mainContainer > *{
+.main-container > *{
     border-radius: 20px;
 }
 
-.finishedPosts {
+.finished-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -51,7 +51,7 @@ body {
     background: #323232;
 }
 
-.upcomingPosts {
+.upcoming-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -70,7 +70,7 @@ body {
     background: #323232;
 }
 
-.createPosts {
+.create-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -93,18 +93,18 @@ body {
     height: 10%
 }
 
-.platformButton {
+.platform-button {
     font-size: 3vh;
     margin: 0px;
     justify-content: left;
 }
 
-.platformButton>img {
+.platform-button>img {
     height: 4vh;
     width: auto;
 }
 
-.platformButton, .deleteAll {
+.platform-button, .deleteAll {
     height: 11vh;
     margin-top: 1vh;
     border-radius: 20px;
@@ -121,14 +121,14 @@ h2 {
     color: white;
 }
 
-.buttonText {
+.button-text {
     font-size: 3vh;
     position: relative;
-    bottom: 25px;
+    bottom: 9px;
     width: 70%;
 }
 
-.deleteAll > p {
+.delete-all > p {
     font-size: 2vh;
     color: white;
     margin: 0;
