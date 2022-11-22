@@ -36,7 +36,7 @@ function checkIfPostFinish() {
         + ":" + String(date.getMinutes()).padStart(2, "0");
 
     // try and see if the current date and time exists in the upcoming posts container
-    const upComingPosts = document.querySelector(".upcomingPosts");
+    const upComingPosts = document.querySelector(".upcoming-posts");
 
     // this array contains all post cards of the same date and time, and is a collection of these
     // post cards
@@ -46,7 +46,7 @@ function checkIfPostFinish() {
         // if the any of the post cards are past their times in upcoming posts
         // grab the passed posts and throw them into finished posts
         if (upcomingPostArray.length != 0) {
-            const finishedPosts = document.querySelector(".finishedPosts");
+            const finishedPosts = document.querySelector(".finished-posts");
             const counter = upcomingPostArray.length;
             // append every past post card to finished posts
             for (let i = 0; i < counter; i++) {
@@ -69,8 +69,8 @@ function checkIfPostFinish() {
  * @param {Array<Object>} posts An array of posts
  */
 function addPostsToMain(posts) {
-    let upComingPosts = document.querySelector(".upcomingPosts");
-    let finishedPosts = document.querySelector(".finishedPosts");
+    let upComingPosts = document.querySelector(".upcoming-posts");
+    let finishedPosts = document.querySelector(".finished-posts");
 
     //populate upcoming posts section
     for (let currentPost = 0; currentPost < posts.length; currentPost++) {
