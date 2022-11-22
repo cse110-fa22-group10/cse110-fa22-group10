@@ -8,6 +8,12 @@ describe("simple arithmetic", () => {
     });
   });
 
+  describe("addition", () => {
+    test("expect 2 + 3 = 5", () => {
+      expect(add(1, 4)).toEqual(5);
+    });
+  });
+
   describe("subtract", () => {
     test("expect 5 - 2 = 3", () => {
       expect(subtract(5, 2)).toEqual(3);
