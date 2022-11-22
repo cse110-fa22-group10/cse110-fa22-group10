@@ -19,13 +19,9 @@ html {
 }
 
 .main-container {
-    display: flex;
-    flex-direction: row;
-    min-height: 65%;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    margin-top: 2.5vh;
+    height: 90%;
+    width: auto;
+    margin: 2vw;
 }
 
 .main-container>* {
@@ -34,7 +30,7 @@ html {
 
 .finished-posts-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .finished-posts {
@@ -45,7 +41,7 @@ html {
     border-radius: 1vw;
 
     width: 25vw;
-    height: 95vh;
+    height: 80%;
     /* overflow-y: auto; /* makes div scrollable */
     position: absolute;
     text-align: center;
