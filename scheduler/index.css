@@ -104,7 +104,7 @@ body {
     width: auto;
 }
 
-.platform-button, .deleteAll {
+.platform-button, .delete-all {
     height: 11vh;
     margin-top: 1vh;
     border-radius: 20px;
