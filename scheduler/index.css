@@ -19,7 +19,7 @@ body {
     justify-content: center;
 }
 
-.main-container {
+.mainContainer {
     /* border-width: 1px; */
     /* border-style: solid;
     border-color: black; */
@@ -31,7 +31,7 @@ body {
     margin-top:2.5vh;
 }
 
-.main-container > *{
+.mainContainer > *{
     border-radius: 20px;
 }
 
@@ -42,7 +42,7 @@ body {
 .spacer-right {
     width: 7vw;
 } */
-.finished-posts {
+.finishedPosts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -61,7 +61,7 @@ body {
     background: #323232;
 }
 
-.upcoming-posts {
+.upcomingPosts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -80,7 +80,7 @@ body {
     background: #323232;
 }
 
-.create-posts {
+.createPosts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -105,28 +105,24 @@ body {
     height: 10%
 }
 
-.platform-button>p {
+.platformButton {
     font-size: 3vh;
     margin: 0px;
     justify-content: left;
-    width: 50%;
 }
 
-.platform-button>img {
+.platformButton>img {
     height: 4vh;
     width: auto;
 }
 
-.platform-button, .delete-all {
+.platformButton, .deleteAll {
     height: 11vh;
     margin-top: 1vh;
-    justify-content: left;
-    flex-direction: row;
     border-radius: 20px;
     width: 90%;
     margin-left: 5%;
     box-shadow: 10px, 10px;
-    display: inline-block;
 }
 
 h2 {
@@ -137,7 +133,14 @@ h2 {
     color: white;
 }
 
-.delete-all > p {
+.buttonText {
+    font-size: 3vh;
+    position: relative;
+    bottom: 25px;
+    width: 70%;
+}
+
+.deleteAll > p {
     font-size: 2vh;
     color: white;
     margin: 0;

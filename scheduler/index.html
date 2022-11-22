@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Multi-Platform Post Schedulers</title>
+        <title>MultiPlatform Post Schedulers</title>
         <!-- Change the icon to TeamBrand picture-->
         <link rel="icon" property="icon" type="image/x-icon" href="./assets/favicon.ico">
         <!-- Main Stylesheets & Scripts -->
@@ -12,39 +12,48 @@
     <body>
         
         <!-- TODO: Create the post template for Facebook, Instagram and Twitter respectively -->
-        <div class = "main-container">
-            <div class = "finished-posts">
+        <div class = "mainContainer">
+            <div class = "finishedPosts">
                 <h2>Finished</h2>
                 <!-- Below are examples of the finished posts cards -->
                 <!-- <img src="../specs/interface/wireframes/ImagePost.png">
                 <img src="../specs/interface/wireframes/Post.png">
                 <img src="../specs/interface/wireframes/Post.png"> -->
-                <button class="delete-all" style="background-color: brown; height: 100px;">
+                <button class="deleteAll" style="background-color: brown; height: 100px;">
                     <p>
                         Delete All Finished Posts
                     </p>
                 </button>
             </div>
             <div class="spacer-left"></div>
-            <div class="upcoming-posts">
+            <div class="upcomingPosts">
                 <h2>Upcoming</h2>
                 <!-- <img src="../specs/interface/wireframes/ImagePost.png">
                 <img src="../specs/interface/wireframes/Post.png">
                 <img src="../specs/interface/wireframes/Post.png"> -->
             </div>
             <div class="spacer-right"></div>
-            <div class="create-posts">
+            <div class="createPosts">
                 <h2>Create Posts</h2>
-                <button class="platform-button" id="twitter-create">
-                    <p>Twitter</p>
+                <button class="platformButton" id="twitterCreate">
+                    <img src="./assets/Cancel.svg" alt="Add Sign">
+                    <span class="buttonText">
+                        Twitter
+                    </span>
                     <img src="./assets/twitter.png" alt="Twitter Logo">
                 </button>
-                <button class="platform-button" id="facebook-create">
-                    <p>Facebook</p>
+                <button class="platformButton" id="facebookCreate">
+                    <img src="./assets/Cancel.svg" alt="Add Sign">
+                    <span class="buttonText">
+                        Facebook
+                    </span>
                     <img src="./assets/facebook.png" alt="Facebook Logo">
                 </button>
-                <button class="platform-button" id="instagram-create">
-                    <p>Instagram</p>
+                <button class="platformButton" id="instagramCreate">
+                    <img src="./assets/Cancel.svg" alt="Add Sign">
+                    <span class="buttonText">
+                        Instagram
+                    </span>
                     <img src="./assets/instagram.png" alt="Instagram Logo">
                 </button>
                 <!-- <img src="../specs/interface/wireframes/Create Post Buttons.png"> -->
