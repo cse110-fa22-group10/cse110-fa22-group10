@@ -120,10 +120,10 @@ jobs:
         - uses: actions/checkout@v3
           
         # Unit tests on JavaScript Files (This action will automatically install everything needed)
-        - name: Run Jest
-          # You may pin to the exact commit or the version.
-          # uses: stefanoeb/jest-action@f9bb23f509cde20ee9b494f0496d1d3323861cc4
-          uses: stefanoeb/jest-action@1.0.4
+        - name: Install modules
+          run: yarn
+        - name: Run tests
+          run: yarn test
           
   validate_html:
       # The type of runner that the job will run on
