@@ -7,6 +7,7 @@ const postTag = document.getElementById('tag');
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 
+
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
@@ -17,17 +18,17 @@ function init() {
 // Instagram posts must have at least one image
 function constraints() {
     let selectedTag = postTag.selectedOptions[0];
-  // Facebook 63,206char max
+    // Facebook 63,206char max
     if (selectedTag == postTag.options[0]) {
         postDescription.maxLength = 63206;
         submitButton.disabled = false;
     }
-// Twitter 280char max
-  if (selectedTag == postTag.options[1]) {
+    // Twitter 280char max
+    if (selectedTag == postTag.options[1]) {
         postDescription.maxLength = 280;
         submitButton.disabled = false;
     }
-// Instagram 2,200char max and check if there is an image uploaded
+    // Instagram 2,200char max and check if there is an image uploaded
     if (selectedTag == postTag.options[2]) {
         postDescription.maxLength = 2200;
         if (imageInput.files.length == 0) {
@@ -38,7 +39,6 @@ function constraints() {
         }
     }
 }
-
 // Function called when clicking the submit button to check
 // if the text constraints are respected
 // The submit button is disabled for 1 second
@@ -48,38 +48,54 @@ function checkText() {
         alert("Too many characters!");
         setTimeout(() => {
             submitButton.disabled = false;
-    }, 1000);
+        }, 1000);
     }
 }
-
 // Event listeners
 postTag.addEventListener('change', constraints);
 imageInput.addEventListener("change", constraints);
 submitButton.addEventListener('click', checkText);
-
 // TODO: OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
-// be posted 
+// be posted
 const formEle = document.querySelector('form');
-
+let imgElement = document.querySelector("[type='file']");
+let file;
+let dataUrl = "";
+imgElement.addEventListener('change', () => {
+    file = imgElement.files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        dataUrl = reader.result;
+    });
+    reader.readAsDataURL(file);
+});
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
     let formData = new FormData(formEle);
-
-    //store user entered image, description, data .. into postObject 
-    let postObject = {}; 
-    postObject['title'] = formData.get('title');
-    postObject['desc-input'] = formData.get('desc-input');
-    postObject['date-to-post'] = formData.get('date-to-post');
-    postObject['time-to-post'] = formData.get('time-to-post');
-    postObject['tag'] = formData.get('tag');
-    if (formData.get('image-input') != null) {
-        postObject['image-input'] = formData.get('image-input');
+    //store user entered image, description, data .. into postObject
+    let postObject = {};
+    postObject['postSummary'] = formData.get('post-summary');
+    postObject['mainTxt'] = formData.get('desc-input');
+    postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
+    postObject['dateCompare'] = formData.get('date-to-post') + 'T' + formData.get('time-to-post') + ":" + "00";
+    postObject['platType'] = formData.get('tag');
+    postObject['mainImg'] = dataUrl;
+    if (dataUrl === "") {
+        postObject['imgAlt'] = "";
+    } else {
+        postObject['imgAlt'] = formData.get('tag') + ' image';
     }
+    dataUrl = ""; //Once the information is stored, set it back to ""
 
     //combine local posts and user entered post, store back into local
-  let postFromLocal = getPostsFromStorage();
+    let postFromLocal = getPostsFromStorage();
     postFromLocal.push(postObject);
+    postFromLocal.sort((post1, post2) => {
+        let postDate1 = new Date(post1['dateCompare']);
+        let postDate2 = new Date(post2['dateCompare']);
+        return postDate1 - postDate2;
+    });
     savePostsToStorage(postFromLocal);
 });
 
@@ -95,9 +111,8 @@ function getPostsFromStorage() {
     if (posts === null) {
         return [];
     }
-  return posts;
+    return posts;
 }
-
 /**
  * Takes in an array of posts, converts it to a string, and then
  * saves that string to 'posts' in localStorage
@@ -105,4 +120,9 @@ function getPostsFromStorage() {
  */
 function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
- }
+}
+
+const backButton = document.querySelector("#back");
+backButton.addEventListener('click', () => {
+    window.location.replace("./index.html");
+});
