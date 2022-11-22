@@ -118,11 +118,11 @@ jobs:
         - name: Setup Node.js
           uses: actions/setup-node@v1
           with:
-            node-version: "12"
+            node-version: "16"
 
         # Install required deps for action
         - name: Install Dependencies
-          run: npm install --save-dev jest babel-jest @babel/core @babel/preset-env puppeteer jest-puppeteer
+          run: npm install
 
         # Finally, run our tests
         - name: Run the tests
