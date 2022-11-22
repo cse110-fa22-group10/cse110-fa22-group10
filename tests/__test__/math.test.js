@@ -10,7 +10,7 @@ describe("simple arithmetic", () => {
 
   describe("addition", () => {
     test("expect 2 + 3 = 5", () => {
-      expect(add(1, 4)).toEqual(5);
+      expect(add(1, 3)).toEqual(4);
     });
   });
 
