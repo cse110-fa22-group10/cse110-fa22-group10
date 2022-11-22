@@ -3,8 +3,13 @@
   src: url(assets/Roboto-Black.ttf);
 }
 
+html {
+    background-image: url(assets/main-background.svg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100vh;
+}
 body {
-    background-image: url(assets/main-background.png); 
     min-height: 600px;
 }
 
