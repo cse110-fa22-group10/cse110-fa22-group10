@@ -20,56 +20,104 @@ class Post extends HTMLElement {
         let styleElement = document.createElement("style");
 
         // populate the CSS for the article
-        styleElement.textContent = `    
-    article {
+        styleElement.textContent = `
+    article[post-type=''] {
+        postition: relative;
         justify-content: center;
         align-items: center;
-        background-color: white;
-        border-radius: .5in;
-        padding: .25in;
-        margin: .5in;
+        background-color: rgb(217,217,217);
+        border-radius: 1vw;
+        width: auto;
+        height: auto;
+    }    
+    article[post-type='FACEBOOK'] {
+        postition: relative;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(24,119,242);
+        border-radius: 1vw;
+        width: auto;
+        height: auto;
+    }
+    article[post-type='INSTAGRAM'] {
+        postition: relative;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255,216,84);
+        border-radius: 1vw;
+        width: auto;
+        height: auto;
+    }
+    article[post-type='TWITTER'] {
+        postition: relative;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(85,172,238);
+        border-radius: 1vw;
         width: auto;
         height: auto;
     }
     .post-head {
         display: flex;
         justify-content: center;
+        font-size: 1.25vw;
     }
     .post-image {
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: rgb(192, 192, 192);
-        border-radius: .25in;
-        padding: .25in;
-        margin: .10in;
+        border-radius: .5vw;
+        padding: .5vw;
+        margin: .5vw;
+        position: relative;
     }
     #main-image {
-        border-radius: .5in;
-        padding: .25in;
-        margin: .10in;
+        position: relative;
+        border-radius: 1vw;
+        margin: .2vw;
+        width: 50%;
+        height: 50%;
     }
     .post-body {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: rgb(56, 56, 56);
+        background-color: rgb(115,107,107);
         color: white;
-        border-radius: .25in;
-        padding: .25in;
-        margin: .10in;
+        border-radius: 1vw;
+        margin: .5vw;
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+        word-break: break-all;
+    }
+    #summary-of-post {
+        font-size: 1.5vw;
+    }
+    #main-text {
+        padding: .5vw;
+        text-align: left;
+        postition: relative;
+        font-size: 1.5vw;
     }
     .platform-type {
+        position: relative;
         display: flex;
-        justify-content: center;
         align-items: center;
+        margin: .5vw;
     }
     .platform-title {
-        flex: 1;
-        display: flex;
+        position: relative;
+        font-size: 1vw;
         text-align: center;
-        justify-content: center;
-        transform: translateX(.50in);
+        left: 40%;
+    }
+    #platform-image {
+        position: relative;
+        height: 10%;
+        width: 10%;
+        left: 40%;
     }
         `;
 
@@ -86,6 +134,7 @@ class Post extends HTMLElement {
      * @param {Object} data - The data to pass into the <post-card>, must be of the
      *                        following format:
      *                        {
+     *                          "postSummary": "string",
      *                          "dateData": "string",
      *                          "mainImg": "string",
      *                          "imgAlt": "string",
@@ -108,38 +157,70 @@ class Post extends HTMLElement {
         let currentPostIcon;
         switch (currentPostType.toUpperCase()) {
             case "FACEBOOK":
-                currentPostIcon = "assets/facebook.png";
+                data.platType = "FACEBOOK";
+                articleElement.setAttribute('post-type', "FACEBOOK");
+                currentPostIcon = "assets/facebook-colored-icon.png";
                 break;
             case "INSTAGRAM":
-                currentPostIcon = "assets/instagram.png";
+                data.platType = "INSTAGRAM";
+                currentPostIcon = "assets/instagram-colored-icon.png";
+                articleElement.setAttribute('post-type', "INSTAGRAM");
                 break;
             case "TWITTER":
-                currentPostIcon = "assets/twitter.png";
+                data.platType = "TWITTER";
+                currentPostIcon = "assets/twitter-colored-icon.png";
+                articleElement.setAttribute('post-type', "TWITTER");
                 break;
             default:
+                articleElement.setAttribute('post-type', "");
                 currentPostIcon = "assets/default-icon.png";
                 break;
         }
 
-        articleElement.innerHTML = `
-        <div class="post-head">
-            <p id="post-date-data">${data.dateData}</p>
-        </div>
-        <div class="post-image">
-            <img id="main-image" src="${data.mainImg}" alt="${data.imgAlt}">
-        </div>
-        <div class="post-body">
-            <p id="main-text">${data.mainTxt}</p>
-        </div>
-        <span class="platform-type">
-            <div class="platform-title">
-                <h3 id="platform-name">${data.platType}</h3>
+        if (data.mainImg == "") {
+            articleElement.innerHTML = `
+            <div class="post-head">
+                <p id="post-date-data">${data.dateData}</p>
             </div>
-            <div class="platform-media">
-                <img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+            <div class="post-body">
+                <details id="text-body-details-tab">
+                    <summary id="summary-of-post">${data.postSummary}</summary>
+                    <p id="main-text">${data.mainTxt}</p>
+                </details>
             </div>
-        </span>
-        `;
+            <span class="platform-type">
+                <div class="platform-title">
+                    <h3 id="platform-name">${data.platType}</h3>
+                </div>
+                <div class="platform-media">
+                    <img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                </div>
+            </span>
+            `;
+        } else {
+            articleElement.innerHTML = `
+            <div class="post-head">
+                <p id="post-date-data">${data.dateData}</p>
+            </div>
+            <div class="post-image">
+                <img id="main-image" src="${data.mainImg}" alt="${data.imgAlt}">
+            </div>
+            <div class="post-body">
+                <details id="text-body-details-tab">
+                    <summary id="summary-of-post">${data.postSummary}</summary>
+                    <p id="main-text">${data.mainTxt}</p>
+                </details>
+            </div>
+            <span class="platform-type">
+                <div class="platform-title">
+                    <h3 id="platform-name">${data.platType}</h3>
+                </div>
+                <div class="platform-media">
+                    <img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                </div>
+            </span>
+            `;
+        }
     }
 }
 

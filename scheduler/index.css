@@ -1,42 +1,48 @@
 @font-face {
-  font-family: Roboto;
-  src: url(assets/Roboto-Black.ttf);
+    font-family: Roboto;
+    src: url(assets/Roboto-Black.ttf);
 }
 
 html {
-    background-image: url(assets/main-background.svg); 
-    background-repeat: no-repeat;
+    background: url(assets/main-background.svg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    height:100vh;
-}
-body {
-    min-height: 600px;
 }
 
-.top-bar {
+.time-bar {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    font-size: 1vw;
 }
 
-.mainContainer {
+.main-container {
     display: flex;
     flex-direction: row;
     min-height: 65%;
     width: 100%;
+    height: 100%;
     position: relative;
-    margin-top:2.5vh;
+    margin-top: 2.5vh;
 }
 
-.mainContainer > *{
-    border-radius: 20px;
+.main-container>* {
+    border-radius: 1vw;
 }
 
-.finishedPosts {
+.finished-posts-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.finished-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
     border-color: black;
+    border-radius: 1vw;
 
     width: 25vw;
     height: 95vh;
@@ -45,13 +51,13 @@ body {
     text-align: center;
     margin-left: 5vw;
 
-    display: flex;
-    flex-direction: column;
-
     background: #323232;
+
+    overflow: auto;
+
 }
 
-.upcomingPosts {
+.upcoming-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -68,9 +74,24 @@ body {
     flex-direction: column;
 
     background: #323232;
+
+    overflow: auto;
 }
 
-.createPosts {
+#finished-posts-title,
+#upcoming-posts-title,
+#create-posts-title {
+    position: relative;
+    font-size: 1.5vw;
+    text-align: center;
+
+    margin-top: 1vw;
+    margin-bottom: 0.5vw;
+    font-family: 'Roboto';
+    color: white;
+}
+
+.create-posts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
     border-style: solid;
@@ -84,7 +105,7 @@ body {
     text-align: center;
 
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 
     background: #323232;
 }
@@ -93,18 +114,18 @@ body {
     height: 10%
 }
 
-.platformButton {
+.platform-button {
     font-size: 3vh;
     margin: 0px;
     justify-content: left;
 }
 
-.platformButton>img {
+.platform-button>img {
     height: 4vh;
     width: auto;
 }
 
-.platformButton, .deleteAll {
+.platform-button {
     height: 11vh;
     margin-top: 1vh;
     border-radius: 20px;
@@ -113,23 +134,18 @@ body {
     box-shadow: 10px, 10px;
 }
 
-h2 {
-    font-size: 3vh;
-    margin-top: 2vh;
-    margin-bottom: 1vh;
-    font-family: 'Roboto';
-    color: white;
-}
-
-.buttonText {
+.button-text {
     font-size: 3vh;
     position: relative;
     bottom: 25px;
     width: 70%;
 }
 
-.deleteAll > p {
-    font-size: 2vh;
+.delete-all {
+    position: absolute;
+    max-height: 5vw;
+    font-size: 1vw;
+    width: 15%;
+    height: auto;
     color: white;
-    margin: 0;
 }
