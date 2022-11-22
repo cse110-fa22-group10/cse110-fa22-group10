@@ -1,3 +1,18 @@
+window.addEventListener('DOMContentLoaded', init);
+
+function init() {
+    
+    let facebookButton = document.getElementById('facebook-create');
+    let instagramButton = document.getElementById('instagram-create');
+    let twitterButton = document.getElementById('twitter-create');
+
+    facebookButton.addEventListener('click', () => createFb());
+    instagramButton.addEventListener('click', ()=>createIns());
+    twitterButton.addEventListener('click', ()=>createTw());
+    
+    // console.log('Added event listeners');
+}
+
 // TODO: Once the facebook button is clicked, move to the creation page of the Facebook posts
 function createFb(){
     window.location.replace("./create_post/createFb.html");
@@ -15,10 +30,4 @@ function createTw(){
 
 }
 
-const Fb = document.getElementById('Fb');
-const Ins = document.getElementById('Ins');
-const Tw = document.getElementById('Tw');
 
-Fb.addEventListener('click', ()=>createFb());
-Ins.addEventListener('click', ()=>createIns());
-Tw.addEventListener('click', ()=>createTw());
