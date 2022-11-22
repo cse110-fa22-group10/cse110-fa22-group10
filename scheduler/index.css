@@ -102,8 +102,9 @@ body {
 
 .platform-button>p {
     font-size: 3vh;
-    margin: 0;
+    margin: 0px;
     justify-content: left;
+    width: 50%;
 }
 
 .platform-button>img {
@@ -111,7 +112,7 @@ body {
     width: auto;
 }
 
-.platform-button {
+.platform-button, .delete-all {
     height: 11vh;
     margin-top: 1vh;
     justify-content: left;
@@ -119,6 +120,8 @@ body {
     border-radius: 20px;
     width: 90%;
     margin-left: 5%;
+    box-shadow: 10px, 10px;
+    display: inline-block;
 }
 
 h2 {
@@ -127,4 +130,10 @@ h2 {
     margin-bottom: 1vh;
     font-family: 'Roboto';
     color: white;
+}
+
+.delete-all > p {
+    font-size: 2vh;
+    color: white;
+    margin: 0;
 }
