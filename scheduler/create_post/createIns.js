@@ -3,7 +3,7 @@
 // need a picture, etc..
 // Done by Antonio
 const postDescription = document.getElementById('desc-input');
-const imgPreview = document.querySelector(".left");
+const imgPreview = document.querySelector(".image-container");
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 

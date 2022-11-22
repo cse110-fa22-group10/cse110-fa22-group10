@@ -70,6 +70,12 @@ body {
     border-radius: 1vw;
 }
 
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .text-container {
     margin-top: 0.5vw;
     width: 30%;
