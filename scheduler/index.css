@@ -19,129 +19,40 @@ html {
 }
 
 .main-container {
-    height: 90%;
+    display: flex;
+    flex-direction: row;
     width: auto;
-    margin: 2vw;
-}
-
-.main-container>* {
-    border-radius: 1vw;
+    height: 43vw;
 }
 
 .finished-posts-container {
+    position: relative;
+    left: 5vw;
     display: flex;
     flex-direction: column;
+    margin: 1vw;
+    width: 30%;
+    height: auto;
+}
+
+#finished-posts-title {
+    position: relative;
+    display: flex;
+    background-color: rgb(61, 61, 61);
+    justify-content: center;
+    width: auto;
+    height: 7%;
+    border-radius: 1vw;
+    color: white;
+    font-size: 2vw;
+    padding: 1vw;
 }
 
 .finished-posts {
-    /* Used as box to modify the size of the buttons */
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    border-radius: 1vw;
-
-    width: 25vw;
-    height: 80%;
-    /* overflow-y: auto; /* makes div scrollable */
-    position: absolute;
-    text-align: center;
-    margin-left: 5vw;
-
-    background: #323232;
-
-    overflow: auto;
-
-}
-
-.upcoming-posts {
-    /* Used as box to modify the size of the buttons */
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-
-    width: 25vw;
-    height: 95vh;
-    /* overflow-y: auto; /* makes div scrollable */
-    margin-left: 38vw;
-    position: absolute;
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-
-    background: #323232;
-
-    overflow: auto;
-}
-
-#finished-posts-title,
-#upcoming-posts-title,
-#create-posts-title {
     position: relative;
-    font-size: 1.5vw;
-    text-align: center;
-
-    margin-top: 1vw;
-    margin-bottom: 0.5vw;
-    font-family: 'Roboto';
-    color: white;
-}
-
-.create-posts {
-    /* Used as box to modify the size of the buttons */
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-
-    width: 25vw;
-    height: 45vh;
-    margin-top: 50vh;
-    margin-left: 70vw;
-    position: absolute;
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-
-    background: #323232;
-}
-
-.date {
-    height: 10%
-}
-
-.platform-button {
-    font-size: 3vh;
-    margin: 0px;
-    justify-content: left;
-}
-
-.platform-button>img {
-    height: 4vh;
+    background-color: rgb(61, 61, 61);
     width: auto;
-}
-
-.platform-button {
-    height: 11vh;
-    margin-top: 1vh;
-    border-radius: 20px;
-    width: 90%;
-    margin-left: 5%;
-    box-shadow: 10px, 10px;
-}
-
-.button-text {
-    font-size: 3vh;
-    position: relative;
-    bottom: 25px;
-    width: 70%;
-}
-
-.delete-all {
-    position: absolute;
-    max-height: 5vw;
-    font-size: 1vw;
-    width: 15%;
-    height: auto;
-    color: white;
+    height: 35vw;
+    border-radius: 1vw;
+    bottom: 1vw;
 }
