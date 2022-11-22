@@ -78,6 +78,7 @@ submitButton.addEventListener('click', () => {
     postObject['postSummary'] = formData.get('post-summary');
     postObject['mainTxt'] = formData.get('desc-input');
     postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
+    postObject['dateCompare'] = formData.get('date-to-post') + 'T' + formData.get('time-to-post') + ":" + "00";
     postObject['platType'] = formData.get('tag');
     postObject['mainImg'] = dataUrl;
     if (dataUrl === "") {
@@ -90,6 +91,11 @@ submitButton.addEventListener('click', () => {
     //combine local posts and user entered post, store back into local
     let postFromLocal = getPostsFromStorage();
     postFromLocal.push(postObject);
+    postFromLocal.sort((post1, post2) => {
+        let postDate1 = new Date(post1['dateCompare']);
+        let postDate2 = new Date(post2['dateCompare']);
+        return postDate1 - postDate2;
+    });
     savePostsToStorage(postFromLocal);
 });
 
