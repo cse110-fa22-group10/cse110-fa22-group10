@@ -30,6 +30,7 @@ html {
     left: 5vw;
     display: flex;
     flex-direction: column;
+    justify-content: right;
     margin: 1vw;
     width: 25%;
     height: auto;
@@ -38,7 +39,7 @@ html {
 #finished-posts-title {
     position: relative;
     display: flex;
-    background-color: rgb(61, 61, 61);
+    background-color: #323232;
     justify-content: center;
     width: auto;
     height: 7%;
@@ -50,9 +51,104 @@ html {
 
 .finished-posts {
     position: relative;
-    background-color: rgb(61, 61, 61);
+    background-color: #323232;
     width: auto;
     height: 35vw;
     border-radius: 1vw;
     bottom: 1vw;
+}
+
+.delete-all {
+    background-color: brown;
+    border-radius: 1vw;
+    width: fit-content;
+    height: fit-content;
+    padding: 1vw;
+    font-size: 1vw;
+    color: white;
+}
+
+.upcoming-posts-container {
+    position: relative;
+    left: 7vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin: 1vw;
+    width: 25%;
+    height: auto;
+}
+
+#upcoming-posts-title {
+    position: relative;
+    display: flex;
+    background-color: #323232;
+    justify-content: center;
+    width: auto;
+    height: 5.5%;
+    border-radius: 1vw;
+    color: white;
+    font-size: 2vw;
+    padding: 1vw;
+}
+
+.upcoming-posts {
+    position: relative;
+    background-color: #323232;
+    width: auto;
+    height: 30vw;
+    border-radius: 1vw;
+    bottom: 1vw;
+}
+
+.create-posts {
+    /* Used as box to modify the size of the buttons */
+    border: none;
+
+    border-radius: 1vw;
+    width: 25vw;
+    height: 25vw;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #323232;
+    align-items: center;
+    align-content: center;
+    left: 10vw;
+    top: 12.5vw
+}
+
+#create-posts-title {
+    color: white;
+    font-size: 1.5vw;
+}
+
+.platform-button {
+    font-size: 1vw;
+    margin: 1vw;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.platform-button>img {
+    height: 55%;
+    width: 15%;
+}
+
+.platform-button {
+    height: 5vw;
+    margin-top: 1vw;
+    border-radius: 1vw;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.button-text {
+    font-size: 1vw;
+    position: relative;
+    bottom: 1vw;
+    width: 70%;
 }
