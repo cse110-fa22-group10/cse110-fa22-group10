@@ -20,9 +20,6 @@ body {
 }
 
 .mainContainer {
-    /* border-width: 1px; */
-    /* border-style: solid;
-    border-color: black; */
     display: flex;
     flex-direction: row;
     min-height: 65%;
@@ -35,13 +32,6 @@ body {
     border-radius: 20px;
 }
 
-/* .spacer-left {
-    width: 8vw;
-}
-
-.spacer-right {
-    width: 7vw;
-} */
 .finishedPosts {
     /* Used as box to modify the size of the buttons */
     border-width: 1px;
@@ -88,8 +78,6 @@ body {
 
     width: 25vw;
     height: 45vh;
-    /* padding: .5vh; */
-    /* overflow-y: auto; /* makes div scrollable */
     margin-top: 50vh;
     margin-left: 70vw;
     position: absolute;
