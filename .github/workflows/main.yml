@@ -118,12 +118,20 @@ jobs:
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         - uses: actions/checkout@v3
-          
-        # Unit tests on JavaScript Files (This action will automatically install everything needed)
-        - name: Install modules
-          run: yarn
-        - name: Run tests
-          run: yarn test
+        
+        # Setting Node.js with speicific version.
+        - name: Setup Node.js
+          uses: actions/setup-node@v1
+          with:
+            node-version: "12"
+
+        # Install required deps for action
+        - name: Install Dependencies
+          run: npm install
+
+        # Finally, run our tests
+        - name: Run the tests
+          run: npm test
           
   validate_html:
       # The type of runner that the job will run on
