@@ -71,7 +71,7 @@ html {
 
 .upcoming-posts-container {
     position: relative;
-    left: 7vw;
+    left: 10vw;
     display: flex;
     flex-direction: column;
     justify-content: right;
@@ -118,7 +118,7 @@ html {
     background: #323232;
     align-items: center;
     align-content: center;
-    left: 10vw;
+    left: 15vw;
     top: 12.5vw
 }
 
@@ -166,12 +166,12 @@ html {
 
 img[alt*='Twitter Logo'] {
     position: relative;
-    left: 2.5vw;
+    left: 3vw;
 }
 
 img[alt*='Add Sign Twitter'] {
     position: relative;
-    right: 2.5vw;
+    right: 2.7vw;
 }
 
 
