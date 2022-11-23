@@ -187,6 +187,7 @@ class Post extends HTMLElement {
                     <summary id="summary-of-post">${data.postSummary}</summary>
                     <p id="main-text">${data.mainTxt}</p>
                 </details>
+
             </div>
             <span class="platform-type">
                 <div class="platform-title">

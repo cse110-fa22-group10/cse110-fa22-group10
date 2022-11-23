@@ -1,7 +1,11 @@
+// Run the init() function when the page has loaded
 window.addEventListener('DOMContentLoaded', init);
 
+let Fb = document.querySelector('#facebook-create');
+let Ins = document.querySelector('#instagram-create');
+let Tw = document.querySelector('#twitter-create');
+// Starts the program, all function calls trace back here
 function init() {
-
     let facebookButton = document.getElementById('facebook-create');
     let instagramButton = document.getElementById('instagram-create');
     let twitterButton = document.getElementById('twitter-create');
@@ -12,7 +16,6 @@ function init() {
 
     // Get the posts from localStorage
     let posts = getPostsFromStorage();
-
     // Add each Post to the <main> element
     addPostsToMain(posts);
 
@@ -132,7 +135,6 @@ function createIns() {
 // TODO: Once the twitter button is clicked, move to the creation page of the Twitter posts
 function createTw() {
     window.location.replace("./create_post/createTw.html");
-
 }
 
 /**
@@ -152,3 +154,19 @@ function displayDate() {
     document.getElementById("current-date").innerHTML = dateTime;
 }
 
+/**
+ * get the date from api and display it and the 
+ * main page as a title
+ */
+function displayDate() {
+    //get the date and time
+    let date = new Date();
+    let currentDate = String(date.getMonth() + 1).padStart(2, "0") + "/"
+        + String(date.getDate()).padStart(2, "0") + "/" + date.getFullYear();
+    let currentTime = String(date.getHours()).padStart(2, "0") + ":"
+        + String(date.getMinutes()).padStart(2, "0") + ":" + String(date.getSeconds()).padStart(2, "0");
+    let dateTime = currentDate + " " + currentTime;
+
+    //display on the main page
+    document.getElementById("current-date").innerHTML = dateTime;
+}

@@ -1,0 +1,157 @@
+body {
+    background: url('../assets/create-post-background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#post-container {
+    background-color: #d9d9d9;
+    margin: 2vw;
+    border-radius: 2vw;
+    height: 46vw;
+    width: auto;
+    position: relative;
+}
+
+#upper-tab {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-title {
+    font-size: 2vw;
+}
+
+#back-button {
+    position: relative;
+    background-color: red;
+    border-radius: .5vw;
+    width: 2vw;
+    height: 2vw;
+    border: none;
+    font-size: 1vw;
+    left: 35%;
+}
+
+#post-creator {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+    justify-content: space-evenly;
+    height: 75%;
+    width: 80%;
+    left: 8.5%
+}
+
+#image-label {
+    font-size: 1vw;
+    position: absolute;
+}
+
+#image-input {
+    position: absolute;
+    left: 5vw;
+    font-size: 0.8vw;
+}
+
+.image-container {
+    display: flex;
+    margin-top: 0.5vw;
+    width: 30%;
+    height: 95%;
+    background-color: white;
+    font-size: 0.8vw;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.text-container {
+    margin-top: 0.5vw;
+    width: 30%;
+    height: 97.5%;
+    font-size: 0.8vw;
+    border-radius: 1vw;
+    justify-content: space-evenly;
+}
+
+#post-summary {
+    position: relative;
+    font-size: 0.8vw;
+    border-radius: 0.5vw;
+    border: none;
+    padding: 0.5vw;
+    width: 100%;
+}
+
+#description-container {
+    position: relative;
+    top: 2%;
+    height: 92.5%;
+    width: 100%;
+}
+
+#desc-input {
+    height: 100%;
+    width: 100%;
+    resize: none;
+    border-color: white;
+    border-radius: 1vw;
+    font-size: 0.8vw;
+    padding: 0.5vw;
+}
+
+#char-limit {
+    position: relative;
+    left: 14.5vw;
+}
+
+#date-time-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0.5vw;
+    width: 30%;
+    height: 97.5%;
+    background-color: white;
+    border-radius: 1vw;
+}
+
+#date-time-container {
+    font-size: 1vw;
+    padding: 0.5vw;
+}
+
+#date-to-post,
+#time-to-post {
+    font-size: 1vw;
+}
+
+#submit {
+    position: absolute;
+    left: 100%;
+    top: 105%;
+    border-radius: 0.5vw;
+    width: 7vw;
+    height: 3vw;
+    background-color: #736B6B;
+    color: white;
+    box-shadow: 0.2vw 0.2vw #979797;
+    border: none;
+    font-size: 1vw;
+}
+
+#subit:hover {
+    background-attachment: #970797;
+    box-shadow: 0px 5px #736B6B;
+}
