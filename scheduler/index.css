@@ -130,14 +130,11 @@ html {
 .platform-button {
     font-size: 1vw;
     margin: 1vw;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
 }
 
 .platform-button>img {
-    height: 55%;
-    width: 15%;
+    height: 50%;
+    width: 12%;
 }
 
 .platform-button {
@@ -149,8 +146,52 @@ html {
 }
 
 .button-text {
-    font-size: 1vw;
+    font-size: 1.5vw;
     position: relative;
-    bottom: 1vw;
+    bottom: 0.5vw;
     width: 70%;
+    font-weight: bold;
+}
+
+#twitter-create {
+    background-color: rgb(85, 172, 238);
+}
+
+#facebook-create {
+    background-color: rgb(24, 119, 242);
+}
+
+#instagram-create {
+    background-color: rgb(255, 216, 84);
+}
+
+img[alt*='Twitter Logo'] {
+    position: relative;
+    left: 2.5vw;
+}
+
+img[alt*='Add Sign Twitter'] {
+    position: relative;
+    right: 2.5vw;
+}
+
+
+img[alt*='Facebook Logo'] {
+    position: relative;
+    left: 2vw;
+}
+
+img[alt*='Add Sign Facebook'] {
+    position: relative;
+    right: 1.7vw;
+}
+
+img[alt*='Instagram Logo'] {
+    position: relative;
+    left: 2vw;
+}
+
+img[alt*='Add Sign Instagram'] {
+    position: relative;
+    right: 1.6vw;
 }

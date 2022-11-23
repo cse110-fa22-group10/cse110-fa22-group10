@@ -117,7 +117,7 @@ class Post extends HTMLElement {
         position: relative;
         height: 10%;
         width: 10%;
-        left: 40%;
+        left: 85%;
     }
         `;
 
