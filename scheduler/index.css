@@ -53,7 +53,7 @@ html {
     position: relative;
     background-color: #323232;
     width: auto;
-    height: 35vw;
+    height: 37vw;
     border-radius: 1vw;
     bottom: 1vw;
     padding: 0.5vw;
@@ -63,7 +63,7 @@ html {
 .delete-all {
     background-color: brown;
     border-radius: 1vw;
-    width: fit-content;
+    width: 100%;
     height: fit-content;
     padding: 1vw;
     font-size: 1vw;
@@ -98,7 +98,7 @@ html {
     position: relative;
     background-color: #323232;
     width: auto;
-    height: 30vw;
+    height: 29.5vw;
     border-radius: 1vw;
     bottom: 1vw;
     overflow: auto;
@@ -121,7 +121,7 @@ html {
     align-items: center;
     align-content: center;
     left: 15vw;
-    top: 12.5vw
+    top: 13vw
 }
 
 #create-posts-title {
@@ -180,6 +180,8 @@ img[alt*='Add Sign Twitter'] {
 img[alt*='Facebook Logo'] {
     position: relative;
     left: 2vw;
+    height: 45%;
+    width: 10%;
 }
 
 img[alt*='Add Sign Facebook'] {
@@ -190,6 +192,8 @@ img[alt*='Add Sign Facebook'] {
 img[alt*='Instagram Logo'] {
     position: relative;
     left: 2vw;
+    height: 45%;
+    width: 10%;
 }
 
 img[alt*='Add Sign Instagram'] {
