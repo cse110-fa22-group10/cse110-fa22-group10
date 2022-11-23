@@ -1,34 +1,35 @@
+@font-face {
+  font-family: Roboto;
+  src: url(assets/Roboto-Black.ttf);
+}
+
+html {
+    background-image: url(assets/main-background.svg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100vh;
+}
+body {
+    min-height: 600px;
+}
+
 .top-bar {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.center-container {
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
+.main-container {
     display: flex;
     flex-direction: row;
-    height: 100vw;
+    min-height: 65%;
     width: 100%;
     position: relative;
+    margin-top:2.5vh;
 }
 
-.platform-swicther {
-    /* Used as box to modify the size of the buttons */
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    /* Real Styling of three icons' sizes */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
-    width: 10%;
-    margin-left: 90%;
-    position: absolute;
-    background-color: gray;
+.main-container > *{
+    border-radius: 20px;
 }
 
 .finished-posts {
@@ -37,23 +38,17 @@
     border-style: solid;
     border-color: black;
 
-    width: 28%;
-    height: 100%;
+    width: 25vw;
+    height: 95vh;
+    /* overflow-y: auto; /* makes div scrollable */
     position: absolute;
     text-align: center;
+    margin-left: 5vw;
 
     display: flex;
     flex-direction: column;
 
-    background: gray;
-
-    overflow: auto;
-}
-
-#finished-posts-title {
-    position: relative;
-    font-size: 1.5vw;
-    text-align: center;
+    background: #323232;
 }
 
 .upcoming-posts {
@@ -62,25 +57,17 @@
     border-style: solid;
     border-color: black;
 
-    width: 28%;
-    height: 100%;
-    margin-left: 30%;
+    width: 25vw;
+    height: 95vh;
+    /* overflow-y: auto; /* makes div scrollable */
+    margin-left: 38vw;
     position: absolute;
     text-align: center;
 
     display: flex;
     flex-direction: column;
 
-    background: gray;
-
-    /* accounts for number of posts overflowing the container size */
-    overflow: auto;
-}
-
-#upcoming-posts-title {
-    position: relative;
-    font-size: 1.5vw;
-    text-align: center;
+    background: #323232;
 }
 
 .create-posts {
@@ -89,26 +76,60 @@
     border-style: solid;
     border-color: black;
 
-    width: 28%;
-    height: 100%;
-    margin-left: 60%;
+    width: 25vw;
+    height: 45vh;
+    margin-top: 50vh;
+    margin-left: 70vw;
     position: absolute;
     text-align: center;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 
-    background: gray;
-
-    overflow: auto;
-}
-
-#create-posts-title {
-    position: relative;
-    font-size: 1.5vw;
-    text-align: center;
+    background: #323232;
 }
 
 .date {
     height: 10%
+}
+
+.platform-button {
+    font-size: 3vh;
+    margin: 0px;
+    justify-content: left;
+}
+
+.platform-button>img {
+    height: 4vh;
+    width: auto;
+}
+
+.platform-button, .delete-all {
+    height: 11vh;
+    margin-top: 1vh;
+    border-radius: 20px;
+    width: 90%;
+    margin-left: 5%;
+    box-shadow: 10px, 10px;
+}
+
+h2 {
+    font-size: 3vh;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    font-family: 'Roboto';
+    color: white;
+}
+
+.button-text {
+    font-size: 3vh;
+    position: relative;
+    bottom: 9px;
+    width: 70%;
+}
+
+.delete-all > p {
+    font-size: 2vh;
+    color: white;
+    margin: 0;
 }

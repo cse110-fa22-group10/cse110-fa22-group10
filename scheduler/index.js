@@ -1,6 +1,9 @@
 // Run the init() function when the page has loaded
 window.addEventListener('DOMContentLoaded', init);
 
+let Fb = document.querySelector('#facebook-create');
+let Ins = document.querySelector('#instagram-create');
+let Tw = document.querySelector('#twitter-create');
 // Starts the program, all function calls trace back here
 function init() {
     // Get the posts from localStorage
@@ -129,10 +132,6 @@ function createIns() {
 function createTw() {
     window.location.replace("./create_post/createTw.html");
 }
-
-const Fb = document.getElementById('Fb');
-const Ins = document.getElementById('Ins');
-const Tw = document.getElementById('Tw');
 
 Fb.addEventListener('click', () => createFb());
 Ins.addEventListener('click', () => createIns());
