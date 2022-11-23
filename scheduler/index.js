@@ -10,17 +10,28 @@ function init() {
     let instagramButton = document.getElementById('instagram-create');
     let twitterButton = document.getElementById('twitter-create');
 
+    let deleteFinishedPostsButton = document.querySelector('.delete-all');
+    deleteFinishedPostsButton.addEventListener('click', () => {
+        let finishedPosts = document.querySelector(".finished-posts");
+        finishedPosts.innerHTML = '';
+        let currentPostsArray = getPostsFromStorage();
+        while (currentPostsArray[0].currentContainer != 'upcoming') {
+            currentPostsArray.shift();
+        }
+        savePostsToStorage(currentPostsArray);
+    });
+
     facebookButton.addEventListener('click', () => createFb());
     instagramButton.addEventListener('click', () => createIns());
     twitterButton.addEventListener('click', () => createTw());
+
+    //check posts is finised every 10 miliseconds
+    setInterval(checkIfPostFinish, 100);
 
     // Get the posts from localStorage
     let posts = getPostsFromStorage();
     // Add each Post to the <main> element
     addPostsToMain(posts);
-
-    //check posts is finised every 10 miliseconds
-    setInterval(checkIfPostFinish, 10);
 
     //display date on main page
     setInterval(displayDate, 100);
@@ -63,6 +74,14 @@ function checkIfPostFinish() {
         // do nothing, so that the error is caught and dealt with accordingly
         // nothing should purposley be done
     }
+    let currentPostsArray = getPostsFromStorage();
+    for (let currentPost = 0; currentPost < currentPostsArray.length; currentPost++) {
+        let currentPostDate = new Date(currentPostsArray[currentPost].dateCompare);
+        if (currentPostDate < date) {
+            currentPostsArray[currentPost].currentContainer = 'finished';
+        }
+    }
+    savePostsToStorage(currentPostsArray);
 }
 
 /**
@@ -119,6 +138,15 @@ function getPostsFromStorage() {
         return [];
     }
     return posts;
+}
+
+/**
+ * Takes in an array of posts, converts it to a string, and then
+ * saves that string to 'posts' in localStorage
+ * @param {Array<Object>} posts An array of posts
+ */
+function savePostsToStorage(posts) {
+    localStorage.setItem('posts', JSON.stringify(posts));
 }
 
 // TODO: Once the facebook button is clicked, move to the creation page of the Facebook posts
