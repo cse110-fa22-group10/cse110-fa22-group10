@@ -1,9 +1,9 @@
 // Run the init() function when the page has loaded
 window.addEventListener('DOMContentLoaded', init);
 
-let Fb = document.querySelector('#facebookCreate');
-let Ins = document.querySelector('#instagramCreate');
-let Tw = document.querySelector('#twitterCreate');
+let Fb = document.querySelector('#facebook-create');
+let Ins = document.querySelector('#instagram-create');
+let Tw = document.querySelector('#twitter-create');
 // Starts the program, all function calls trace back here
 function init() {
     // Get the posts from localStorage
