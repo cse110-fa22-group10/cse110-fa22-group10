@@ -11,18 +11,11 @@ html {
     background-size: cover;
 }
 
-.time-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 1vw;
-}
-
 .main-container {
     display: flex;
     flex-direction: row;
     width: auto;
-    height: 43vw;
+    height: 48vw;
 }
 
 .finished-posts-container {
@@ -98,11 +91,25 @@ html {
     position: relative;
     background-color: #323232;
     width: auto;
-    height: 29.5vw;
+    height: 100%;
     border-radius: 1vw;
     bottom: 1vw;
     overflow: auto;
     padding: 0.5vw;
+}
+
+.time-bar {
+    position: relative;
+    top: 6vw;
+    font-size: 1vw;
+    background-color: #323232;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    padding: 1vw;
+    border-radius: 1vw;
+    left: 18.5vw;
+    top: 12vw;
 }
 
 .create-posts {
@@ -120,8 +127,8 @@ html {
     background: #323232;
     align-items: center;
     align-content: center;
-    left: 15vw;
-    top: 13vw
+    top: 21vw;
+    right: 3vw;
 }
 
 #create-posts-title {

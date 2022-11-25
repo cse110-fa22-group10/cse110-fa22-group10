@@ -15,7 +15,7 @@ function init() {
         let finishedPosts = document.querySelector(".finished-posts");
         finishedPosts.innerHTML = '';
         let currentPostsArray = getPostsFromStorage();
-        while (currentPostsArray[0].currentContainer != 'upcoming') {
+        while (currentPostsArray.length != 0 && currentPostsArray[0].currentContainer != 'upcoming') {
             currentPostsArray.shift();
         }
         savePostsToStorage(currentPostsArray);
