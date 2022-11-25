@@ -6,9 +6,16 @@ let Ins = document.querySelector('#instagram-create');
 let Tw = document.querySelector('#twitter-create');
 // Starts the program, all function calls trace back here
 function init() {
+    let facebookButton = document.getElementById('facebook-create');
+    let instagramButton = document.getElementById('instagram-create');
+    let twitterButton = document.getElementById('twitter-create');
+
+    facebookButton.addEventListener('click', () => createFb());
+    instagramButton.addEventListener('click', () => createIns());
+    twitterButton.addEventListener('click', () => createTw());
+
     // Get the posts from localStorage
     let posts = getPostsFromStorage();
-
     // Add each Post to the <main> element
     addPostsToMain(posts);
 
@@ -17,10 +24,7 @@ function init() {
 
     //display date on main page
     setInterval(displayDate, 100);
-
 }
-
-
 /**
  * This function is used to check 
  * and move the posts from upcoming posts
@@ -119,7 +123,7 @@ function getPostsFromStorage() {
 
 // TODO: Once the facebook button is clicked, move to the creation page of the Facebook posts
 function createFb() {
-    window.location.replace("./create_post.html");
+    window.location.replace("./create_post/createFb.html");
 }
 
 // TODO: Once the instagram button is clicked, move to the creation page of the Instagram posts
@@ -132,10 +136,6 @@ function createIns() {
 function createTw() {
     window.location.replace("./create_post/createTw.html");
 }
-
-Fb.addEventListener('click', () => createFb());
-Ins.addEventListener('click', () => createIns());
-Tw.addEventListener('click', () => createTw());
 
 /**
  * get the date from api and display it and the 
@@ -151,5 +151,5 @@ function displayDate() {
     let dateTime = currentDate + " " + currentTime;
 
     //display on the main page
-    document.getElementById("currDate").innerHTML = dateTime;
+    document.getElementById("current-date").innerHTML = dateTime;
 }

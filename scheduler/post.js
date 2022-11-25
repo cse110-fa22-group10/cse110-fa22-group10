@@ -111,13 +111,13 @@ class Post extends HTMLElement {
         position: relative;
         font-size: 1vw;
         text-align: center;
-        left: 40%;
+        left: 35.5%;
     }
     #platform-image {
         position: relative;
         height: 10%;
         width: 10%;
-        left: 40%;
+        left: 85%;
     }
         `;
 
