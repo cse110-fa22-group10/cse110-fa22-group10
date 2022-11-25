@@ -1,135 +1,209 @@
 @font-face {
-  font-family: Roboto;
-  src: url(assets/Roboto-Black.ttf);
+    font-family: Roboto;
+    src: url(assets/Roboto-Black.ttf);
 }
 
 html {
-    background-image: url(assets/main-background.svg); 
-    background-repeat: no-repeat;
+    background: url(assets/main-background.svg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    height:100vh;
-}
-body {
-    min-height: 600px;
-}
-
-.top-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
 }
 
 .main-container {
     display: flex;
     flex-direction: row;
-    min-height: 65%;
-    width: 100%;
-    position: relative;
-    margin-top:2.5vh;
+    width: auto;
+    height: 48vw;
 }
 
-.main-container > *{
-    border-radius: 20px;
+.finished-posts-container {
+    position: relative;
+    left: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin: 1vw;
+    width: 25%;
+    height: auto;
+}
+
+#finished-posts-title {
+    position: relative;
+    display: flex;
+    background-color: #323232;
+    justify-content: center;
+    width: auto;
+    height: 7%;
+    border-radius: 1vw;
+    color: white;
+    font-size: 2vw;
+    padding: 1vw;
 }
 
 .finished-posts {
-    /* Used as box to modify the size of the buttons */
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
+    position: relative;
+    background-color: #323232;
+    width: auto;
+    height: 37vw;
+    border-radius: 1vw;
+    bottom: 1vw;
+    padding: 0.5vw;
+    overflow: auto;
+}
 
-    width: 25vw;
-    height: 95vh;
-    /* overflow-y: auto; /* makes div scrollable */
-    position: absolute;
-    text-align: center;
-    margin-left: 5vw;
+.delete-all {
+    background-color: brown;
+    border-radius: 1vw;
+    width: 100%;
+    height: fit-content;
+    padding: 1vw;
+    font-size: 1vw;
+    color: white;
+}
 
+.upcoming-posts-container {
+    position: relative;
+    left: 10vw;
     display: flex;
     flex-direction: column;
+    justify-content: right;
+    margin: 1vw;
+    width: 25%;
+    height: auto;
+}
 
-    background: #323232;
+#upcoming-posts-title {
+    position: relative;
+    display: flex;
+    background-color: #323232;
+    justify-content: center;
+    width: auto;
+    height: 5.5%;
+    border-radius: 1vw;
+    color: white;
+    font-size: 2vw;
+    padding: 1vw;
 }
 
 .upcoming-posts {
-    /* Used as box to modify the size of the buttons */
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
+    position: relative;
+    background-color: #323232;
+    width: auto;
+    height: 100%;
+    border-radius: 1vw;
+    bottom: 1vw;
+    overflow: auto;
+    padding: 0.5vw;
+}
 
-    width: 25vw;
-    height: 95vh;
-    /* overflow-y: auto; /* makes div scrollable */
-    margin-left: 38vw;
-    position: absolute;
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-
-    background: #323232;
+.time-bar {
+    position: relative;
+    top: 6vw;
+    font-size: 1vw;
+    background-color: #323232;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    padding: 1vw;
+    border-radius: 1vw;
+    left: 18.5vw;
+    top: 12vw;
 }
 
 .create-posts {
     /* Used as box to modify the size of the buttons */
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
+    border: none;
 
+    border-radius: 1vw;
     width: 25vw;
-    height: 45vh;
-    margin-top: 50vh;
-    margin-left: 70vw;
-    position: absolute;
-    text-align: center;
+    height: 25vw;
+    position: relative;
 
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 
     background: #323232;
+    align-items: center;
+    align-content: center;
+    top: 21vw;
+    right: 3vw;
 }
 
-.date {
-    height: 10%
+#create-posts-title {
+    color: white;
+    font-size: 1.5vw;
 }
 
 .platform-button {
-    font-size: 3vh;
-    margin: 0px;
-    justify-content: left;
+    font-size: 1vw;
+    margin: 1vw;
 }
 
 .platform-button>img {
-    height: 4vh;
-    width: auto;
+    height: 50%;
+    width: 12%;
 }
 
-.platform-button, .delete-all {
-    height: 11vh;
-    margin-top: 1vh;
-    border-radius: 20px;
+.platform-button {
+    height: 5vw;
+    margin-top: 1vw;
+    border-radius: 1vw;
     width: 90%;
     margin-left: 5%;
-    box-shadow: 10px, 10px;
-}
-
-h2 {
-    font-size: 3vh;
-    margin-top: 2vh;
-    margin-bottom: 1vh;
-    font-family: 'Roboto';
-    color: white;
 }
 
 .button-text {
-    font-size: 3vh;
+    font-size: 1.5vw;
     position: relative;
-    bottom: 9px;
-    width: 70%;
+    bottom: 0.5vw;
+    font-weight: bold;
 }
 
-.delete-all > p {
-    font-size: 2vh;
-    color: white;
-    margin: 0;
+#twitter-create {
+    background-color: rgb(85, 172, 238);
+}
+
+#facebook-create {
+    background-color: rgb(24, 119, 242);
+}
+
+#instagram-create {
+    background-color: rgb(255, 216, 84);
+}
+
+img[alt*='Twitter Logo'] {
+    position: relative;
+    left: 3vw;
+}
+
+img[alt*='Add Sign Twitter'] {
+    position: relative;
+    right: 2.5vw;
+}
+
+
+img[alt*='Facebook Logo'] {
+    position: relative;
+    left: 2vw;
+    height: 45%;
+    width: 10%;
+}
+
+img[alt*='Add Sign Facebook'] {
+    position: relative;
+    right: 1.7vw;
+}
+
+img[alt*='Instagram Logo'] {
+    position: relative;
+    left: 2vw;
+    height: 45%;
+    width: 10%;
+}
+
+img[alt*='Add Sign Instagram'] {
+    position: relative;
+    right: 1.6vw;
 }

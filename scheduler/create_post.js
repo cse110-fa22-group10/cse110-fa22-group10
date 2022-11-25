@@ -75,6 +75,7 @@ submitButton.addEventListener('click', () => {
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
+    postObject['currentContainer'] = 'upcoming';
     postObject['postSummary'] = formData.get('post-summary');
     postObject['mainTxt'] = formData.get('desc-input');
     postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
@@ -122,7 +123,7 @@ function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
 
-const backButton = document.querySelector("#back");
+const backButton = document.querySelector("#back-button");
 backButton.addEventListener('click', () => {
-    window.location.replace("./index.html");
+    window.location.replace("/scheduler/index.html");
 });

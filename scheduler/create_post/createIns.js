@@ -3,6 +3,7 @@
 // need a picture, etc..
 // Done by Antonio
 const postDescription = document.getElementById('desc-input');
+const postTag = document.getElementById('tag');
 const imgPreview = document.querySelector(".image-container");
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
@@ -27,14 +28,14 @@ function constraints() {
 function getImgData() {
     const files = imageInput.files[0];
     if (files) {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(files);
-      fileReader.addEventListener("load", function () {
-        imgPreview.style.display = "block";
-        imgPreview.innerHTML = '<img src="' + this.result + '" />';
-      });    
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(files);
+        fileReader.addEventListener("load", function () {
+            imgPreview.style.display = "block";
+            imgPreview.innerHTML = '<img src="' + this.result + '" />';
+        });
     }
-  }
+}
 
 
 
@@ -47,7 +48,7 @@ function checkText() {
         alert("Too many characters!");
         setTimeout(() => {
             submitButton.disabled = false;
-    }, 1000);
+        }, 1000);
     }
 }
 
@@ -59,25 +60,44 @@ submitButton.addEventListener('click', checkText);
 // it to be stored. Should also store the time and date of when the post should
 // be posted 
 const formEle = document.querySelector('form');
-
+let imgElement = document.querySelector("[type='file']");
+let file;
+let dataUrl = "";
+imgElement.addEventListener('change', () => {
+    file = imgElement.files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        dataUrl = reader.result;
+    });
+    reader.readAsDataURL(file);
+});
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
     let formData = new FormData(formEle);
-
-    //store user entered image, description, data .. into postObject 
-    let postObject = {}; 
-    postObject['title'] = formData.get('title');
-    postObject['desc-input'] = formData.get('desc-input');
-    postObject['date-to-post'] = formData.get('date-to-post');
-    postObject['time-to-post'] = formData.get('time-to-post');
-    postObject['tag'] = formData.get('tag');
-    if (formData.get('image-input') != null) {
-        postObject['image-input'] = formData.get('image-input');
+    //store user entered image, description, data .. into postObject
+    let postObject = {};
+    postObject['currentContainer'] = 'upcoming';
+    postObject['postSummary'] = formData.get('post-summary');
+    postObject['mainTxt'] = formData.get('desc-input');
+    postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
+    postObject['dateCompare'] = formData.get('date-to-post') + 'T' + formData.get('time-to-post') + ":" + "00";
+    postObject['platType'] = formData.get('tag');
+    postObject['mainImg'] = dataUrl;
+    if (dataUrl === "") {
+        postObject['imgAlt'] = "";
+    } else {
+        postObject['imgAlt'] = formData.get('tag') + ' image';
     }
+    dataUrl = ""; //Once the information is stored, set it back to ""
 
     //combine local posts and user entered post, store back into local
-  let postFromLocal = getPostsFromStorage();
+    let postFromLocal = getPostsFromStorage();
     postFromLocal.push(postObject);
+    postFromLocal.sort((post1, post2) => {
+        let postDate1 = new Date(post1['dateCompare']);
+        let postDate2 = new Date(post2['dateCompare']);
+        return postDate1 - postDate2;
+    });
     savePostsToStorage(postFromLocal);
 });
 
@@ -93,7 +113,7 @@ function getPostsFromStorage() {
     if (posts === null) {
         return [];
     }
-  return posts;
+    return posts;
 }
 
 /**
@@ -103,4 +123,9 @@ function getPostsFromStorage() {
  */
 function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
- }
+}
+
+const backButton = document.querySelector("#back-button");
+backButton.addEventListener('click', () => {
+    window.location.replace("/scheduler/index.html");
+});
