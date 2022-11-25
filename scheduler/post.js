@@ -111,14 +111,73 @@ class Post extends HTMLElement {
         position: relative;
         font-size: 1vw;
         text-align: center;
-        left: 40%;
+        left: 35.5%;
     }
     #platform-image {
         position: relative;
         height: 10%;
         width: 10%;
-        left: 40%;
+        left: 85%;
     }
+    .post-container{
+        position: relative;
+    }
+    .edit-button{
+        position: absolute;
+        z-index: 2;
+        top: 40%;
+        display: none;
+        left: 5%;	
+        border-radius: 15px;
+        width: 10vw;
+        height: 5vw;
+    }
+    .delete-button{
+        position: absolute;
+        z-index: 2;
+        top: 40%;
+        display: none;
+        left: 55%;	
+        border-radius: 15px;
+        width: 10vw;
+        height: 5vw;
+    }
+    .edit-button-noimg{
+        position: absolute;
+        z-index: 2;
+        top: 30%;
+        display: none;
+        left: 5%;	
+        border-radius: 15px;
+        width: 10vw;
+        height: 5vw;
+    }
+    .delete-button-noimg{
+        position: absolute;
+        z-index: 2;
+        top:30%;
+        display: none;
+        left: 55%;	
+        border-radius: 15px;
+        width: 10vw;
+        height: 5vw;
+    }
+     .post-container:hover :not(.edit-button, .delete-button, .edit-button-noimg, .delete-button-noimg){
+        filter: blur(4px);
+     }
+     .post-container:hover .edit-button{
+        display: block
+     }
+     .post-container:hover .delete-button{
+        display: block
+     }
+     .post-container:hover .edit-button-noimg{
+        display: block
+     }
+     .post-container:hover .delete-button-noimg{
+        display: block
+     }
+
         `;
 
         // append the elements to the shadow DOM
@@ -179,47 +238,55 @@ class Post extends HTMLElement {
 
         if (data.mainImg == "") {
             articleElement.innerHTML = `
-            <div class="post-head">
-                <p id="post-date-data">${data.dateData}</p>
-            </div>
-            <div class="post-body">
-                <details id="text-body-details-tab">
-                    <summary id="summary-of-post">${data.postSummary}</summary>
-                    <p id="main-text">${data.mainTxt}</p>
-                </details>
+            <div class="post-container">
+                <button type="button" class="edit-button-noimg">Edit</button>
+                <button type="button" class="delete-button-noimg">Delete</button>
+                <div class="post-head">
+                    <p id="post-date-data">${data.dateData}</p>
+                </div>
+                <div class="post-body">
+                    <details id="text-body-details-tab">
+                        <summary id="summary-of-post">${data.postSummary}</summary>
+                        <p id="main-text">${data.mainTxt}</p>
+                    </details>
 
+                </div>
+                <span class="platform-type">
+                    <div class="platform-title">
+                        <h3 id="platform-name">${data.platType}</h3>
+                    </div>
+                    <div class="platform-media">
+                        <img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                    </div>
+                </span>
             </div>
-            <span class="platform-type">
-                <div class="platform-title">
-                    <h3 id="platform-name">${data.platType}</h3>
-                </div>
-                <div class="platform-media">
-                    <img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
-                </div>
-            </span>
             `;
         } else {
             articleElement.innerHTML = `
-            <div class="post-head">
-                <p id="post-date-data">${data.dateData}</p>
-            </div>
-            <div class="post-image">
-                <img id="main-image" src="${data.mainImg}" alt="${data.imgAlt}">
-            </div>
-            <div class="post-body">
-                <details id="text-body-details-tab">
-                    <summary id="summary-of-post">${data.postSummary}</summary>
-                    <p id="main-text">${data.mainTxt}</p>
-                </details>
-            </div>
-            <span class="platform-type">
-                <div class="platform-title">
-                    <h3 id="platform-name">${data.platType}</h3>
+            <div class="post-container">
+                <button type="button" class="edit-button">Edit</button>
+                <button type="button" class="delete-button">Delete</button>
+                <div class="post-head">
+                    <p id="post-date-data">${data.dateData}</p>
                 </div>
-                <div class="platform-media">
-                    <img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                <div class="post-image">
+                    <img id="main-image" src="${data.mainImg}" alt="${data.imgAlt}">
                 </div>
-            </span>
+                <div class="post-body">
+                    <details id="text-body-details-tab">
+                        <summary id="summary-of-post">${data.postSummary}</summary>
+                        <p id="main-text">${data.mainTxt}</p>
+                    </details>
+                </div>
+                <span class="platform-type">
+                    <div class="platform-title">
+                        <h3 id="platform-name">${data.platType}</h3>
+                    </div>
+                    <div class="platform-media">
+                        <img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                    </div>
+                </span>
+            </div>
             `;
         }
     }
