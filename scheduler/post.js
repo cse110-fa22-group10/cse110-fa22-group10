@@ -122,7 +122,7 @@ class Post extends HTMLElement {
     .post-container{
         position: relative;
     }
-    .edit-button{
+    #edit-button-withimg{
         position: absolute;
         z-index: 2;
         top: 3%;
@@ -131,8 +131,9 @@ class Post extends HTMLElement {
         border-radius: 15px;
         width: 5vw;
         height: 3vw;
+        font-size: 1vw;
     }
-    .delete-button{
+    #delete-button-withimg{
         position: absolute;
         z-index: 2;
         top: 3%;
@@ -141,8 +142,9 @@ class Post extends HTMLElement {
         border-radius: 15px;
         width: 5vw;
         height: 3vw;
+        font-size: 1vw;
     }
-    .edit-button-noimg{
+    #edit-button-noimg{
         position: absolute;
         z-index: 2;
         top: 3%;
@@ -151,8 +153,9 @@ class Post extends HTMLElement {
         border-radius: 15px;
         width: 5vw;
         height: 3vw;
+        font-size: 1vw;
     }
-    .delete-button-noimg{
+    #delete-button-noimg{
         position: absolute;
         z-index: 2;
         top:3%;
@@ -161,18 +164,19 @@ class Post extends HTMLElement {
         border-radius: 15px;
         width: 5vw;
         height: 3vw;
+        font-size: 1vw;
     }
 
-     .post-container:hover .edit-button{
+     .post-container:hover #edit-button-withimg{
         display: block
      }
-     .post-container:hover .delete-button{
+     .post-container:hover #delete-button-withimg{
         display: block
      }
-     .post-container:hover .edit-button-noimg{
+     .post-container:hover #edit-button-noimg{
         display: block
      }
-     .post-container:hover .delete-button-noimg{
+     .post-container:hover #delete-button-noimg{
         display: block
      }
 
@@ -237,8 +241,8 @@ class Post extends HTMLElement {
         if (data.mainImg == "") {
             articleElement.innerHTML = `
             <div class="post-container">
-                <button type="button" class="edit-button-noimg">Edit</button>
-                <button type="button" class="delete-button-noimg">Delete</button>
+                <button type="button" class="edit-button" id="edit-button-noimg">Edit</button>
+                <button type="button" class="delete-button" id="delete-button-noimg">Delete</button>
                 <div class="post-head">
                     <p id="post-date-data">${data.dateData}</p>
                 </div>
@@ -262,8 +266,8 @@ class Post extends HTMLElement {
         } else {
             articleElement.innerHTML = `
             <div class="post-container">
-                <button type="button" class="edit-button">Edit</button>
-                <button type="button" class="delete-button">Delete</button>
+                <button type="button" class="edit-button" id="edit-button-withimg">Edit</button>
+                <button type="button" class="delete-button" id="delete-button-withimg">Delete</button>
                 <div class="post-head">
                     <p id="post-date-data">${data.dateData}</p>
                 </div>

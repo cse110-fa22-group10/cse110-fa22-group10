@@ -48,6 +48,7 @@ submitButton.addEventListener('click', () => {
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
+    postObject['currentIndex'] = 0;
     postObject['currentContainer'] = 'upcoming';
     postObject['postSummary'] = formData.get('post-summary');
     postObject['mainTxt'] = formData.get('desc-input');
