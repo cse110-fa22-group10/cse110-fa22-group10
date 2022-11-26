@@ -125,46 +125,44 @@ class Post extends HTMLElement {
     .edit-button{
         position: absolute;
         z-index: 2;
-        top: 40%;
+        top: 3%;
         display: none;
         left: 5%;	
         border-radius: 15px;
-        width: 10vw;
-        height: 5vw;
+        width: 5vw;
+        height: 3vw;
     }
     .delete-button{
         position: absolute;
         z-index: 2;
-        top: 40%;
+        top: 3%;
         display: none;
-        left: 55%;	
+        left: 75%;	
         border-radius: 15px;
-        width: 10vw;
-        height: 5vw;
+        width: 5vw;
+        height: 3vw;
     }
     .edit-button-noimg{
         position: absolute;
         z-index: 2;
-        top: 30%;
+        top: 3%;
         display: none;
         left: 5%;	
         border-radius: 15px;
-        width: 10vw;
-        height: 5vw;
+        width: 5vw;
+        height: 3vw;
     }
     .delete-button-noimg{
         position: absolute;
         z-index: 2;
-        top:30%;
+        top:3%;
         display: none;
-        left: 55%;	
+        left: 75%;	
         border-radius: 15px;
-        width: 10vw;
-        height: 5vw;
+        width: 5vw;
+        height: 3vw;
     }
-     .post-container:hover :not(.edit-button, .delete-button, .edit-button-noimg, .delete-button-noimg){
-        filter: blur(4px);
-     }
+
      .post-container:hover .edit-button{
         display: block
      }
