@@ -67,6 +67,7 @@ function init() {
         let currentEditButton = currentShadow.querySelector(".edit-button");
         currentEditButton.addEventListener("click", () => {
             console.log("finished edit!");
+            window.location.replace("./editPosts.html");
         });
     }
 
