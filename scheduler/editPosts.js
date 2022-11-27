@@ -7,7 +7,10 @@ const postTag = document.getElementById('tag');
 const imgPreview = document.getElementById("main-image-container");
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
-
+const deleteImgDataButton = document.getElementById('remove-image-data-button');
+let dataUrl = "";
+let file;
+let indexToDelete;
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -17,7 +20,10 @@ function init() {
         var params = window.location.search.split('?')[1];
         var key = params.split('=')[1];
         currentIndex = parseInt(key);
-        populateForm(currentIndex);
+        if (!isNaN(currentIndex)) {
+            indexToDelete = currentIndex;
+            populateForm(currentIndex);
+        }
     }
     constraints();
     getImgData();
@@ -41,11 +47,9 @@ function getImgData() {
  * summary, type, time, file, etc.
  */
 function populateForm(index) {
-    console.log(index);
     let postFromLocal = getPostsFromStorage();
     let post = postFromLocal[index];
 
-    console.log(postFromLocal);
     document.getElementById("post-summary").value = post['postSummary'];
     document.getElementById("desc-input").value = post['mainTxt'];
 
@@ -68,6 +72,12 @@ function populateForm(index) {
         const dataTransfer = new DataTransfer();
         dataTransfer.items.add(imageFile);
         imageInput.files = dataTransfer.files;
+        file = imgElement.files[0];
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+            dataUrl = reader.result;
+        });
+        reader.readAsDataURL(file);
     }
 }
 
@@ -138,29 +148,30 @@ submitButton.addEventListener('click', checkText);
 // be posted
 const formEle = document.querySelector('form');
 let imgElement = document.querySelector("[type='file']");
-let file;
-let dataUrl = "";
 imgElement.addEventListener('change', () => {
     file = imgElement.files[0];
+    if (file == undefined) {
+        return;
+    }
     const reader = new FileReader();
     reader.addEventListener("load", () => {
         dataUrl = reader.result;
     });
     reader.readAsDataURL(file);
+    getImgData();
 });
 //event listener for submit botton
-submitButton.addEventListener('click', () => {
+submitButton.addEventListener('click', (event) => {
+    event.preventDefault();
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
-    postObject['currentIndex'] = 0;
     postObject['currentContainer'] = 'upcoming';
     postObject['postSummary'] = formData.get('post-summary');
     postObject['mainTxt'] = formData.get('desc-input');
     postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
     postObject['dateCompare'] = formData.get('date-to-post') + 'T' + formData.get('time-to-post') + ":" + "00";
     postObject['platType'] = formData.get('tag');
-    console, log(dataUrl);
     postObject['mainImg'] = dataUrl;
     if (dataUrl === "") {
         postObject['imgAlt'] = "";
@@ -171,14 +182,23 @@ submitButton.addEventListener('click', () => {
 
     //combine local posts and user entered post, store back into local
     let postFromLocal = getPostsFromStorage();
+    postObject['currentIndex'] = postFromLocal.length;
     postFromLocal.push(postObject);
     postFromLocal.sort((post1, post2) => {
         let postDate1 = new Date(post1['dateCompare']);
         let postDate2 = new Date(post2['dateCompare']);
         return postDate1 - postDate2;
     });
+    postFromLocal.splice(indexToDelete, 1);
     savePostsToStorage(postFromLocal);
-    //window.location.replace("/scheduler/index.html");
+    window.location.replace('./index.html')
+});
+
+deleteImgDataButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    dataUrl = '';
+    imgPreview.innerHTML = '';
+    imageInput.value = '';
 });
 
 /**

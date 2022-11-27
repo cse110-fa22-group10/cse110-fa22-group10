@@ -92,6 +92,9 @@ class Post extends HTMLElement {
         max-height: 100%;
         word-break: break-all;
     }
+    #text-body-details-tab {
+        padding: 0.5vw;
+    }
     #summary-of-post {
         font-size: 1.5vw;
     }

@@ -69,6 +69,14 @@ body {
     border-radius: 1vw;
 }
 
+#remove-image-data-button {
+    background-color: brown;
+    color: white;
+    margin-bottom: 0.5vw;
+    font-size: 1vw;
+    border-radius: 1vw;
+}
+
 #img-file-selection-container {
     display: flex;
     width: 20vw;
