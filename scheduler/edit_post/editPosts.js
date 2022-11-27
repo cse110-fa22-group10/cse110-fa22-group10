@@ -230,5 +230,5 @@ function savePostsToStorage(posts) {
 
 const backButton = document.querySelector("#back-button");
 backButton.addEventListener('click', () => {
-    window.location.replace("./index.html");
+    window.location.replace("/scheduler/index.html");
 });
