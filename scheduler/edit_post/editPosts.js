@@ -195,7 +195,7 @@ submitButton.addEventListener('click', (event) => {
     });
     postFromLocal.splice(indexToDelete, 1);
     savePostsToStorage(postFromLocal);
-    window.location.replace('./index.html')
+    window.location.replace('/scheduler/index.html')
 });
 
 deleteImgDataButton.addEventListener('click', (event) => {
