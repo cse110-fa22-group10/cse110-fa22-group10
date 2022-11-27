@@ -4,6 +4,7 @@
 // Done by Antonio
 const postDescription = document.getElementById('desc-input');
 const postTag = document.getElementById('tag');
+const imgPreview = document.getElementById("main-image-container");
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 
@@ -11,16 +12,27 @@ const submitButton = document.getElementById('submit');
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    constraints();
-
     let currentIndex = 0;
     if (window.location.search.split('?').length > 1) {
         var params = window.location.search.split('?')[1];
         var key = params.split('=')[1];
         currentIndex = parseInt(key);
+        populateForm(currentIndex);
     }
+    constraints();
+    getImgData();
+}
 
-    populateForm(currentIndex);
+function getImgData() {
+    const files = imageInput.files[0];
+    if (files) {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(files);
+        fileReader.addEventListener("load", function () {
+            imgPreview.style.display = "block";
+            imgPreview.innerHTML = '<img src="' + this.result + '" />';
+        });
+    }
 }
 
 /**
@@ -29,9 +41,11 @@ function init() {
  * summary, type, time, file, etc.
  */
 function populateForm(index) {
+    console.log(index);
     let postFromLocal = getPostsFromStorage();
     let post = postFromLocal[index];
 
+    console.log(postFromLocal);
     document.getElementById("post-summary").value = post['postSummary'];
     document.getElementById("desc-input").value = post['mainTxt'];
 
@@ -49,10 +63,12 @@ function populateForm(index) {
     document.getElementById("date-to-post").value = date;
 
     const imageInput = document.querySelector('input[type="file"]');
-    const imageFile = new File([dataURItoBlob(post['mainImg'])], "currentImg.png");
-    const dataTransfer = new DataTransfer();
-    dataTransfer.items.add(imageFile);
-    imageInput.files = dataTransfer.files;
+    if (post['mainImg'] != '') {
+        const imageFile = new File([dataURItoBlob(post['mainImg'])], "currentImg.png");
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(imageFile);
+        imageInput.files = dataTransfer.files;
+    }
 }
 
 /**
@@ -144,6 +160,7 @@ submitButton.addEventListener('click', () => {
     postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
     postObject['dateCompare'] = formData.get('date-to-post') + 'T' + formData.get('time-to-post') + ":" + "00";
     postObject['platType'] = formData.get('tag');
+    console, log(dataUrl);
     postObject['mainImg'] = dataUrl;
     if (dataUrl === "") {
         postObject['imgAlt'] = "";
@@ -161,6 +178,7 @@ submitButton.addEventListener('click', () => {
         return postDate1 - postDate2;
     });
     savePostsToStorage(postFromLocal);
+    //window.location.replace("/scheduler/index.html");
 });
 
 /**
