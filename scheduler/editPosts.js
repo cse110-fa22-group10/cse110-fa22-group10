@@ -105,20 +105,24 @@ function dataURItoBlob(dataURI) {
 // Limit the amount of characters permited for every type of posts
 // Instagram posts must have at least one image
 function constraints() {
+    let currentCharacterLimit = document.getElementById('char-limit');
     let selectedTag = postTag.selectedOptions[0];
     // Facebook 63,206char max
     if (selectedTag == postTag.options[0]) {
         postDescription.maxLength = 63206;
+        currentCharacterLimit.innerHTML = 'Character Limit: 63206';
         submitButton.disabled = false;
     }
     // Twitter 280char max
     if (selectedTag == postTag.options[1]) {
         postDescription.maxLength = 280;
+        currentCharacterLimit.innerHTML = 'Character Limit: 280';
         submitButton.disabled = false;
     }
     // Instagram 2,200char max and check if there is an image uploaded
     if (selectedTag == postTag.options[2]) {
         postDescription.maxLength = 2200;
+        currentCharacterLimit.innerHTML = 'Character Limit: 2200';
         if (imageInput.files.length == 0) {
             submitButton.disabled = true;
         }
