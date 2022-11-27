@@ -12,7 +12,69 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
     constraints();
+
+    let currentIndex = 0;
+    if (window.location.search.split('?').length > 1) {
+        var params = window.location.search.split('?')[1];
+        var key = params.split('=')[1];
+        currentIndex = parseInt(key);
+    }
+
+    populateForm(currentIndex);
 }
+
+/**
+ * populate the edit post form with 
+ * user's previously entered information:
+ * summary, type, time, file, etc.
+ */
+function populateForm(index) {
+    let postFromLocal = getPostsFromStorage();
+    let post = postFromLocal[index];
+
+    document.getElementById("post-summary").value = post['postSummary'];
+    document.getElementById("desc-input").value = post['mainTxt'];
+
+    let optionsCollection = document.getElementsByTagName("option");
+    for (let currentOption = 0; currentOption < optionsCollection.length; currentOption++) {
+        if (post['platType'] == optionsCollection[currentOption].value) {
+            optionsCollection[currentOption].selected = true;
+        }
+    }
+
+    let time = post["dateData"].split(", ")[1];
+    let date = post["dateData"].split(", ")[0];
+
+    document.getElementById("time-to-post").value = time;
+    document.getElementById("date-to-post").value = date;
+
+    const imageInput = document.querySelector('input[type="file"]');
+    const imageFile = new File([dataURItoBlob(post['mainImg'])], "currentImg.png");
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(imageFile);
+    imageInput.files = dataTransfer.files;
+}
+
+/**
+ * convert dataUrl into a file
+ */
+function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ia], { type: mimeString });
+}
+
 
 // Limit the amount of characters permited for every type of posts
 // Instagram posts must have at least one image
@@ -75,6 +137,7 @@ submitButton.addEventListener('click', () => {
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
+    postObject['currentIndex'] = 0;
     postObject['currentContainer'] = 'upcoming';
     postObject['postSummary'] = formData.get('post-summary');
     postObject['mainTxt'] = formData.get('desc-input');

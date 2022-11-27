@@ -67,7 +67,8 @@ function init() {
         let currentEditButton = currentShadow.querySelector(".edit-button");
         currentEditButton.addEventListener("click", () => {
             console.log("finished edit!");
-            window.location.replace("./editPosts.html");
+            let url = "./editPosts.html?currentIndex=" + finishedPostCardCollection[currentPost].getAttribute("index");
+            window.location.replace(url);
         });
     }
 
@@ -97,6 +98,8 @@ function init() {
         let currentEditButton = currentShadow.querySelector(".edit-button");
         currentEditButton.addEventListener("click", () => {
             console.log("upcoming edit!");
+            let url = "./editPosts.html?currentIndex=" + upcomingPostCardCollection[currentPost].getAttribute("index");
+            window.location.replace(url);
         });
     }
 }
