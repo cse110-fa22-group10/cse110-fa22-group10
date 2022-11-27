@@ -1,41 +1,64 @@
-// Run the init() function when the page has loaded
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>index.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addPostsToMain">addPostsToMain</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkIfPostFinish">checkIfPostFinish</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createFb">createFb</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createIns">createIns</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createTw">createTw</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#displayDate">displayDate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getPostsFromStorage">getPostsFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#savePostsToStorage">savePostsToStorage</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Run the init() function when the page has loaded
 window.addEventListener('DOMContentLoaded', init);
 
-let Fb = document.querySelector('#facebook-create');
-let Ins = document.querySelector('#instagram-create');
-let Tw = document.querySelector('#twitter-create');
 // Starts the program, all function calls trace back here
 function init() {
-    let facebookButton = document.getElementById('facebook-create');
-    let instagramButton = document.getElementById('instagram-create');
-    let twitterButton = document.getElementById('twitter-create');
-
-    let deleteFinishedPostsButton = document.querySelector('.delete-all');
-    deleteFinishedPostsButton.addEventListener('click', () => {
-        let finishedPosts = document.querySelector(".finished-posts");
-        finishedPosts.innerHTML = '';
-        let currentPostsArray = getPostsFromStorage();
-        while (currentPostsArray.length != 0 && currentPostsArray[0].currentContainer != 'upcoming') {
-            currentPostsArray.shift();
-        }
-        savePostsToStorage(currentPostsArray);
-    });
-
-    facebookButton.addEventListener('click', () => createFb());
-    instagramButton.addEventListener('click', () => createIns());
-    twitterButton.addEventListener('click', () => createTw());
-
-    //check posts is finised every 10 miliseconds
-    setInterval(checkIfPostFinish, 100);
-
     // Get the posts from localStorage
     let posts = getPostsFromStorage();
-    // Add each Post to the <main> element
+
+    // Add each Post to the &lt;main> element
     addPostsToMain(posts);
+
+    //check posts is finised every 10 miliseconds
+    setInterval(checkIfPostFinish, 10);
 
     //display date on main page
     setInterval(displayDate, 100);
+
 }
+
+
 /**
  * This function is used to check 
  * and move the posts from upcoming posts
@@ -64,7 +87,7 @@ function checkIfPostFinish() {
             const finishedPosts = document.querySelector(".finished-posts");
             const counter = upcomingPostArray.length;
             // append every past post card to finished posts
-            for (let i = 0; i < counter; i++) {
+            for (let i = 0; i &lt; counter; i++) {
                 finishedPosts.appendChild(upcomingPostArray[i]);
             }
             // remove the entire class instance of the post cards whose times were past due
@@ -74,29 +97,21 @@ function checkIfPostFinish() {
         // do nothing, so that the error is caught and dealt with accordingly
         // nothing should purposley be done
     }
-    let currentPostsArray = getPostsFromStorage();
-    for (let currentPost = 0; currentPost < currentPostsArray.length; currentPost++) {
-        let currentPostDate = new Date(currentPostsArray[currentPost].dateCompare);
-        if (currentPostDate < date) {
-            currentPostsArray[currentPost].currentContainer = 'finished';
-        }
-    }
-    savePostsToStorage(currentPostsArray);
 }
 
 /**
  * Takes in an array of posts and for each post creates a
- * new <post-card> element, adds the post data to that card
+ * new &lt;post-card> element, adds the post data to that card
  * using element.data = {...}, and then appends that new post
- * to <main>
- * @param {Array<Object>} posts An array of posts
+ * to &lt;main>
+ * @param {Array&lt;Object>} posts An array of posts
  */
 function addPostsToMain(posts) {
     let upComingPosts = document.querySelector(".upcoming-posts");
     let finishedPosts = document.querySelector(".finished-posts");
 
     //populate upcoming posts section
-    for (let currentPost = 0; currentPost < posts.length; currentPost++) {
+    for (let currentPost = 0; currentPost &lt; posts.length; currentPost++) {
         let postcard = document.createElement("post-card");
 
         //set an extra attribute so that we can use it in checkIfPostFinish
@@ -117,7 +132,7 @@ function addPostsToMain(posts) {
 
         //compare the posts with current date and time
         //move posts to corresponding containers
-        if (currentPostDate < currentDate) {
+        if (currentPostDate &lt; currentDate) {
             finishedPosts.append(postcard);
         } else {
             upComingPosts.append(postcard);
@@ -130,7 +145,7 @@ function addPostsToMain(posts) {
  * all of the posts found (parsed, not in string form). If
  * nothing is found in localStorage for 'posts', an empty array
  * is returned.
- * @returns {Array<Object>} An array of posts found in localStorage
+ * @returns {Array&lt;Object>} An array of posts found in localStorage
  */
 function getPostsFromStorage() {
     let posts = JSON.parse(localStorage.getItem("posts"));
@@ -141,19 +156,12 @@ function getPostsFromStorage() {
 }
 
 /**
- * Takes in an array of posts, converts it to a string, and then
- * saves that string to 'posts' in localStorage
- * @param {Array<Object>} posts An array of posts
- */
-function savePostsToStorage(posts) {
-    localStorage.setItem('posts', JSON.stringify(posts));
-}
  * Once the Facebook button is clicked, the user is redirected
  * toward the creat post page specicially for Facebook posts 
  * where they can upload texts, images and etc. 
  */
 function createFb() {
-    window.location.replace("./create_post/createFb.html");
+    window.location.replace("./create_post.html");
 }
 
 /**
@@ -175,6 +183,14 @@ function createTw() {
     window.location.replace("./create_post/createTw.html");
 }
 
+const Fb = document.getElementById('Fb');
+const Ins = document.getElementById('Ins');
+const Tw = document.getElementById('Tw');
+
+Fb.addEventListener('click', () => createFb());
+Ins.addEventListener('click', () => createIns());
+Tw.addEventListener('click', () => createTw());
+
 /**
  * get the date from api and display it and the 
  * main page as a title
@@ -189,5 +205,23 @@ function displayDate() {
     let dateTime = currentDate + " " + currentTime;
 
     //display on the main page
-    document.getElementById("current-date").innerHTML = dateTime;
-}
+    document.getElementById("currDate").innerHTML = dateTime;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Nov 22 2022 19:32:21 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
