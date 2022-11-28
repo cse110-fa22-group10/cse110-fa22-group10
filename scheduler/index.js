@@ -10,6 +10,12 @@ function init() {
     let instagramButton = document.getElementById('instagram-create');
     let twitterButton = document.getElementById('twitter-create');
 
+    let postsArray = getPostsFromStorage();
+    for (let index = 0; index < postsArray.length; index++) {
+        postsArray[index].currentIndex = index;
+    }
+    savePostsToStorage(postsArray);
+
     let deleteFinishedPostsButton = document.querySelector('.delete-all');
     deleteFinishedPostsButton.addEventListener('click', () => {
         let finishedPosts = document.querySelector(".finished-posts");
@@ -35,6 +41,67 @@ function init() {
 
     //display date on main page
     setInterval(displayDate, 100);
+
+    // accessing all finished posts delete buttons and adding event listeners to them
+    let finishedPosts = document.querySelector(".finished-posts");
+    let finishedPostCardCollection = finishedPosts.getElementsByTagName("post-card");
+    for (let currentPost = 0; currentPost < finishedPostCardCollection.length; currentPost++) {
+        let currentShadow = finishedPostCardCollection[currentPost].shadowRoot;
+        let currentDeleteButton = currentShadow.querySelector(".delete-button");
+        currentDeleteButton.addEventListener("click", () => {
+            let currentLocalSotrage = getPostsFromStorage();
+            let currentIndex = finishedPostCardCollection[currentPost].getAttribute('index');
+            for (let index = 0; index < currentLocalSotrage.length; index++) {
+                if (currentLocalSotrage[index].currentIndex == currentIndex) {
+                    currentLocalSotrage.splice(currentIndex, 1);
+                    savePostsToStorage(currentLocalSotrage);
+                    window.location.reload();
+                    break;
+                }
+            }
+        });
+    }
+    // accessing all finished posts edit buttons and adding event listeners to them
+    for (let currentPost = 0; currentPost < finishedPostCardCollection.length; currentPost++) {
+        let currentShadow = finishedPostCardCollection[currentPost].shadowRoot;
+        let currentEditButton = currentShadow.querySelector(".edit-button");
+        currentEditButton.addEventListener("click", () => {
+            console.log("finished edit!");
+            let url = "./edit_post/editPosts.html?currentIndex=" + finishedPostCardCollection[currentPost].getAttribute("index");
+            window.location.replace(url);
+        });
+    }
+
+    // accessing all upcoming posts delete buttons and adding event listeners to them
+    let upcomingPosts = document.querySelector(".upcoming-posts");
+    let upcomingPostCardCollection = upcomingPosts.getElementsByTagName("post-card");
+    for (let currentPost = 0; currentPost < upcomingPostCardCollection.length; currentPost++) {
+        let currentShadow = upcomingPostCardCollection[currentPost].shadowRoot;
+        let currentDeleteButton = currentShadow.querySelector(".delete-button");
+        currentDeleteButton.addEventListener("click", () => {
+            let currentLocalSotrage = getPostsFromStorage();
+            let currentIndex = upcomingPostCardCollection[currentPost].getAttribute('index');
+            for (let index = 0; index < currentLocalSotrage.length; index++) {
+                if (currentLocalSotrage[index].currentIndex == currentIndex) {
+                    currentLocalSotrage.splice(currentIndex, 1);
+                    savePostsToStorage(currentLocalSotrage);
+                    window.location.reload();
+                    break;
+                }
+            }
+        });
+    }
+
+    // accessing all upcoming posts edit buttons and adding event listeners to them
+    for (let currentPost = 0; currentPost < upcomingPostCardCollection.length; currentPost++) {
+        let currentShadow = upcomingPostCardCollection[currentPost].shadowRoot;
+        let currentEditButton = currentShadow.querySelector(".edit-button");
+        currentEditButton.addEventListener("click", () => {
+            console.log("upcoming edit!");
+            let url = "./edit_post/editPosts.html?currentIndex=" + upcomingPostCardCollection[currentPost].getAttribute("index");
+            window.location.replace(url);
+        });
+    }
 }
 /**
  * This function is used to check 
@@ -101,6 +168,7 @@ function addPostsToMain(posts) {
 
         //set an extra attribute so that we can use it in checkIfPostFinish
         postcard.setAttribute('class', posts[currentPost].dateData);
+        postcard.setAttribute('index', currentPost);
 
         postcard.data = {
             'postSummary': posts[currentPost].postSummary,
@@ -110,6 +178,7 @@ function addPostsToMain(posts) {
             'mainTxt': posts[currentPost].mainTxt,
             'platType': posts[currentPost].platType
         };
+
 
         //extract the Date property from post
         let currentPostDate = new Date(posts[currentPost].dateCompare);
@@ -148,29 +217,36 @@ function getPostsFromStorage() {
 function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
+
+/**
  * Once the Facebook button is clicked, the user is redirected
  * toward the creat post page specicially for Facebook posts 
  * where they can upload texts, images and etc. 
  */
+
 function createFb() {
     window.location.replace("./create_post/createFb.html");
 }
+
 
 /**
  * Once the Instagram button is clicked, the user is redirected
  * toward the creat post page specicially for Instagram posts 
  * where they can upload texts, images and etc. 
  */
+
 function createIns() {
     window.location.replace("./create_post/createIns.html");
 
 }
+
 
 /**
  * Once the Twitter button is clicked, the user is redirected
  * toward the creat post page specicially for Twitter posts 
  * where they can upload texts, images and etc. 
  */
+
 function createTw() {
     window.location.replace("./create_post/createTw.html");
 }

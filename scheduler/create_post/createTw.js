@@ -1,4 +1,4 @@
-// TODO: Create way to set constraints in the post based on what platform
+// Create way to set constraints in the post based on what platform
 // the post is for. i.e. Twitter posts need a character limit, Insta posts
 // need a picture, etc..
 // Done by Antonio
@@ -28,7 +28,7 @@ function checkText() {
 // Event listeners
 submitButton.addEventListener('click', checkText);
 
-// TODO: OnSubmit - store the formdata into localStorage to wherever we want
+// OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
 // be posted 
 const formEle = document.querySelector('form');
@@ -48,6 +48,7 @@ submitButton.addEventListener('click', () => {
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
+    postObject['currentIndex'] = 0;
     postObject['currentContainer'] = 'upcoming';
     postObject['postSummary'] = formData.get('post-summary');
     postObject['mainTxt'] = formData.get('desc-input');
