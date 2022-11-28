@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>create_post.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addPostsToMain">addPostsToMain</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkIfPostFinish">checkIfPostFinish</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createFb">createFb</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createIns">createIns</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createTw">createTw</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#displayDate">displayDate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getPostsFromStorage">getPostsFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#savePostsToStorage">savePostsToStorage</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">create_post.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// TODO: Create way to set constraints in the post based on what platform
+// the post is for. i.e. Twitter posts need a character limit, Insta posts
+// need a picture, etc..
+// Done by Antonio
+const postDescription = document.getElementById('desc-input');
+const postTag = document.getElementById('tag');
+const imageInput = document.getElementById('image-input');
+const submitButton = document.getElementById('submit');
+
+
+window.addEventListener('DOMContentLoaded', init);
+
+function init() {
+    constraints();
+}
+
+// Limit the amount of characters permited for every type of posts
+// Instagram posts must have at least one image
+function constraints() {
+    let selectedTag = postTag.selectedOptions[0];
+    // Facebook 63,206char max
+    if (selectedTag == postTag.options[0]) {
+        postDescription.maxLength = 63206;
+        submitButton.disabled = false;
+    }
+    // Twitter 280char max
+    if (selectedTag == postTag.options[1]) {
+        postDescription.maxLength = 280;
+        submitButton.disabled = false;
+    }
+    // Instagram 2,200char max and check if there is an image uploaded
+    if (selectedTag == postTag.options[2]) {
+        postDescription.maxLength = 2200;
+        if (imageInput.files.length == 0) {
+            submitButton.disabled = true;
+        }
+        else {
+            submitButton.disabled = false;
+        }
+    }
+}
+// Function called when clicking the submit button to check
+// if the text constraints are respected
+// The submit button is disabled for 1 second
+function checkText() {
+    if (postDescription.value.length > postDescription.maxLength) {
+        submitButton.disabled = true;
+        alert("Too many characters!");
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
+    }
+}
+// Event listeners
+postTag.addEventListener('change', constraints);
+imageInput.addEventListener("change", constraints);
+submitButton.addEventListener('click', checkText);
+// TODO: OnSubmit - store the formdata into localStorage to wherever we want
+// it to be stored. Should also store the time and date of when the post should
+// be posted
+const formEle = document.querySelector('form');
+let imgElement = document.querySelector("[type='file']");
+let file;
+let dataUrl = "";
+imgElement.addEventListener('change', () => {
+    file = imgElement.files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        dataUrl = reader.result;
+    });
+    reader.readAsDataURL(file);
+});
+//event listener for submit botton
+submitButton.addEventListener('click', () => {
+    let formData = new FormData(formEle);
+    //store user entered image, description, data .. into postObject
+    let postObject = {};
+    postObject['postSummary'] = formData.get('post-summary');
+    postObject['mainTxt'] = formData.get('desc-input');
+    postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
+    postObject['dateCompare'] = formData.get('date-to-post') + 'T' + formData.get('time-to-post') + ":" + "00";
+    postObject['platType'] = formData.get('tag');
+    postObject['mainImg'] = dataUrl;
+    if (dataUrl === "") {
+        postObject['imgAlt'] = "";
+    } else {
+        postObject['imgAlt'] = formData.get('tag') + ' image';
+    }
+    dataUrl = ""; //Once the information is stored, set it back to ""
+
+    //combine local posts and user entered post, store back into local
+    let postFromLocal = getPostsFromStorage();
+    postFromLocal.push(postObject);
+    postFromLocal.sort((post1, post2) => {
+        let postDate1 = new Date(post1['dateCompare']);
+        let postDate2 = new Date(post2['dateCompare']);
+        return postDate1 - postDate2;
+    });
+    savePostsToStorage(postFromLocal);
+});
+
+/**
+ * Reads 'posts' from localStorage and returns an array of
+ * all of the posts found (parsed, not in string form). If
+ * nothing is found in localStorage for 'posts', an empty array
+ * is returned.
+ * @returns {Array&lt;Object>} An array of posts found in localStorage
+ */
+function getPostsFromStorage() {
+    let posts = JSON.parse(localStorage.getItem("posts"));
+    if (posts === null) {
+        return [];
+    }
+    return posts;
+}
+/**
+ * Takes in an array of posts, converts it to a string, and then
+ * saves that string to 'posts' in localStorage
+ * @param {Array&lt;Object>} posts An array of posts
+ */
+function savePostsToStorage(posts) {
+    localStorage.setItem('posts', JSON.stringify(posts));
+}
+
+const backButton = document.querySelector("#back");
+backButton.addEventListener('click', () => {
+    window.location.replace("./index.html");
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Nov 22 2022 19:32:22 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

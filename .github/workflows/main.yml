@@ -1,14 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CI/CD Pipeline
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ "main","pipeline"]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main","pipeline"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -34,66 +34,114 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          
-      # Unit tests on JavaScript Files (This action will automatically install everything needed)
-      - name: Run Jest
-        # You may pin to the exact commit or the version.
-        # uses: stefanoeb/jest-action@f9bb23f509cde20ee9b494f0496d1d3323861cc4
-        uses: stefanoeb/jest-action@1.0.4
-        
-      - name: JSDoc Action
-        # You may pin to the exact commit or the version.
-        # uses: andstor/jsdoc-action@06eafccd94e3fedcbf4ff0a8f23d775c169efdf2
-        uses: andstor/jsdoc-action@v1.2.1
-        with:
-          # Source directory to build documentation from
-          source_dir: ./public/src
-          # Output folder for the generated documentation
-          output_dir: ./public/debug
-          # The JSDoc template to install
-          template: minami
-          # The path to a Markdown file to be used as a the front page
-          front_page: README.md
-          # The relative location of the template files within the template package
-          #template_dir: # optional
-          # Recurse into subdirectories when scanning for source files
-          #recurse: # optional
-          # The path to a JSDoc configuration file
-          #config_file: # optional
-          # This input variable is deprecated in favour of "template"
-          # template_name: minami
-
+         
   lint:
-    
-    runs-on: ubuntu-latest
-    
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      
-      # Combination of various linters, written in bash, to help your source code
-      - name: Super-Linter
-        uses: github/super-linter@v4.9.7
-        # Give full access to the repo and run individual linter in check section for each pull request
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Disable the blocking functionality of this linter (CI won't fail even if there are errors) 
-          # DISABLE_ERROS: true
-          ##
-          # Customize which destination output file should go to
-          # OUTPUT_FOLDER: Reports (for example) 
-          ##
-          # Customize the output file 
-          # OUTPUT_DETAILS: detailed
-          ##
-          # Restrict the files that linter run on  and the linter will only parse and lint the newly edited files
-          # VALIDATE_ALL_CODEBASE: false
-          # Disable linter running on specific type of files.
-          # VALIDATE_{TYPE_OF_FILES}: false (i.e: VALIDATE_ARM: false) 
-          ##
-          # Use any specific custom file rules
-          # {TYPE_OF_FILES}_CONFIG_FILE: {PATH_TO_THE_FILE}
+
+      runs-on: ubuntu-latest
+
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v3
+
+        # Combination of various linters, written in bash, to help your source code
+        - name: Super-Linter
+          uses: github/super-linter@v4.9.7
+          # Give full access to the repo and run individual linter in check section for each pull request
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # Disable the blocking functionality of this linter (CI won't fail even if there are errors) 
+            # DISABLE_ERROS: true
+            ##
+            # Customize which destination output file should go to
+            # OUTPUT_FOLDER: Reports (for example) 
+            ##
+            # Customize the output file 
+            # OUTPUT_DETAILS: detailed
+            ##
+            # Restrict the files that linter run on  and the linter will only parse and lint the newly edited files
+            # VALIDATE_ALL_CODEBASE: false
+            # Disable linter running on specific type of files.
+            # VALIDATE_{TYPE_OF_FILES}: false (i.e: VALIDATE_ARM: false) 
+            ##
+            # Use any specific custom file rules
+            # {TYPE_OF_FILES}_CONFIG_FILE: {PATH_TO_THE_FILE}
+            
+  documentation:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+
+       # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v3
+        
+#         - name: Install
+#           run: npm install -g jsdoc
           
-          
+        - name: JSDoc Action
+          uses: andstor/jsdoc-action@v1.2.1
+          with:
+             source_dir: ./scheduler
+             recurse: true
+             output_dir: ./docs
+             ## config_file: conf.json
+             template: minami
+             front_page: README.md
+
+      # Commit generated document into repository
+        - name: Commit
+          run: |
+            git config --local user.email "buwu@ucsd.edu"
+            git config --local user.name "Yr-Nemsis"
+            git add ./
+            git commit -m "Updating the Documentation"
+
+        # Push the change
+        - name: Push
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: pipeline
+            force: true
           
 
+  unit_test:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+      
+       # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v3
+        
+        # Setting Node.js with speicific version.
+        - name: Setup Node.js
+          uses: actions/setup-node@v1
+          with:
+            node-version: "16"
+
+        # Install required deps for action
+        - name: Install Dependencies
+          run: npm install
+
+        # Finally, run our tests
+        - name: Run the tests
+          run: npm test
+          
+  validate_html:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+      
+       # Steps represent a sequence of tasks that will be executed as part of the job
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v3
+        
+        # Validate html on html file
+        - name: HTML5 Validator
+          # You may pin to the exact commit or the version.
+          # uses: Cyb3r-Jak3/html5validator-action@41633d488eb36e18fd1a95ffc83daf1bf22a75bd
+          uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+          with:
+             root: ./scheduler/
+             css: ./scheduler/

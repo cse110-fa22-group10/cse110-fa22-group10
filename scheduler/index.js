@@ -218,18 +218,34 @@ function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
 
-// Once the facebook button is clicked, move to the creation page of the Facebook posts
+ * Once the Facebook button is clicked, the user is redirected
+ * toward the creat post page specicially for Facebook posts 
+ * where they can upload texts, images and etc. 
+ */
+
 function createFb() {
     window.location.replace("./create_post/createFb.html");
 }
 
-// Once the instagram button is clicked, move to the creation page of the Instagram posts
+
+/**
+ * Once the Instagram button is clicked, the user is redirected
+ * toward the creat post page specicially for Instagram posts 
+ * where they can upload texts, images and etc. 
+ */
+
 function createIns() {
     window.location.replace("./create_post/createIns.html");
 
 }
 
-// Once the twitter button is clicked, move to the creation page of the Twitter posts
+
+/**
+ * Once the Twitter button is clicked, the user is redirected
+ * toward the creat post page specicially for Twitter posts 
+ * where they can upload texts, images and etc. 
+ */
+
 function createTw() {
     window.location.replace("./create_post/createTw.html");
 }
