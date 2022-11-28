@@ -1,7 +1,7 @@
 # cse110-fa22-group10
 we ball
 
-[Link](https://cse110-fa22-group10.github.io/cse110-fa22-group10/admin) to the Team Page
+[Link](admin/team.md) to the Team Page
 
 [Link](https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html) to the application
 
