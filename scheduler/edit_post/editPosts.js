@@ -34,7 +34,7 @@ function init() {
     }
 
     //set the constraints accordingly and display the image in the container
-    constraints();
+    configureConstraints();
     getImgData();
 }
 
@@ -132,7 +132,7 @@ function dataURItoBlob(dataURI) {
 * this function limits the amount of characters permited for every type of posts 
 * instagram posts must have an image
 */
-function constraints() {
+function configureConstraints() {
     let currentCharacterLimit = document.getElementById('char-limit');
     let selectedTag = postTag.selectedOptions[0];
     // Facebook 63,206char max
@@ -174,8 +174,8 @@ function checkText() {
     }
 }
 // Event listeners
-postTag.addEventListener('change', constraints);
-imageInput.addEventListener("change", constraints);
+postTag.addEventListener('change', configureConstraints);
+imageInput.addEventListener("change", configureConstraints);
 submitButton.addEventListener('click', checkText);
 
 // store the formdata into localStorage to wherever we want
