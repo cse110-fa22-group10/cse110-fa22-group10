@@ -16,19 +16,32 @@ window.addEventListener('DOMContentLoaded', init);
 
 function init() {
     let currentIndex = 0;
+
+    //extracting the currentIndex from Url according to local storage
+    //so that we can prepopulate the form
     if (window.location.search.split('?').length > 1) {
         var params = window.location.search.split('?')[1];
         var key = params.split('=')[1];
+
+        //extract the current index
         currentIndex = parseInt(key);
+
+        //check that the current index is a valid integer
         if (!isNaN(currentIndex)) {
             indexToDelete = currentIndex;
             populateForm(currentIndex);
         }
     }
+
+    //set the constraints accordingly and display the image in the container
     constraints();
     getImgData();
 }
 
+/**
+ * This function previews the image 
+ * in the image container
+ */
 function getImgData() {
     const files = imageInput.files[0];
     if (files) {
@@ -47,12 +60,16 @@ function getImgData() {
  * summary, type, time, file, etc.
  */
 function populateForm(index) {
+
+    //extract the current post from local storage according to the current index
     let postFromLocal = getPostsFromStorage();
     let post = postFromLocal[index];
 
+    //prepopulate post summary and description
     document.getElementById("post-summary").value = post['postSummary'];
     document.getElementById("desc-input").value = post['mainTxt'];
 
+    //prepopulate the platform type
     let optionsCollection = document.getElementsByTagName("option");
     for (let currentOption = 0; currentOption < optionsCollection.length; currentOption++) {
         if (post['platType'] == optionsCollection[currentOption].value) {
@@ -60,20 +77,29 @@ function populateForm(index) {
         }
     }
 
+    //spliting the dateDate so that we get time and date variables
     let time = post["dateData"].split(", ")[1];
     let date = post["dateData"].split(", ")[0];
 
     document.getElementById("time-to-post").value = time;
     document.getElementById("date-to-post").value = date;
 
+    //gain access to the current image container
     const imageInput = document.querySelector('input[type="file"]');
+    //if the current image container contains a valid image file, extract its data url
     if (post['mainImg'] != '') {
+        //create new image file based on the image dataUrl from local storage
         const imageFile = new File([dataURItoBlob(post['mainImg'])], "currentImg.png");
+
+        //create a data transfer object and insert image file into the file list
         const dataTransfer = new DataTransfer();
         dataTransfer.items.add(imageFile);
+
+        //prepopulate the file input with image
         imageInput.files = dataTransfer.files;
         file = imgElement.files[0];
         const reader = new FileReader();
+        //set the data url to its the images data url representation
         reader.addEventListener("load", () => {
             dataUrl = reader.result;
         });
@@ -102,8 +128,10 @@ function dataURItoBlob(dataURI) {
 }
 
 
-// Limit the amount of characters permited for every type of posts
-// Instagram posts must have at least one image
+/*
+* this function limits the amount of characters permited for every type of posts 
+* instagram posts must have an image
+*/
 function constraints() {
     let currentCharacterLimit = document.getElementById('char-limit');
     let selectedTag = postTag.selectedOptions[0];
@@ -131,9 +159,11 @@ function constraints() {
         }
     }
 }
-// Function called when clicking the submit button to check
-// if the text constraints are respected
-// The submit button is disabled for 1 second
+/*
+* Function called when clicking the submit button to check
+* if the text constraints are respected
+* The submit button is disabled for 1 second if not
+*/
 function checkText() {
     if (postDescription.value.length > postDescription.maxLength) {
         submitButton.disabled = true;
@@ -147,7 +177,8 @@ function checkText() {
 postTag.addEventListener('change', constraints);
 imageInput.addEventListener("change", constraints);
 submitButton.addEventListener('click', checkText);
-// TODO: OnSubmit - store the formdata into localStorage to wherever we want
+
+// store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
 // be posted
 const formEle = document.querySelector('form');
@@ -193,11 +224,15 @@ submitButton.addEventListener('click', (event) => {
         let postDate2 = new Date(post2['dateCompare']);
         return postDate1 - postDate2;
     });
+
+    //delete the old instance of the post to be edited 
     postFromLocal.splice(indexToDelete, 1);
     savePostsToStorage(postFromLocal);
     window.location.replace('/scheduler/index.html')
 });
 
+// an event listener for the delete image data button in charge of removing images
+// when editing a post
 deleteImgDataButton.addEventListener('click', (event) => {
     event.preventDefault();
     dataUrl = '';
@@ -229,6 +264,8 @@ function savePostsToStorage(posts) {
 }
 
 const backButton = document.querySelector("#back-button");
+// an event listener to take the user back to the main page, 
+// when the back button is pressed
 backButton.addEventListener('click', () => {
     window.location.replace("/scheduler/index.html");
 });
