@@ -159,7 +159,7 @@ function configureConstraints() {
         }
     }
 }
-/*
+/**
 * Function called when clicking the submit button to check
 * if the text constraints are respected
 * The submit button is disabled for 1 second if not
