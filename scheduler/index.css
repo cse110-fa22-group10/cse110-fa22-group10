@@ -1,10 +1,10 @@
 @font-face {
     font-family: Roboto;
-    src: url(assets/Roboto-Black.ttf);
+    src: url(https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/assets/Roboto-Black.ttf);
 }
 
 html {
-    background: url(assets/main-background.svg) no-repeat center center fixed;
+    background: url(https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/assets/main-background.svg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
