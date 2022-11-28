@@ -218,6 +218,7 @@ function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
 
+/**
  * Once the Facebook button is clicked, the user is redirected
  * toward the creat post page specicially for Facebook posts 
  * where they can upload texts, images and etc. 
