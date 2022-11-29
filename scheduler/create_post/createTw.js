@@ -2,7 +2,10 @@
 // the post is for. i.e. Twitter posts need a character limit, Insta posts
 // need a picture, etc..
 // Done by Antonio
+const summary = document.getElementById('post-summary');
 const postDescription = document.getElementById('desc-input');
+const date = document.getElementById('date-to-post');
+const time = document.getElementById('time-to-post');
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 const characterLimit = document.getElementById('char-limit');
@@ -16,14 +19,25 @@ function init() {
 // Function called when clicking the submit button to check
 // if the text constraints are respected
 // The submit button is disabled for 1 second
-function checkText() {
-    if (postDescription.value.length > twitterCharlimit) {
+function checkEverything() {
+    // checks summary requirement
+    if ()
+
+    // checks character constraint
+    if (postDescription.value.length > twitterCharlimit || 
+        postDescription.value.length == 0) {
         submitButton.disabled = true;
         alert("Too many characters!");
         setTimeout(() => {
             submitButton.disabled = false;
     }, 1000);
     }
+
+    // checks date requirement
+
+
+    // checks time requirement
+
 }
 
 /**
