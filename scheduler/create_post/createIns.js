@@ -102,7 +102,7 @@ function checkEverything() {
  */
 function countChars() {
     characterLimit.innerText = "Character Limit: " +
-        postDescription.value.length + "/63206";
+        postDescription.value.length + "/" + instagramCharlimit;
     if(postDescription.value.length > instagramCharlimit) {
         characterLimit.style.color = 'red';
     }
