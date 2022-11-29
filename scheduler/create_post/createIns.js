@@ -9,7 +9,7 @@ const time = document.getElementById('time-to-post');
 const imgPreview = document.querySelector(".image-container");
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
-const facebookCharlimit = 63206;
+const instagramCharlimit = 2200;
 let validPost = false;
 window.addEventListener('DOMContentLoaded', init);
 
@@ -56,7 +56,7 @@ function checkEverything() {
     }
 
     // checks character constraint
-    if (postDescription.value.length > facebookCharlimit || 
+    if (postDescription.value.length > instagramCharlimit || 
         postDescription.value.length == 0) {
         submitButton.disabled = true;
         if (postDescription.value.lenth == 0) {
@@ -103,7 +103,7 @@ function checkEverything() {
 function countChars() {
     characterLimit.innerText = "Character Limit: " +
         postDescription.value.length + "/63206";
-    if(postDescription.value.length > facebookCharlimit) {
+    if(postDescription.value.length > instagramCharlimit) {
         characterLimit.style.color = 'red';
     }
     else {
