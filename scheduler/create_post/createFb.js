@@ -21,9 +21,6 @@ function checkText() {
     }
 }
 
-// Event listeners
-submitButton.addEventListener('click', checkText);
-
 // OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
 // be posted 
@@ -39,36 +36,64 @@ imgElement.addEventListener('change', () => {
     });
     reader.readAsDataURL(file);
 });
+
+/**
+ * Function called when clicking the submit button to check 
+ * if text, date and time have been entered and if not,
+ * the submit button is disabled 
+ */
+ function checkRequiredFields() {
+    let formData = new FormData(formEle);
+    if (formData.get('post-summary') == "" || formData.get('desc-input') == "" || formData.get('date-to-post') == "" || formData.get('time-to-post') == ""){
+        return false;
+    }
+    return true;
+}
+
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
     let formData = new FormData(formEle);
-    //store user entered image, description, data .. into postObject
-    let postObject = {};
-    postObject['currentIndex'] = 0;
-    postObject['currentContainer'] = 'upcoming';
-    postObject['postSummary'] = formData.get('post-summary');
-    postObject['mainTxt'] = formData.get('desc-input');
-    postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
-    postObject['dateCompare'] = formData.get('date-to-post') + 'T' + formData.get('time-to-post') + ":" + "00";
-    postObject['platType'] = formData.get('tag');
-    postObject['mainImg'] = dataUrl;
-    if (dataUrl === "") {
-        postObject['imgAlt'] = "";
-    } else {
-        postObject['imgAlt'] = formData.get('tag') + ' image';
+    // Check if all required fields have been filled 
+    if (!checkRequiredFields()){
+        alert("Please fill out Summary, Description ,Date and Time !");
+        submitButton.disabled = true;
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
     }
-    dataUrl = ""; //Once the information is stored, set it back to ""
+    //store user entered image, description, data .. into postObject
+    else{
+        let postObject = {};
+        postObject['currentIndex'] = 0;
+        postObject['currentContainer'] = 'upcoming';
+        postObject['postSummary'] = formData.get('post-summary');
+        postObject['mainTxt'] = formData.get('desc-input');
+        postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
+        postObject['dateCompare'] = formData.get('date-to-post') + 'T' + formData.get('time-to-post') + ":" + "00";
+        postObject['platType'] = formData.get('tag');
+        postObject['mainImg'] = dataUrl;
+        if (dataUrl === "") {
+            postObject['imgAlt'] = "";
+        } else {
+            postObject['imgAlt'] = formData.get('tag') + ' image';
+        }
+        dataUrl = ""; //Once the information is stored, set it back to ""
 
-    //combine local posts and user entered post, store back into local
-    let postFromLocal = getPostsFromStorage();
-    postFromLocal.push(postObject);
-    postFromLocal.sort((post1, post2) => {
-        let postDate1 = new Date(post1['dateCompare']);
-        let postDate2 = new Date(post2['dateCompare']);
-        return postDate1 - postDate2;
-    });
-    savePostsToStorage(postFromLocal);
+        //combine local posts and user entered post, store back into local
+        let postFromLocal = getPostsFromStorage();
+        postFromLocal.push(postObject);
+        postFromLocal.sort((post1, post2) => {
+            let postDate1 = new Date(post1['dateCompare']);
+            let postDate2 = new Date(post2['dateCompare']);
+            return postDate1 - postDate2;
+        });
+        savePostsToStorage(postFromLocal);
+    }
 });
+
+// Event listeners
+//check posts is finised every 10 miliseconds
+//setInterval(checkRequiredFields, 100);
 
 /**
  * Reads 'posts' from localStorage and returns an array of
