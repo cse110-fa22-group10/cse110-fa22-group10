@@ -2,7 +2,10 @@
 // the post is for. i.e. Twitter posts need a character limit, Insta posts
 // need a picture, etc..
 // Done by Antonio
+const summary = document.getElementById('post-summary');
 const postDescription = document.getElementById('desc-input');
+const date = document.getElementById('date-to-post');
+const time = document.getElementById('time-to-post');
 const imgPreview = document.querySelector(".image-container");
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
