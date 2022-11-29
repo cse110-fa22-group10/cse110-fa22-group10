@@ -6,7 +6,8 @@ const postDescription = document.getElementById('desc-input');
 const imgPreview = document.querySelector(".image-container");
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
-
+const facebookCharlimit = 63206;
+let validPost = false;
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
@@ -41,14 +42,57 @@ function getImgData() {
 // Function called when clicking the submit button to check
 // if the text constraints are respected
 // The submit button is disabled for 1 second
-function checkText() {
-    if (postDescription.value.length > postDescription.maxLength) {
+function checkEverything() {
+    // checks summary requirement
+    if (summary.value.length == 0) {
         submitButton.disabled = true;
-        alert("Too many characters!");
+        alert("Post needs a summary!");
         setTimeout(() => {
             submitButton.disabled = false;
-    }, 1000);
+        }, 1000);
+        validPost = false;
+        return;
     }
+
+    // checks character constraint
+    if (postDescription.value.length > facebookCharlimit || 
+        postDescription.value.length == 0) {
+        submitButton.disabled = true;
+        if (postDescription.value.lenth == 0) {
+            alert("Post needs a description!");
+        }
+        else {
+            alert("Too many characters!");
+        }
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
+        validPost = false;
+        return;
+    }
+
+    // checks date requirement
+    if (date.value.length == 0) {
+        submitButton.disabled = true;
+        alert("Post needs a date!");
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
+        validPost = false;
+        return;
+    }
+
+    // checks time requirement
+    if (time.value.length == 0) {
+        submitButton.disabled = true;
+        alert("Post needs a time!");
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
+        validPost = false;
+        return;
+    }
+    validPost = true;
 }
 
 // Event listeners
@@ -62,6 +106,9 @@ const formEle = document.querySelector('form');
 
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
+    if(!validPost) {
+        return;
+    }
     let formData = new FormData(formEle);
 
     //store user entered image, description, data .. into postObject 
