@@ -26,10 +26,6 @@ function checkText() {
 
 // Event listeners
 submitButton.addEventListener('click', checkText);
-
-// TODO: OnSubmit - store the formdata into localStorage to wherever we want
-// it to be stored. Should also store the time and date of when the post should
-// be posted 
 const formEle = document.querySelector('form');
 
 //event listener for submit botton

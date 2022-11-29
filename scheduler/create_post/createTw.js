@@ -5,6 +5,8 @@
 const postDescription = document.getElementById('desc-input');
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
+const characterLimit = document.getElementById('char-limit');
+const twitterCharlimit = 280;
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -15,7 +17,7 @@ function init() {
 // if the text constraints are respected
 // The submit button is disabled for 1 second
 function checkText() {
-    if (postDescription.value.length > postDescription.maxLength) {
+    if (postDescription.value.length > twitterCharlimit) {
         submitButton.disabled = true;
         alert("Too many characters!");
         setTimeout(() => {
@@ -24,8 +26,25 @@ function checkText() {
     }
 }
 
+/**
+ * Called when description is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countChars() {
+    console.log(characterLimit.innerText);
+    characterLimit.innerText = "Character Limit: " +
+        postDescription.value.length + "/280";
+    if(postDescription.value.length > twitterCharlimit) {
+        characterLimit.style.color = 'red';
+    }
+    else {
+        characterLimit.style.color = 'black';
+    }
+}
+
 // Event listeners
 submitButton.addEventListener('click', checkText);
+postDescription.addEventListener('keypress', countChars);
 
 // TODO: OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
