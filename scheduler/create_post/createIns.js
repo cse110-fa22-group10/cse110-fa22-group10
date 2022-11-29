@@ -37,8 +37,6 @@ function getImgData() {
     }
   }
 
-
-
 // Function called when clicking the submit button to check
 // if the text constraints are respected
 // The submit button is disabled for 1 second
@@ -95,9 +93,25 @@ function checkEverything() {
     validPost = true;
 }
 
+/**
+ * Called when description is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countChars() {
+    characterLimit.innerText = "Character Limit: " +
+        postDescription.value.length + "/63206";
+    if(postDescription.value.length > facebookCharlimit) {
+        characterLimit.style.color = 'red';
+    }
+    else {
+        characterLimit.style.color = 'black';
+    }
+}
+
 // Event listeners
 imageInput.addEventListener('change', constraints);
 submitButton.addEventListener('click', checkText);
+postDescription.addEventListener('keypress', countChars);
 
 // TODO: OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
