@@ -113,7 +113,7 @@ function countChars() {
 
 // Event listeners
 imageInput.addEventListener('change', constraints);
-submitButton.addEventListener('click', checkText);
+submitButton.addEventListener('click', checkEverything);
 postDescription.addEventListener('keypress', countChars);
 
 // TODO: OnSubmit - store the formdata into localStorage to wherever we want
