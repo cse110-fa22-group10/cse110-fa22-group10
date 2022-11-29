@@ -10,6 +10,7 @@ const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 const characterLimit = document.getElementById('char-limit');
 const twitterCharlimit = 280;
+let validPost = false;
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -21,23 +22,55 @@ function init() {
 // The submit button is disabled for 1 second
 function checkEverything() {
     // checks summary requirement
-    if ()
+    if (summary.value.length == 0) {
+        submitButton.disabled = true;
+        alert("Post needs a summary!");
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
+        validPost = false;
+        return;
+    }
 
     // checks character constraint
     if (postDescription.value.length > twitterCharlimit || 
         postDescription.value.length == 0) {
         submitButton.disabled = true;
-        alert("Too many characters!");
+        if (postDescription.value.lenth == 0) {
+            alert("Post needs a description!");
+        }
+        else {
+            alert("Too many characters!");
+        }
         setTimeout(() => {
             submitButton.disabled = false;
-    }, 1000);
+        }, 1000);
+        validPost = false;
+        return;
     }
 
     // checks date requirement
-
+    if (date.value.length == 0) {
+        submitButton.disabled = true;
+        alert("Post needs a date!");
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
+        validPost = false;
+        return;
+    }
 
     // checks time requirement
-
+    if (time.value.length == 0) {
+        submitButton.disabled = true;
+        alert("Post needs a time!");
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
+        validPost = false;
+        return;
+    }
+    validPost = true;
 }
 
 /**
@@ -45,7 +78,6 @@ function checkEverything() {
  * and checks to see is char count is exceeded
  */
 function countChars() {
-    console.log(characterLimit.innerText);
     characterLimit.innerText = "Character Limit: " +
         postDescription.value.length + "/280";
     if(postDescription.value.length > twitterCharlimit) {
@@ -57,7 +89,7 @@ function countChars() {
 }
 
 // Event listeners
-submitButton.addEventListener('click', checkText);
+submitButton.addEventListener('click', checkEverything);
 postDescription.addEventListener('keypress', countChars);
 
 // TODO: OnSubmit - store the formdata into localStorage to wherever we want
@@ -67,6 +99,9 @@ const formEle = document.querySelector('form');
 
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
+    if(!validPost) {
+        return;
+    }
     let formData = new FormData(formEle);
 
     //store user entered image, description, data .. into postObject 
