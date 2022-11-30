@@ -122,6 +122,8 @@ describe('Basic user flow for Website', () => {
       await page.reload();
 
       await page.click('button[id=back-button]');
+        
+      await page.reload();
       
       // Query select all of the <post-card> elements and return the length of that array
       const numCards = await page.$$eval('post-card', (postCards) => {
