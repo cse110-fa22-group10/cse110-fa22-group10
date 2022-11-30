@@ -22,48 +22,54 @@ describe('Basic user flow for Website', () => {
       let curr_url;
 
       await page.click('button[id=facebook-create]');
-      curr_url = await page.url();
       await page.reload();
+      curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createFb.html');
 
       await page.reload();
 
       await page.click('button[id=back-button]');
-      curr_url = await page.url();
       await page.reload();
+      curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
-      await page.click('button[id=twitter-create]');
-      curr_url = await page.url();
       await page.reload();
+
+      await page.click('button[id=twitter-create]');
+      await page.reload();
+      curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createTw.html');
 
       await page.reload();
 
       await page.click('button[id=back-button]');
-      curr_url = await page.url();
       await page.reload();
+      curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
+      await page.reload();
 
       await page.click('button[id=instagram-create]');
-      curr_url = await page.url();
       await page.reload();
+      curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createIns.html');
 
       await page.reload();
 
       await page.click('button[id=back-button]');
-      curr_url = await page.url();
       await page.reload();
+      curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
-    });
+
+    }, 10000);
 
     // Next, Check all fields are fillable
     it('Fill the fields and Check if all data have been recorded', async () => {
       console.log('Checking for fillable fields...');
 
       await page.click('button[id=facebook-create]');
+
+      await page.reload();
       
       // Fill out the required fields to create a post
       await page.$eval('input[name=post-summary]', el => el.value = 'E2E Testing on createFb');
@@ -119,13 +125,13 @@ describe('Basic user flow for Website', () => {
         return window.localStorage.getItem('posts');
       });
       expect(post).toBe('[{"currentIndex":0,"currentContainer":"upcoming","postSummary":"E2E Testing on createFb","mainTxt":"Used as a test case to see if LocalStorage is correctly populated","dateData":"2022-11-29, 20:27","dateCompare":"2022-11-29T20:27:00","platType":"facebook","mainImg":"","imgAlt":""}]');
+      
+
     }, 10000);
 
     // Finally, check if the main page has indeed been successfully populated
     it('The main page should be correctly populated with one post', async () => {
       console.log('Checking for 1 post cards...');
-
-      await page.reload();
 
       await page.click('button[id=back-button]');
         
