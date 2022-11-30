@@ -130,6 +130,8 @@ describe('Basic user flow for Website', () => {
     it('The main page should be correctly populated with one post', async () => {      
       console.log('Checking for 1 post cards...');
 
+      await page.reload();
+
       await page.click('button[id=back-button]');
         
       page.waitForSelector('post-card');      
