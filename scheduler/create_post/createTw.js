@@ -32,7 +32,7 @@ function checkEverything() {
     if (postDescription.value.length > twitterCharlimit || 
         postDescription.value.length == 0) {
         submitButton.disabled = true;
-        if (postDescription.value.lenth == 0) {
+        if (postDescription.value.length == 0) {
             alert("Post needs a description!");
         }
         else {
