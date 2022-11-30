@@ -1,15 +1,7 @@
-// Create way to set constraints in the post based on what platform
-// the post is for. i.e. Twitter posts need a character limit, Insta posts
-// need a picture, etc..
-// Done by Antonio
 const summary = document.getElementById('post-summary');
 const postDescription = document.getElementById('desc-input');
-<<<<<<< HEAD
-const postTag = document.getElementById('tag');
-=======
 const date = document.getElementById('date-to-post');
 const time = document.getElementById('time-to-post');
->>>>>>> main-page-frontend
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 const characterLimit = document.getElementById('char-limit');
@@ -32,8 +24,6 @@ function checkEverything() {
         setTimeout(() => {
             submitButton.disabled = false;
         }, 1000);
-<<<<<<< HEAD
-=======
         validPost = false;
         return;
     }
@@ -91,7 +81,6 @@ function countChars() {
     }
     else {
         characterLimit.style.color = 'black';
->>>>>>> main-page-frontend
     }
 }
 
