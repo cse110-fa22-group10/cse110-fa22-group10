@@ -129,7 +129,7 @@ describe('Basic user flow for Website', () => {
       expect(post).toBe('[{"currentIndex":0,"currentContainer":"upcoming","postSummary":"E2E Testing on createFb","mainTxt":"Used as a test case to see if LocalStorage is correctly populated","dateData":"2022-11-29, 20:27","dateCompare":"2022-11-29T20:27:00","platType":"facebook","mainImg":"","imgAlt":""}]');
       
 
-    }, 10000);
+    }, 20000);
 
     // Finally, check if the main page has indeed been successfully populated
     it('The main page should be correctly populated with one post', async () => {      
