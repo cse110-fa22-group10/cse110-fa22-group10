@@ -69,7 +69,7 @@ describe('Basic user flow for Website', () => {
 
       await page.click('button[id=facebook-create]');
 
-      await page.reload();
+      await page.waitForSelector('input[name=post-summary]');
       
       // Fill out the required fields to create a post
       await page.$eval('input[name=post-summary]', el => el.value = 'E2E Testing on createFb');
@@ -108,6 +108,8 @@ describe('Basic user flow for Website', () => {
       await page.evaluate(() => {
         window.localStorage.clear();
       })
+
+      await page.waitForSelector('input[name=post-summary]');
       
       // Fill out the required fields to create a post
       await page.$eval('input[name=post-summary]', el => el.value = 'E2E Testing on createFb');
@@ -130,13 +132,14 @@ describe('Basic user flow for Website', () => {
     }, 10000);
 
     // Finally, check if the main page has indeed been successfully populated
-    it('The main page should be correctly populated with one post', async () => {
+    it('The main page should be correctly populated with one post', async () => {      
       console.log('Checking for 1 post cards...');
+
+      await page.waitForSelector('button[id=back-button]');
 
       await page.click('button[id=back-button]');
         
-      await page.reload();
-      
+      page.waitForSelector('post-card');      
       // Query select all of the <post-card> elements and return the length of that array
       const numCards = await page.$$eval('post-card', (postCards) => {
         return postCards.length;
