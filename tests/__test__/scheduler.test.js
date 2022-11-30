@@ -35,31 +35,31 @@ describe('Basic user flow for Website', () => {
 
       await page.reload();
 
-      await page.click('button[id=twitter-create]');
-      await page.reload();
-      curr_url = await page.url();
-      expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createTw.html');
+      // await page.click('button[id=twitter-create]');
+      // await page.reload();
+      // curr_url = await page.url();
+      // expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createTw.html');
 
-      await page.reload();
+      // await page.reload();
 
-      await page.click('button[id=back-button]');
-      await page.reload();
-      curr_url = await page.url();
-      expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
+      // await page.click('button[id=back-button]');
+      // await page.reload();
+      // curr_url = await page.url();
+      // expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
-      await page.reload();
+      // await page.reload();
 
-      await page.click('button[id=instagram-create]');
-      await page.reload();
-      curr_url = await page.url();
-      expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createIns.html');
+      // await page.click('button[id=instagram-create]');
+      // await page.reload();
+      // curr_url = await page.url();
+      // expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createIns.html');
 
-      await page.reload();
+      // await page.reload();
 
-      await page.click('button[id=back-button]');
-      await page.reload();
-      curr_url = await page.url();
-      expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
+      // await page.click('button[id=back-button]');
+      // await page.reload();
+      // curr_url = await page.url();
+      // expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
     }, 50000);
 
