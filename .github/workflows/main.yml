@@ -122,7 +122,7 @@ jobs:
 
         # Install required deps for action
         - name: Install Dependencies
-          run: npm install --save-dev jest babel-jest @babel/core @babel/preset-env puppeteer jest-puppeteer
+          run: npm install
 
         # Finally, run our tests
         - name: Run the tests

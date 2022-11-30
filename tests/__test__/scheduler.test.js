@@ -22,11 +22,13 @@ describe('Basic user flow for Website', () => {
       let curr_url;
 
       await page.click('button[id=facebook-create]');
+      await page.reload();
       await page.waitForSelector('button[id=back-button]');
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createFb.html');
 
       await page.click('button[id=back-button]');
+      await page.reload();
       await page.waitForSelector('button[id=facebook-create]');
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
@@ -65,6 +67,7 @@ describe('Basic user flow for Website', () => {
 
       await page.click('button[id=facebook-create]');
 
+      await page.reload();
       await page.waitForSelector('input[name=post-summary]');
       
       // Fill out the required fields to create a post
@@ -105,6 +108,7 @@ describe('Basic user flow for Website', () => {
         window.localStorage.clear();
       })
 
+      await page.reload();
       await page.waitForSelector('input[name=post-summary]');
       
       // Fill out the required fields to create a post
@@ -116,6 +120,7 @@ describe('Basic user flow for Website', () => {
       // Click the Done button 
       await page.click('input[type=submit]')
       
+      await page.reload();
       await page.waitForSelector('button[id=back-button]');
       //Get the post from local Storage
       const post = await page.evaluate(() => {
@@ -134,7 +139,8 @@ describe('Basic user flow for Website', () => {
 
       await page.click('button[id=back-button]');
         
-      page.waitForSelector('post-card');      
+      await page.reload(); 
+      await page.waitForSelector('post-card');      
       // Query select all of the <post-card> elements and return the length of that array
       const numCards = await page.$$eval('post-card', (postCards) => {
         return postCards.length;
