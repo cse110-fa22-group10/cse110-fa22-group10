@@ -143,5 +143,10 @@ describe('Basic user flow for Website', () => {
       });
       // Expect there that array from earlier to be of length 1, meaning 1 <post-card> elements where found
       expect(numCards).toBe(1);
+        
+      // Delete all the localStorage before Starting
+      await page.evaluate(() => {
+        window.localStorage.clear();
+      });
     }, 10000);
 })
