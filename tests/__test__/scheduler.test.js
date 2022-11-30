@@ -115,9 +115,8 @@ describe('Basic user flow for Website', () => {
 
       // Click the Done button 
       await page.click('input[type=submit]')
-
-      await page.waitForNavigation();
-
+      
+      await page.waitForSelector('button[id=back-button]');
       //Get the post from local Storage
       const post = await page.evaluate(() => {
         return window.localStorage.getItem('posts');
@@ -130,8 +129,6 @@ describe('Basic user flow for Website', () => {
     // Finally, check if the main page has indeed been successfully populated
     it('The main page should be correctly populated with one post', async () => {      
       console.log('Checking for 1 post cards...');
-
-      await page.waitForSelector('button[id=back-button]');
 
       await page.click('button[id=back-button]');
         
