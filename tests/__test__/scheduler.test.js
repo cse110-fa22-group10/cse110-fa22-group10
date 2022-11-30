@@ -22,18 +22,14 @@ describe('Basic user flow for Website', () => {
       let curr_url;
 
       await page.click('button[id=facebook-create]');
-      await page.reload();
+      await page.waitForSelector('button[id=back-button]');
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createFb.html');
 
-      await page.reload();
-
       await page.click('button[id=back-button]');
-      await page.reload();
+      await page.waitForSelector('button[id=facebook-create]');
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
-
-      await page.reload();
 
       // await page.click('button[id=twitter-create]');
       // await page.reload();
