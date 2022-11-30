@@ -1,7 +1,3 @@
-// TODO: Create way to set constraints in the post based on what platform
-// the post is for. i.e. Twitter posts need a character limit, Insta posts
-// need a picture, etc..
-// Done by Antonio
 const postDescription = document.getElementById('desc-input');
 const postTag = document.getElementById('tag');
 const imgPreview = document.getElementById("main-image-container");
