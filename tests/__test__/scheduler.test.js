@@ -23,33 +23,39 @@ describe('Basic user flow for Website', () => {
 
       await page.click('button[id=facebook-create]');
       curr_url = await page.url();
+      await page.reload();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createFb.html');
 
       await page.reload();
 
       await page.click('button[id=back-button]');
       curr_url = await page.url();
+      await page.reload();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
       await page.click('button[id=twitter-create]');
       curr_url = await page.url();
+      await page.reload();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createTw.html');
 
       await page.reload();
 
       await page.click('button[id=back-button]');
       curr_url = await page.url();
+      await page.reload();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
 
       await page.click('button[id=instagram-create]');
       curr_url = await page.url();
+      await page.reload();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createIns.html');
 
       await page.reload();
 
       await page.click('button[id=back-button]');
       curr_url = await page.url();
+      await page.reload();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
     });
 
@@ -86,7 +92,7 @@ describe('Basic user flow for Website', () => {
 
       expect(time).toBe('20:27');
 
-    }, 10000);
+    }, 20000);
 
     // Next, fill the required fields and check if the data is uploaded to the localStorage
     it('Fill the fields and Click the Submit button should upload data to LocalStorage', async () => {
