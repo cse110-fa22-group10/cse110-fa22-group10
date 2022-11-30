@@ -24,12 +24,14 @@ describe('Basic user flow for Website', () => {
       await page.click('button[id=facebook-create]');
       await page.reload();
       await page.waitForSelector('button[id=back-button]');
+      jest.setTimeout(50000)
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createFb.html');
 
       await page.click('button[id=back-button]');
       await page.reload();
       await page.waitForSelector('button[id=facebook-create]');
+      jest.setTimeout(50000)
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
@@ -59,7 +61,7 @@ describe('Basic user flow for Website', () => {
       // curr_url = await page.url();
       // expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
-    }, 50000);
+    }, 100000);
 
     // Next, Check all fields are fillable
     it('Fill the fields and Check if all data have been recorded', async () => {
@@ -69,6 +71,7 @@ describe('Basic user flow for Website', () => {
 
       await page.reload();
       await page.waitForSelector('input[name=post-summary]');
+      jest.setTimeout(50000)
       
       // Fill out the required fields to create a post
       await page.$eval('input[name=post-summary]', el => el.value = 'E2E Testing on createFb');
@@ -97,7 +100,7 @@ describe('Basic user flow for Website', () => {
 
       expect(time).toBe('20:27');
 
-    }, 50000);
+    }, 100000);
 
     // Next, fill the required fields and check if the data is uploaded to the localStorage
     it('Fill the fields and Click the Submit button should upload data to LocalStorage', async () => {
@@ -110,6 +113,7 @@ describe('Basic user flow for Website', () => {
 
       await page.reload();
       await page.waitForSelector('input[name=post-summary]');
+      jest.setTimeout(50000)
       
       // Fill out the required fields to create a post
       await page.$eval('input[name=post-summary]', el => el.value = 'E2E Testing on createFb');
@@ -129,7 +133,7 @@ describe('Basic user flow for Website', () => {
       expect(post).toBe('[{"currentIndex":0,"currentContainer":"upcoming","postSummary":"E2E Testing on createFb","mainTxt":"Used as a test case to see if LocalStorage is correctly populated","dateData":"2022-11-29, 20:27","dateCompare":"2022-11-29T20:27:00","platType":"facebook","mainImg":"","imgAlt":""}]');
       
 
-    }, 50000);
+    }, 100000);
 
     // Finally, check if the main page has indeed been successfully populated
     it('The main page should be correctly populated with one post', async () => {      
@@ -140,7 +144,8 @@ describe('Basic user flow for Website', () => {
       await page.click('button[id=back-button]');
         
       await page.reload(); 
-      await page.waitForSelector('post-card');      
+      await page.waitForSelector('post-card');    
+      jest.setTimeout(50000)  
       // Query select all of the <post-card> elements and return the length of that array
       const numCards = await page.$$eval('post-card', (postCards) => {
         return postCards.length;
@@ -152,5 +157,5 @@ describe('Basic user flow for Website', () => {
       await page.evaluate(() => {
         window.localStorage.clear();
       });
-    }, 50000);
+    }, 100000);
 })
