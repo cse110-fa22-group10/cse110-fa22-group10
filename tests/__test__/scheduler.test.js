@@ -97,7 +97,7 @@ describe('Basic user flow for Website', () => {
 
       expect(time).toBe('20:27');
 
-    }, 10000);
+    }, 50000);
 
     // Next, fill the required fields and check if the data is uploaded to the localStorage
     it('Fill the fields and Click the Submit button should upload data to LocalStorage', async () => {
@@ -152,5 +152,5 @@ describe('Basic user flow for Website', () => {
       await page.evaluate(() => {
         window.localStorage.clear();
       });
-    }, 10000);
+    }, 50000);
 })
