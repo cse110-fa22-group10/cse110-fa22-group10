@@ -5,6 +5,7 @@ const time = document.getElementById('time-to-post');
 const imgPreview = document.querySelector(".image-container");
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
+const characterLimit = document.getElementById('char-limit');
 const instagramCharlimit = 2200;
 let validPost = false;
 window.addEventListener('DOMContentLoaded', init);
@@ -110,7 +111,7 @@ function countChars() {
 // Event listeners
 imageInput.addEventListener('change', constraints);
 submitButton.addEventListener('click', checkEverything);
-postDescription.addEventListener('keypress', countChars);
+postDescription.addEventListener('input', countChars);
 
 // OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should

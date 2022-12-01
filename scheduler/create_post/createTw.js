@@ -86,7 +86,7 @@ function countChars() {
 
 // Event listeners
 submitButton.addEventListener('click', checkEverything);
-postDescription.addEventListener('keypress', countChars);
+postDescription.addEventListener('input', countChars);
 
 // OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should

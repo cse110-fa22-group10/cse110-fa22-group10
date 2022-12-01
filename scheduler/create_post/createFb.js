@@ -4,8 +4,10 @@ const date = document.getElementById('date-to-post');
 const time = document.getElementById('time-to-post');
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
+const characterLimit = document.getElementById('char-limit');
 let facebookCharLimit = 63206;
 let validPost = false;
+
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
@@ -84,7 +86,8 @@ function countChars() {
 
 // Event listeners
 submitButton.addEventListener('click', checkEverything);
-postDescription.addEventListener('keypress', countChars);
+postDescription.addEventListener('input', countChars);
+
 const formEle = document.querySelector('form');
 let imgElement = document.querySelector("[type='file']");
 let file;
