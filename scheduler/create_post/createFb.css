@@ -83,7 +83,8 @@ body {
     padding: 0.5vw;
 }
 
-#char-limit {
+#desc-char-limit,
+#summary-char-limit {
     position: relative;
     left: 41.7vw;
 }
@@ -107,6 +108,15 @@ body {
 #date-to-post,
 #time-to-post {
     font-size: 1vw;
+}
+
+#remove-image-data-button {
+    position: relative;
+    background-color: brown;
+    color: white;
+    font-size: 1vw;
+    border-radius: 1vw;
+    top: 3vw;
 }
 
 #submit {

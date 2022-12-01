@@ -1,28 +1,12 @@
 const postDescription = document.getElementById('desc-input');
 const postTag = document.getElementById('tag');
 const imageInput = document.getElementById('image-input');
-const submitButton = document.getElementById('submit');
+const deleteImgDataButton = document.getElementById('remove-image-data-button');
 
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
 }
-
-// Function called when clicking the submit button to check
-// if the text constraints are respected
-// The submit button is disabled for 1 second
-function checkText() {
-    if (postDescription.value.length > postDescription.maxLength) {
-        submitButton.disabled = true;
-        alert("Too many characters!");
-        setTimeout(() => {
-            submitButton.disabled = false;
-        }, 1000);
-    }
-}
-
-// Event listeners
-submitButton.addEventListener('click', checkText);
 
 // OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
@@ -39,8 +23,8 @@ imgElement.addEventListener('change', () => {
     });
     reader.readAsDataURL(file);
 });
-//event listener for submit botton
-submitButton.addEventListener('click', () => {
+//event listener for form on submit
+formEle.addEventListener('submit', () => {
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
@@ -68,6 +52,15 @@ submitButton.addEventListener('click', () => {
         return postDate1 - postDate2;
     });
     savePostsToStorage(postFromLocal);
+});
+
+
+// an event listener for the delete image data button in charge of removing images
+// when editing a post
+deleteImgDataButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    dataUrl = '';
+    imageInput.value = '';
 });
 
 /**

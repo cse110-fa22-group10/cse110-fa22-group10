@@ -22,22 +22,24 @@
                 <div class="text-container">
                     <div id="summary-container">
                         <label for="post-summary"></label>
-                        <input id="post-summary" name="post-summary" type="text" placeholder="Post Summary">
+                        <input id="post-summary" name="post-summary" type="text" placeholder="Post Summary"
+                            maxlength="100" required>
+                        <div id="summary-char-limit">Character Limit: 100</div>
                     </div>
                     <div id="description-container">
                         <label for="desc-input"></label>
-                        <textarea name="desc-input" id="desc-input" maxlength="63206"
-                            placeholder="Post Description"></textarea>
-                        <div id="char-limit">Character Limit: 63206</div>
+                        <textarea name="desc-input" id="desc-input" maxlength="63206" placeholder="Post Description"
+                            required></textarea>
+                        <div id="desc-char-limit">Character Limit: 63206</div>
                     </div>
                 </div>
                 <!-- Post image, date, and time on the right-->
                 <div id="date-time-container">
                     <label for="date-to-post">Date:</label>
-                    <input id="date-to-post" name="date-to-post" type="date">
+                    <input id="date-to-post" name="date-to-post" type="date" required>
 
                     <label for="time-to-post"> Time:</label>
-                    <input id="time-to-post" name="time-to-post" type="time">
+                    <input id="time-to-post" name="time-to-post" type="time" required>
 
                     <label for="image-input">Images:</label>
                     <!-- Changed the type from image to file and added accepted images -Antonio -->
@@ -45,6 +47,7 @@
                         accept=".jpg, .jpeg, .png, .bmp">
 
                     <!-- Changed the submit button to a input type='submit' -Antonio -->
+                    <button id="remove-image-data-button">Remove Image Data</button>
                     <input id="submit" name="submit-button" type="submit" value="DONE">
                 </div>
                 <input type="hidden" id="tag" name="tag" value="facebook">
