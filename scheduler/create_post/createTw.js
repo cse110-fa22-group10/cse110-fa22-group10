@@ -100,5 +100,5 @@ function savePostsToStorage(posts) {
 
 const backButton = document.querySelector("#back-button");
 backButton.addEventListener('click', () => {
-    window.location.replace("https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html");
+    window.location.replace("../index.html");
 });
