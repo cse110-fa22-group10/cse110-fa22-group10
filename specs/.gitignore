@@ -1,5 +1,4 @@
 # placeholder so that this directory can be added to GitHub
 .vscode
-.DS_Store
 node_modules/
 node_modules
