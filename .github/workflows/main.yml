@@ -44,11 +44,11 @@ jobs:
         - uses: actions/checkout@v3
 
         # Combination of various linters, written in bash, to help your source code
-        - name: Super-Linter
-          uses: github/super-linter@v4.9.7
+        # - name: Super-Linter
+          # uses: github/super-linter@v4.9.7
           # Give full access to the repo and run individual linter in check section for each pull request
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # env:
+            # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             # Disable the blocking functionality of this linter (CI won't fail even if there are errors) 
             # DISABLE_ERROS: true
             ##
