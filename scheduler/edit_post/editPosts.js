@@ -1,15 +1,15 @@
-// TODO: Create way to set constraints in the post based on what platform
-// the post is for. i.e. Twitter posts need a character limit, Insta posts
-// need a picture, etc..
-// Done by Antonio
 const postDescription = document.getElementById('desc-input');
+const postSummary = document.getElementById('post-summary');
 const postTag = document.getElementById('tag');
 const imgPreview = document.getElementById("main-image-container");
 const imageInput = document.getElementById('image-input');
 const deleteImgDataButton = document.getElementById('remove-image-data-button');
-const backButton = document.querySelector("#back-button");
 const formEle = document.querySelector('form');
 let imgElement = document.querySelector("[type='file']");
+const backButton = document.querySelector("#back-button");
+const descriptionCharLimit = document.getElementById('desc-char-limit');
+const summaryCharLimit = document.getElementById('summary-char-limit');
+const SUMMARY_CHAR_LIMIT = 100;
 let dataUrl = "";
 let file;
 let indexToDelete;
@@ -136,24 +136,24 @@ function dataURItoBlob(dataURI) {
 * instagram posts must have an image
 */
 function configureFormConstraints() {
-    let currentCharacterLimit = document.getElementById('char-limit');
     let selectedTag = postTag.selectedOptions[0];
+    summaryCharLimit.innerHTML = 'Character Limit: ' + postSummary.value.length + '/100';
     // Facebook 63,206char max
     if (selectedTag.value == 'facebook') {
         postDescription.setAttribute('maxlength', '63206');
-        currentCharacterLimit.innerHTML = 'Character Limit: 63206';
+        descriptionCharLimit.innerHTML = 'Character Limit: ' + postDescription.value.length + '/63206';
         imageInput.removeAttribute('required');
     }
     // Twitter 280char max
     if (selectedTag.value == 'twitter') {
         postDescription.setAttribute('maxlength', '280');
-        currentCharacterLimit.innerHTML = 'Character Limit: 280';
+        descriptionCharLimit.innerHTML = 'Character Limit: ' + postDescription.value.length + '/280';
         imageInput.removeAttribute('required');
     }
     // Instagram 2,200char max and check if there is an image uploaded
     if (selectedTag.value == 'instagram') {
         postDescription.setAttribute('maxlength', '2200');
-        currentCharacterLimit.innerHTML = 'Character Limit: 2200';
+        descriptionCharLimit.innerHTML = 'Character Limit: ' + postDescription.value.length + '/2200';
         imageInput.setAttribute('required', true);
     }
 }
@@ -177,6 +177,38 @@ imgElement.addEventListener('change', () => {
     getImgData();
 });
 
+postDescription.addEventListener('input', countDescriptionChars);
+postSummary.addEventListener('input', countSummaryChars);
+
+/**
+ * Called when description is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countDescriptionChars() {
+    descriptionCharLimit.innerText = "Character Limit: " +
+        postDescription.value.length + "/" + postDescription.getAttribute('maxlength');
+    if (postDescription.value.length > postDescription.getAttribute('maxlength')) {
+        descriptionCharLimit.style.color = 'red';
+    }
+    else {
+        descriptionCharLimit.style.color = 'black';
+    }
+}
+
+/**
+ * Called when summary is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countSummaryChars() {
+    summaryCharLimit.innerText = "Character Limit: " +
+        postSummary.value.length + "/" + SUMMARY_CHAR_LIMIT;
+    if (postSummary.value.length > SUMMARY_CHAR_LIMIT) {
+        summaryCharLimit.style.color = 'red';
+    }
+    else {
+        summaryCharLimit.style.color = 'black';
+    }
+}
 //event listener for form on submit
 formEle.addEventListener('submit', (event) => {
     event.preventDefault();

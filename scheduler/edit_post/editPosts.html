@@ -32,14 +32,15 @@
                     <div class="text-container">
                         <div id="summary-container">
                             <label for="post-summary"></label>
-                            <input id="post-summary" name="post-summary" type="text" placeholder="Post Summary"
-                                required>
+                            <input id="post-summary" name="post-summary" type="text" maxlength="100"
+                                placeholder="Post Summary" required>
+                            <div id="summary-char-limit">Character Limit: 0/100</div>
                         </div>
                         <div id="description-container">
                             <label for="desc-input"></label>
                             <textarea name="desc-input" id="desc-input" placeholder="Post Description"
                                 required></textarea>
-                            <div id="char-limit">Character Limit:</div>
+                            <div id="desc-char-limit">Character Limit:</div>
                         </div>
                     </div>
                     <div id="date-time-container">
