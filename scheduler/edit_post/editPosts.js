@@ -6,8 +6,10 @@ const postDescription = document.getElementById('desc-input');
 const postTag = document.getElementById('tag');
 const imgPreview = document.getElementById("main-image-container");
 const imageInput = document.getElementById('image-input');
-const submitButton = document.getElementById('submit');
 const deleteImgDataButton = document.getElementById('remove-image-data-button');
+const backButton = document.querySelector("#back-button");
+const formEle = document.querySelector('form');
+let imgElement = document.querySelector("[type='file']");
 let dataUrl = "";
 let file;
 let indexToDelete;
@@ -34,7 +36,7 @@ function init() {
     }
 
     //set the constraints accordingly and display the image in the container
-    configureConstraints();
+    configureFormConstraints();
     getImgData();
 }
 
@@ -105,6 +107,7 @@ function populateForm(index) {
         });
         reader.readAsDataURL(file);
     }
+    configureFormConstraints();
 }
 
 /**
@@ -132,57 +135,35 @@ function dataURItoBlob(dataURI) {
 * this function limits the amount of characters permited for every type of posts 
 * instagram posts must have an image
 */
-function configureConstraints() {
+function configureFormConstraints() {
     let currentCharacterLimit = document.getElementById('char-limit');
     let selectedTag = postTag.selectedOptions[0];
     // Facebook 63,206char max
-    if (selectedTag == postTag.options[0]) {
-        postDescription.maxLength = 63206;
+    if (selectedTag.value == 'facebook') {
+        postDescription.setAttribute('maxlength', '63206');
         currentCharacterLimit.innerHTML = 'Character Limit: 63206';
-        submitButton.disabled = false;
+        imageInput.removeAttribute('required');
     }
     // Twitter 280char max
-    if (selectedTag == postTag.options[1]) {
-        postDescription.maxLength = 280;
+    if (selectedTag.value == 'twitter') {
+        postDescription.setAttribute('maxlength', '280');
         currentCharacterLimit.innerHTML = 'Character Limit: 280';
-        submitButton.disabled = false;
+        imageInput.removeAttribute('required');
     }
     // Instagram 2,200char max and check if there is an image uploaded
-    if (selectedTag == postTag.options[2]) {
-        postDescription.maxLength = 2200;
+    if (selectedTag.value == 'instagram') {
+        postDescription.setAttribute('maxlength', '2200');
         currentCharacterLimit.innerHTML = 'Character Limit: 2200';
-        if (imageInput.files.length == 0) {
-            submitButton.disabled = true;
-        }
-        else {
-            submitButton.disabled = false;
-        }
-    }
-}
-/**
-* Function called when clicking the submit button to check
-* if the text constraints are respected
-* The submit button is disabled for 1 second if not
-*/
-function checkText() {
-    if (postDescription.value.length > postDescription.maxLength) {
-        submitButton.disabled = true;
-        alert("Too many characters!");
-        setTimeout(() => {
-            submitButton.disabled = false;
-        }, 1000);
+        imageInput.setAttribute('required', true);
     }
 }
 // Event listeners
-postTag.addEventListener('change', configureConstraints);
-imageInput.addEventListener("change", configureConstraints);
-submitButton.addEventListener('click', checkText);
+postTag.addEventListener('change', configureFormConstraints);
+imageInput.addEventListener("change", configureFormConstraints);
 
 // store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
 // be posted
-const formEle = document.querySelector('form');
-let imgElement = document.querySelector("[type='file']");
 imgElement.addEventListener('change', () => {
     file = imgElement.files[0];
     if (file == undefined) {
@@ -195,10 +176,15 @@ imgElement.addEventListener('change', () => {
     reader.readAsDataURL(file);
     getImgData();
 });
-//event listener for submit botton
-submitButton.addEventListener('click', (event) => {
+
+//event listener for form on submit
+formEle.addEventListener('submit', (event) => {
     event.preventDefault();
     let formData = new FormData(formEle);
+    if (formData.get('desc-input').length > postDescription.getAttribute('maxlength')) {
+        alert('Platform Type Character Limit Violation!');
+        return;
+    }
     //store user entered image, description, data .. into postObject
     let postObject = {};
     postObject['currentContainer'] = 'upcoming';
@@ -254,6 +240,7 @@ function getPostsFromStorage() {
     }
     return posts;
 }
+
 /**
  * Takes in an array of posts, converts it to a string, and then
  * saves that string to 'posts' in localStorage
@@ -263,7 +250,7 @@ function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
 
-const backButton = document.querySelector("#back-button");
+
 // an event listener to take the user back to the main page, 
 // when the back button is pressed
 backButton.addEventListener('click', () => {

@@ -48,7 +48,7 @@ imgElement.addEventListener('change', () => {
     getImgData();
 });
 
-//event listener for submit botton
+//event listener for form on submit
 formEle.addEventListener('submit', () => {
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
