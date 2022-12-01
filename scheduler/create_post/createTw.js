@@ -1,14 +1,15 @@
-// Create way to set constraints in the post based on what platform
-// the post is for. i.e. Twitter posts need a character limit, Insta posts
-// need a picture, etc..
-// Done by Antonio
 const postDescription = document.getElementById('desc-input');
+const postSummary = document.getElementById('post-summary');
 const postTag = document.getElementById('tag');
 const imageInput = document.getElementById('image-input');
-const backButton = document.querySelector("#back-button");
+const deleteImgDataButton = document.getElementById('remove-image-data-button');
 const formEle = document.querySelector('form');
 let imgElement = document.querySelector("[type='file']");
-const deleteImgDataButton = document.getElementById('remove-image-data-button');
+const backButton = document.querySelector("#back-button");
+const descriptionCharLimit = document.getElementById('desc-char-limit');
+const summaryCharLimit = document.getElementById('summary-char-limit');
+const TWITTER_CHAR_LIMIT = 280;
+const SUMMARY_CHAR_LIMIT = 100;
 let file;
 let dataUrl = "";
 
@@ -28,6 +29,39 @@ imgElement.addEventListener('change', () => {
     });
     reader.readAsDataURL(file);
 });
+
+postDescription.addEventListener('input', countDescriptionChars);
+postSummary.addEventListener('input', countSummaryChars);
+
+/**
+ * Called when description is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countDescriptionChars() {
+    descriptionCharLimit.innerText = "Character Limit: " +
+        postDescription.value.length + "/" + TWITTER_CHAR_LIMIT;
+    if (postDescription.value.length > TWITTER_CHAR_LIMIT) {
+        descriptionCharLimit.style.color = 'red';
+    }
+    else {
+        descriptionCharLimit.style.color = 'black';
+    }
+}
+
+/**
+ * Called when summary is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countSummaryChars() {
+    summaryCharLimit.innerText = "Character Limit: " +
+        postSummary.value.length + "/" + SUMMARY_CHAR_LIMIT;
+    if (postSummary.value.length > SUMMARY_CHAR_LIMIT) {
+        summaryCharLimit.style.color = 'red';
+    }
+    else {
+        summaryCharLimit.style.color = 'black';
+    }
+}
 
 //event listener for submit botton
 formEle.addEventListener('submit', () => {

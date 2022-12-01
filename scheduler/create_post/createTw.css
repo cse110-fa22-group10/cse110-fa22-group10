@@ -86,7 +86,7 @@ body {
 #desc-char-limit,
 #summary-char-limit {
     position: relative;
-    left: 41.7vw;
+    float: right;
 }
 
 #date-time-container {
@@ -108,6 +108,11 @@ body {
 #date-to-post,
 #time-to-post {
     font-size: 1vw;
+}
+
+#image-input {
+    position: relative;
+    font-size: 0.8vw;
 }
 
 #remove-image-data-button {
