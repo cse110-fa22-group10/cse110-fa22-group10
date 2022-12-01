@@ -235,8 +235,8 @@ function checkEverything() {
 // Event listeners
 postTag.addEventListener('change', configureConstraints);
 imageInput.addEventListener("change", configureConstraints);
+submitButton.addEventListener('click', checkEverything);
 postDescription.addEventListener('keypress', countChars);
-
 // store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
 // be posted
@@ -258,7 +258,6 @@ imgElement.addEventListener('change', () => {
 //event listener for submit botton
 submitButton.addEventListener('click', (event) => {
     event.preventDefault();
-    checkEverything();
     if (!validPost) {
         return;
     }
