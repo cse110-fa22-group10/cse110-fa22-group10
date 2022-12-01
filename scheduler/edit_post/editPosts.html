@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="=UTF-8" />
+    <meta charset="utf-8" />
     <title>Post Creation Form</title>
     <link rel="icon" property="icon" type="image/x-icon" href="https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/assets/favicon.ico">
     <link rel="stylesheet" type="text/css" href="https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/edit_post/editPosts.css" />
@@ -10,53 +10,52 @@
 </head>
 
 <body>
+    <!-- This is the main form for the  edit post page -->
     <main>
-        <!-- This is the main form for the  edit post page -->
-        <main>
-            <div id="post-container">
-                <div id="upper-tab">
-                    <h1 id="page-title">Edit A Post</h1>
-                    <button id="back-button">X</button>
-                </div>
-                <form id="post-creator">
-                    <div class="image-container">
-                        <button id="remove-image-data-button">Remove Image Data</button>
-                        <div id="img-file-selection-container">
-                            <label for="image-input" id="image-label">Images:</label>
-                            <input type="file" name="image-input" id="image-input" multiple="true"
-                                accept=".jpg, .jpeg, .png, .bmp">
-                        </div>
-                        <div id="main-image-container">
-                        </div>
-                    </div>
-                    <div class="text-container">
-                        <div id="summary-container">
-                            <label for="post-summary"></label>
-                            <input id="post-summary" name="post-summary" type="text" placeholder="Post Summary">
-                        </div>
-                        <div id="description-container">
-                            <label for="desc-input"></label>
-                            <textarea name="desc-input" id="desc-input"
-                                placeholder="Post Description"></textarea>
-                            <div id="char-limit">Character Limit:</div>
-                        </div>
-                    </div>
-                    <div id="date-time-container">
-                        <label for="date-to-post">Date:</label>
-                        <input id="date-to-post" name="date-to-post" type="date">
-                        <label for="time-to-post">Time:</label>
-                        <input id="time-to-post" name="time-to-post" type="time">
-                        <label for="tag">Current Platform:</label>
-                        <select id="tag" name="tag">
-                            <option value="facebook">Facebook</option>
-                            <option value="twitter">Twitter</option>
-                            <option value="instagram">Instagram</option>
-                        </select>
-                        <input id="submit" name="submit-button" type="submit" value="DONE">
-                    </div>
-                </form>
+        <div id="post-container">
+            <div id="upper-tab">
+                <h1 id="page-title">Edit A Post</h1>
+                <button id="back-button">X</button>
             </div>
-        </main>
+            <form id="post-creator">
+                <div class="image-container">
+                    <button id="remove-image-data-button">Remove Image Data</button>
+                    <div id="img-file-selection-container">
+                        <label for="image-input" id="image-label">Images:</label>
+                        <input type="file" name="image-input" id="image-input" multiple
+                            accept=".jpg, .jpeg, .png, .bmp">
+                    </div>
+                    <div id="main-image-container">
+                    </div>
+                </div>
+                <div class="text-container">
+                    <div id="summary-container">
+                        <label for="post-summary"></label>
+                        <input id="post-summary" name="post-summary" type="text" placeholder="Post Summary">
+                    </div>
+                    <div id="description-container">
+                        <label for="desc-input"></label>
+                        <textarea name="desc-input" id="desc-input"
+                            placeholder="Post Description"></textarea>
+                        <div id="char-limit">Character Limit:</div>
+                    </div>
+                </div>
+                <div id="date-time-container">
+                    <label for="date-to-post">Date:</label>
+                    <input id="date-to-post" name="date-to-post" type="date">
+                    <label for="time-to-post">Time:</label>
+                    <input id="time-to-post" name="time-to-post" type="time">
+                    <label for="tag">Current Platform:</label>
+                    <select id="tag" name="tag">
+                        <option value="facebook">Facebook</option>
+                        <option value="twitter">Twitter</option>
+                        <option value="instagram">Instagram</option>
+                    </select>
+                    <input id="submit" name="submit-button" type="submit" value="DONE">
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
 
 </html>
