@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="=UTF-8" />
+        <meta charset="utf-8" />
         <title>Instagram Post Creation Form</title>
-        <link rel="icon" property="icon" type="image/x-icon" href="https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/assets/favicon.ico">
-        <link rel="stylesheet" href="https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createIns.css" />
-        <script src="https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createIns.js" type="module"></script>
+        <link rel="icon" property="icon" type="image/x-icon" href="../assets/favicon.ico">
+        <link rel="stylesheet" href="createIns.css" />
+        <script src="createIns.js" type="module"></script>
     </head>
     <body>
         <main>
@@ -17,7 +17,7 @@
                 <form id="post-creator">
                     <div class="image-container">
                         <label for="image-input" id="image-label">Images:</label>
-                        <input type="file" name="image-input" id="image-input" multiple="true"
+                        <input type="file" name="image-input" id="image-input" multiple
                             accept=".jpg, .jpeg, .png, .bmp">
                     </div>
                     <div class="text-container">
@@ -27,9 +27,9 @@
                         </div>
                         <div id="description-container">
                             <label for="desc-input"></label>
-                            <textarea name="desc-input" id="desc-input" maxlength="2200"
+                            <textarea name="desc-input" id="desc-input"
                                 placeholder="Post Description"></textarea>
-                            <div id="char-limit">Character Limit: 2200</div>
+                            <div id="char-limit">Character Limit: 0/2200</div>
                         </div>
                     </div>
                     <div id="date-time-container">
