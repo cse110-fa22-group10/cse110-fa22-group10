@@ -1,10 +1,15 @@
 const postDescription = document.getElementById('desc-input');
+const postSummary = document.getElementById('post-summary');
 const postTag = document.getElementById('tag');
 const imageInput = document.getElementById('image-input');
 const deleteImgDataButton = document.getElementById('remove-image-data-button');
 const formEle = document.querySelector('form');
 let imgElement = document.querySelector("[type='file']");
 const backButton = document.querySelector("#back-button");
+const descriptionCharLimit = document.getElementById('desc-char-limit');
+const summaryCharLimit = document.getElementById('summary-char-limit');
+const FACEBOOK_CHAR_LIMIT = 63206;
+const SUMMARY_CHAR_LIMIT = 100;
 let file;
 let dataUrl = "";
 
@@ -24,6 +29,39 @@ imgElement.addEventListener('change', () => {
     });
     reader.readAsDataURL(file);
 });
+
+postDescription.addEventListener('input', countDescriptionChars);
+postSummary.addEventListener('input', countSummaryChars);
+
+/**
+ * Called when description is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countDescriptionChars() {
+    descriptionCharLimit.innerText = "Character Limit: " +
+        postDescription.value.length + "/" + FACEBOOK_CHAR_LIMIT;
+    if (postDescription.value.length > FACEBOOK_CHAR_LIMIT) {
+        descriptionCharLimit.style.color = 'red';
+    }
+    else {
+        descriptionCharLimit.style.color = 'black';
+    }
+}
+
+/**
+ * Called when summary is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countSummaryChars() {
+    summaryCharLimit.innerText = "Character Limit: " +
+        postSummary.value.length + "/" + SUMMARY_CHAR_LIMIT;
+    if (postSummary.value.length > SUMMARY_CHAR_LIMIT) {
+        summaryCharLimit.style.color = 'red';
+    }
+    else {
+        summaryCharLimit.style.color = 'black';
+    }
+}
 
 //event listener for form on submit
 formEle.addEventListener('submit', () => {
