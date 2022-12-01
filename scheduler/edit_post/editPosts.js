@@ -1,7 +1,3 @@
-// TODO: Create way to set constraints in the post based on what platform
-// the post is for. i.e. Twitter posts need a character limit, Insta posts
-// need a picture, etc..
-// Done by Antonio
 const postDescription = document.getElementById('desc-input');
 const postTag = document.getElementById('tag');
 const imgPreview = document.getElementById("main-image-container");
@@ -11,6 +7,8 @@ const deleteImgDataButton = document.getElementById('remove-image-data-button');
 let dataUrl = "";
 let file;
 let indexToDelete;
+let charLimit;
+let validPost = true;
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -35,6 +33,7 @@ function init() {
 
     //set the constraints accordingly and display the image in the container
     configureConstraints();
+    countChars();
     getImgData();
 }
 
@@ -137,20 +136,20 @@ function configureConstraints() {
     let selectedTag = postTag.selectedOptions[0];
     // Facebook 63,206char max
     if (selectedTag == postTag.options[0]) {
-        postDescription.maxLength = 63206;
-        currentCharacterLimit.innerHTML = 'Character Limit: 63206';
+        charLimit = 63206;
+        currentCharacterLimit.innerHTML = 'Character Limit: 0/63206';
         submitButton.disabled = false;
     }
     // Twitter 280char max
     if (selectedTag == postTag.options[1]) {
-        postDescription.maxLength = 280;
-        currentCharacterLimit.innerHTML = 'Character Limit: 280';
+        charLimit = 280;
+        currentCharacterLimit.innerHTML = 'Character Limit: 0/280';
         submitButton.disabled = false;
     }
     // Instagram 2,200char max and check if there is an image uploaded
     if (selectedTag == postTag.options[2]) {
-        postDescription.maxLength = 2200;
-        currentCharacterLimit.innerHTML = 'Character Limit: 2200';
+        charLimit = 2200;
+        currentCharacterLimit.innerHTML = 'Character Limit: 0/2200';
         if (imageInput.files.length == 0) {
             submitButton.disabled = true;
         }
@@ -159,24 +158,83 @@ function configureConstraints() {
         }
     }
 }
+
+/**
+ * Called when description is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countChars() {
+    characterLimit.innerText = "Character Limit: " +
+        postDescription.value.length + "/" + charLimit;
+    if(postDescription.value.length > charLimit) {
+        characterLimit.style.color = 'red';
+    }
+    else {
+        characterLimit.style.color = 'black';
+    }
+}
+
 /**
 * Function called when clicking the submit button to check
 * if the text constraints are respected
 * The submit button is disabled for 1 second if not
 */
-function checkText() {
-    if (postDescription.value.length > postDescription.maxLength) {
+function checkEverything() {
+    // checks summary requirement
+    if (summary.value.length == 0) {
         submitButton.disabled = true;
-        alert("Too many characters!");
+        alert("Post needs a summary!");
         setTimeout(() => {
             submitButton.disabled = false;
         }, 1000);
+        validPost = false;
+        return;
     }
+
+    // checks character constraint
+    if (postDescription.value.length > charlimit || 
+        postDescription.value.length == 0) {
+        submitButton.disabled = true;
+        if (postDescription.value.length == 0) {
+            alert("Post needs a description!");
+        }
+        else {
+            alert("Too many characters!");
+        }
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
+        validPost = false;
+        return;
+    }
+    // checks date requirement
+    if (date.value.length == 0) {
+        submitButton.disabled = true;
+        alert("Post needs a date!");
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
+        validPost = false;
+        return;
+    }
+
+    // checks time requirement
+    if (time.value.length == 0) {
+        submitButton.disabled = true;
+        alert("Post needs a time!");
+        setTimeout(() => {
+            submitButton.disabled = false;
+        }, 1000);
+        validPost = false;
+        return;
+    }
+    validPost = true;
 }
 // Event listeners
 postTag.addEventListener('change', configureConstraints);
 imageInput.addEventListener("change", configureConstraints);
-submitButton.addEventListener('click', checkText);
+submitButton.addEventListener('click', checkEverything);
+postDescription.addEventListener('keypress', countChars);
 
 // store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
@@ -195,9 +253,14 @@ imgElement.addEventListener('change', () => {
     reader.readAsDataURL(file);
     getImgData();
 });
+
 //event listener for submit botton
 submitButton.addEventListener('click', (event) => {
     event.preventDefault();
+    checkEverything();
+    if(!validPost) {
+        return;
+    }
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};

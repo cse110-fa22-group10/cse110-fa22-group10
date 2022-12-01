@@ -1,15 +1,7 @@
-// Create way to set constraints in the post based on what platform
-// the post is for. i.e. Twitter posts need a character limit, Insta posts
-// need a picture, etc..
-// Done by Antonio
 const summary = document.getElementById('post-summary');
 const postDescription = document.getElementById('desc-input');
-<<<<<<< HEAD
-const postTag = document.getElementById('tag');
-=======
 const date = document.getElementById('date-to-post');
 const time = document.getElementById('time-to-post');
->>>>>>> main-page-frontend
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 const characterLimit = document.getElementById('char-limit');
@@ -32,8 +24,6 @@ function checkEverything() {
         setTimeout(() => {
             submitButton.disabled = false;
         }, 1000);
-<<<<<<< HEAD
-=======
         validPost = false;
         return;
     }
@@ -42,7 +32,7 @@ function checkEverything() {
     if (postDescription.value.length > twitterCharlimit || 
         postDescription.value.length == 0) {
         submitButton.disabled = true;
-        if (postDescription.value.lenth == 0) {
+        if (postDescription.value.length == 0) {
             alert("Post needs a description!");
         }
         else {
@@ -91,7 +81,6 @@ function countChars() {
     }
     else {
         characterLimit.style.color = 'black';
->>>>>>> main-page-frontend
     }
 }
 
@@ -174,5 +163,5 @@ function savePostsToStorage(posts) {
 
 const backButton = document.querySelector("#back-button");
 backButton.addEventListener('click', () => {
-    window.location.replace("https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html");
+    window.location.replace("../index.html");
 });

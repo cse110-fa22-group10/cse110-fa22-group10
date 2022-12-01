@@ -1,7 +1,3 @@
-// TODO: Create way to set constraints in the post based on what platform
-// the post is for. i.e. Twitter posts need a character limit, Insta posts
-// need a picture, etc..
-// Done by Antonio
 const summary = document.getElementById('post-summary');
 const postDescription = document.getElementById('desc-input');
 const date = document.getElementById('date-to-post');
@@ -34,7 +30,7 @@ function checkEverything() {
     if (postDescription.value.length > facebookCharLimit || 
         postDescription.value.length == 0) {
         submitButton.disabled = true;
-        if (postDescription.value.lenth == 0) {
+        if (postDescription.value.length == 0) {
             alert("Post needs a description!");
         }
         else {
