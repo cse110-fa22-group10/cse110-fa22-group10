@@ -35,13 +35,13 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
          
-  lint:
+  # lint:
 
-      runs-on: ubuntu-latest
+      # runs-on: ubuntu-latest
 
-      steps:
+      # steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        - uses: actions/checkout@v3
+        # - uses: actions/checkout@v3
 
         # Combination of various linters, written in bash, to help your source code
         # - name: Super-Linter
