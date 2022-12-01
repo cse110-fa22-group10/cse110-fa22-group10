@@ -1,9 +1,11 @@
 const postDescription = document.getElementById('desc-input');
+const summary = document.getElementById('post-summary');
 const postTag = document.getElementById('tag');
 const imgPreview = document.getElementById("main-image-container");
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
 const deleteImgDataButton = document.getElementById('remove-image-data-button');
+const characterLimit = document.getElementById('char-limit');
 let dataUrl = "";
 let file;
 let indexToDelete;
@@ -166,7 +168,7 @@ function configureConstraints() {
 function countChars() {
     characterLimit.innerText = "Character Limit: " +
         postDescription.value.length + "/" + charLimit;
-    if(postDescription.value.length > charLimit) {
+    if (postDescription.value.length > charLimit) {
         characterLimit.style.color = 'red';
     }
     else {
@@ -192,7 +194,7 @@ function checkEverything() {
     }
 
     // checks character constraint
-    if (postDescription.value.length > charlimit || 
+    if (postDescription.value.length > charlimit ||
         postDescription.value.length == 0) {
         submitButton.disabled = true;
         if (postDescription.value.length == 0) {
@@ -233,7 +235,6 @@ function checkEverything() {
 // Event listeners
 postTag.addEventListener('change', configureConstraints);
 imageInput.addEventListener("change", configureConstraints);
-submitButton.addEventListener('click', checkEverything);
 postDescription.addEventListener('keypress', countChars);
 
 // store the formdata into localStorage to wherever we want
@@ -258,7 +259,7 @@ imgElement.addEventListener('change', () => {
 submitButton.addEventListener('click', (event) => {
     event.preventDefault();
     checkEverything();
-    if(!validPost) {
+    if (!validPost) {
         return;
     }
     let formData = new FormData(formEle);
@@ -291,7 +292,7 @@ submitButton.addEventListener('click', (event) => {
     //delete the old instance of the post to be edited 
     postFromLocal.splice(indexToDelete, 1);
     savePostsToStorage(postFromLocal);
-    window.location.replace('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html')
+    window.location.replace('../index.html');
 });
 
 // an event listener for the delete image data button in charge of removing images
@@ -330,5 +331,5 @@ const backButton = document.querySelector("#back-button");
 // an event listener to take the user back to the main page, 
 // when the back button is pressed
 backButton.addEventListener('click', () => {
-    window.location.replace("https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html");
+    window.location.replace("../index.html");
 });

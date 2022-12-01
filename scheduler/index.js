@@ -225,7 +225,7 @@ function savePostsToStorage(posts) {
  */
 
 function createFb() {
-    window.location.replace("./create_post/createFb.html");
+    window.location.replace("../scheduler/create_post/createFb.html");
 }
 
 
@@ -236,7 +236,7 @@ function createFb() {
  */
 
 function createIns() {
-    window.location.replace("./create_post/createIns.html");
+    window.location.replace("../scheduler/create_post/createIns.html");
 
 }
 
@@ -248,7 +248,7 @@ function createIns() {
  */
 
 function createTw() {
-    window.location.replace("./create_post/createTw.html");
+    window.location.replace("../scheduler/create_post/createTw.html");
 }
 
 /**
