@@ -30,11 +30,18 @@ body {
     position: relative;
     background-color: red;
     border-radius: .5vw;
-    width: 2vw;
-    height: 2vw;
+    width: fit-content;
+    height: fit-content;
     border: none;
     font-size: 1vw;
-    left: 35%;
+    left: 38%;
+    color: white;
+    padding: 0.5vw;
+}
+
+#back-button:hover {
+    background-attachment: #970797;
+    box-shadow: 0.2vw 0.2vw #736B6B;
 }
 
 #post-creator {
@@ -182,7 +189,7 @@ body {
     font-size: 1vw;
 }
 
-#subit:hover {
+#submit:hover {
     background-attachment: #970797;
-    box-shadow: 0px 5px #736B6B;
+    box-shadow: 0.2vw 0.2vw brown;
 }
