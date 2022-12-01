@@ -4,27 +4,25 @@
 // Done by Antonio
 const postDescription = document.getElementById('desc-input');
 const postTag = document.getElementById('tag');
-const imgPreview = document.querySelector(".image-container");
+const imgPreview = document.getElementById("main-image-container");
 const imageInput = document.getElementById('image-input');
-const submitButton = document.getElementById('submit');
+const deleteImgDataButton = document.getElementById('remove-image-data-button');
+const formEle = document.querySelector('form');
+let imgElement = document.querySelector("[type='file']");
+const backButton = document.querySelector("#back-button");
+let file;
+let dataUrl = "";
 
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    constraints();
 }
 
-// Instagram posts must have at least one image
-function constraints() {
-    if (imageInput.files.length == 0) {
-        submitButton.disabled = true;
-    }
-    else {
-        submitButton.disabled = false;
-    }
-    getImgData();
-}
-
+/**
+ * This function is in charge of previewing the image selected by the user
+ * exclusivley for instragram creation page. It achieves this by populating
+ * the inner HTML of the container with correct and valid information
+ */
 function getImgData() {
     const files = imageInput.files[0];
     if (files) {
@@ -37,32 +35,9 @@ function getImgData() {
     }
 }
 
-
-
-// Function called when clicking the submit button to check
-// if the text constraints are respected
-// The submit button is disabled for 1 second
-function checkText() {
-    if (postDescription.value.length > postDescription.maxLength) {
-        submitButton.disabled = true;
-        alert("Too many characters!");
-        setTimeout(() => {
-            submitButton.disabled = false;
-        }, 1000);
-    }
-}
-
-// Event listeners
-imageInput.addEventListener('change', constraints);
-submitButton.addEventListener('click', checkText);
-
 // OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
 // be posted 
-const formEle = document.querySelector('form');
-let imgElement = document.querySelector("[type='file']");
-let file;
-let dataUrl = "";
 imgElement.addEventListener('change', () => {
     file = imgElement.files[0];
     const reader = new FileReader();
@@ -70,9 +45,11 @@ imgElement.addEventListener('change', () => {
         dataUrl = reader.result;
     });
     reader.readAsDataURL(file);
+    getImgData();
 });
+
 //event listener for submit botton
-submitButton.addEventListener('click', () => {
+formEle.addEventListener('submit', () => {
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
@@ -102,6 +79,15 @@ submitButton.addEventListener('click', () => {
     savePostsToStorage(postFromLocal);
 });
 
+// an event listener for the delete image data button in charge of removing images
+// when editing a post
+deleteImgDataButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    dataUrl = '';
+    imgPreview.innerHTML = '';
+    imageInput.value = '';
+});
+
 /**
  * Reads 'posts' from localStorage and returns an array of
  * all of the posts found (parsed, not in string form). If
@@ -126,7 +112,7 @@ function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
 
-const backButton = document.querySelector("#back-button");
+// event listener to head back to the main page
 backButton.addEventListener('click', () => {
     window.location.replace("../index.html");
 });

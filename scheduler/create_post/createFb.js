@@ -2,6 +2,11 @@ const postDescription = document.getElementById('desc-input');
 const postTag = document.getElementById('tag');
 const imageInput = document.getElementById('image-input');
 const deleteImgDataButton = document.getElementById('remove-image-data-button');
+const formEle = document.querySelector('form');
+let imgElement = document.querySelector("[type='file']");
+const backButton = document.querySelector("#back-button");
+let file;
+let dataUrl = "";
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -11,10 +16,6 @@ function init() {
 // OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
 // be posted 
-const formEle = document.querySelector('form');
-let imgElement = document.querySelector("[type='file']");
-let file;
-let dataUrl = "";
 imgElement.addEventListener('change', () => {
     file = imgElement.files[0];
     const reader = new FileReader();
@@ -23,6 +24,7 @@ imgElement.addEventListener('change', () => {
     });
     reader.readAsDataURL(file);
 });
+
 //event listener for form on submit
 formEle.addEventListener('submit', () => {
     let formData = new FormData(formEle);
@@ -87,7 +89,7 @@ function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
 
-const backButton = document.querySelector("#back-button");
+// event listener to head back to the main page
 backButton.addEventListener('click', () => {
     window.location.replace("../index.html");
 });
