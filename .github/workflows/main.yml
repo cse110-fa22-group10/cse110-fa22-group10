@@ -105,7 +105,7 @@ jobs:
             force: true
           
 
-  E2E_test:
+  E2E_and_unit_test:
       # The type of runner that the job will run on
       runs-on: ubuntu-latest
       
