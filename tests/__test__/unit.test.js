@@ -34,5 +34,10 @@ test('Save multiple (three in this case) posts to LocalStorage and if call get p
     expect(JSON.stringify(functions.getPostsFromStorage())).toBe(JSON.stringify(posts));
 })
 
-
+// Test　if　the clearStorage indeed deletes everything in localStorage
+test('LocalStorage needs to be initally emppty', () => {
+    posts = [];
+    functions.clearStorage();
+    expect(JSON.stringify(functions.getPostsFromStorage())).toBe(JSON.stringify(posts));
+});
 
