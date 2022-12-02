@@ -126,48 +126,44 @@ class Post extends HTMLElement {
         position: relative;
     }
     #edit-button-withimg{
-        position: absolute;
-        z-index: 2;
-        top: 3%;
+        position: relative;
         display: none;
-        left: 5%;	
-        border-radius: 15px;
+        float: left;	
+        border-radius: 1vw;
         width: 5vw;
         height: 3vw;
         font-size: 1vw;
+        margin: 0.5vw;
     }
     #delete-button-withimg{
-        position: absolute;
-        z-index: 2;
-        top: 3%;
+        position: relative;
         display: none;
-        left: 75%;	
-        border-radius: 15px;
+        float: right;	
+        border-radius: 1vw;
         width: 5vw;
         height: 3vw;
         font-size: 1vw;
+        margin: 0.5vw;
     }
     #edit-button-noimg{
-        position: absolute;
-        z-index: 2;
-        top: 3%;
+        position: relative;
         display: none;
-        left: 5%;	
-        border-radius: 15px;
+        float: left;	
+        border-radius: 1vw;
         width: 5vw;
         height: 3vw;
         font-size: 1vw;
+        margin: 0.5vw;
     }
     #delete-button-noimg{
-        position: absolute;
-        z-index: 2;
-        top:3%;
+        position: relative;
         display: none;
-        left: 75%;	
-        border-radius: 15px;
+        float: right;	
+        border-radius: 1vw;
         width: 5vw;
         height: 3vw;
         font-size: 1vw;
+        margin: 0.5vw;
     }
 
      .post-container:hover #edit-button-withimg{
