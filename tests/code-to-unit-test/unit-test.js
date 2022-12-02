@@ -1,6 +1,6 @@
 // unit-test.js
 
-module.exports = { displayDate, getPostsFromStorage, savePostsToStorage };
+module.exports = { displayDate, getPostsFromStorage, savePostsToStorage, clearStorage };
 
 // Setup the definition of local Storage
 class LocalStorageMock {
@@ -56,7 +56,7 @@ class LocalStorageMock {
     global.window = {};
     let posts = JSON.parse(localStorage.getItem("posts"));
     if (posts === null) {
-        return '[]';
+        return [];
     }
     return posts;
 }
@@ -69,4 +69,8 @@ class LocalStorageMock {
  function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
     return getPostsFromStorage();
+}
+
+function clearStorage() {
+  localStorage.clear();
 }
