@@ -40,7 +40,7 @@ postSummary.addEventListener('input', countSummaryChars);
 function countDescriptionChars() {
     descriptionCharLimit.innerText = "Character Limit: " +
         postDescription.value.length + "/" + FACEBOOK_CHAR_LIMIT;
-    if (postDescription.value.length > FACEBOOK_CHAR_LIMIT) {
+    if (postDescription.value.length == FACEBOOK_CHAR_LIMIT) {
         descriptionCharLimit.style.color = 'red';
     }
     else {
@@ -55,7 +55,7 @@ function countDescriptionChars() {
 function countSummaryChars() {
     summaryCharLimit.innerText = "Character Limit: " +
         postSummary.value.length + "/" + SUMMARY_CHAR_LIMIT;
-    if (postSummary.value.length > SUMMARY_CHAR_LIMIT) {
+    if (postSummary.value.length == SUMMARY_CHAR_LIMIT) {
         summaryCharLimit.style.color = 'red';
     }
     else {
