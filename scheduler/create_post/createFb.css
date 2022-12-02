@@ -1,18 +1,18 @@
 body {
-        background: url('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/assets/create-post-background.png') no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
+    background: url('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/assets/create-post-background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #post-container {
-        background-color: #d9d9d9;
-        margin: 2vw;
-        border-radius: 2vw;
-        height: 46vw;
-        width: auto;
-        position: relative;
+    background-color: #d9d9d9;
+    margin: 2vw;
+    border-radius: 2vw;
+    height: 46vw;
+    width: auto;
+    position: relative;
 }
 
 #upper-tab {
