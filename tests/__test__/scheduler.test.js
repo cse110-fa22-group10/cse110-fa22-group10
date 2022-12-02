@@ -22,16 +22,18 @@ describe('Basic user flow for Website', () => {
       let curr_url;
 
       await page.click('button[id=facebook-create]');
+      jest.setTimeout(50000);
       await page.reload();
       await page.waitForSelector('button[id=back-button]');
-      jest.setTimeout(50000)
+      jest.setTimeout(50000);
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createFb.html');
 
       await page.click('button[id=back-button]');
+      jest.setTimeout(50000);
       await page.reload();
       await page.waitForSelector('button[id=facebook-create]');
-      jest.setTimeout(50000)
+      jest.setTimeout(50000);
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
