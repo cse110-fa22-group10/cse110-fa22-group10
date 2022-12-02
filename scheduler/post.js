@@ -223,21 +223,21 @@ class Post extends HTMLElement {
             case "FACEBOOK":
                 data.platType = "FACEBOOK";
                 articleElement.setAttribute('post-type', "FACEBOOK");
-                currentPostIcon = "../scheduler/assets/facebook-colored-icon.png";
+                currentPostIcon = "assets/facebook-colored-icon.png";
                 break;
             case "INSTAGRAM":
                 data.platType = "INSTAGRAM";
-                currentPostIcon = "../scheduler/assets/instagram-colored-icon.png";
+                currentPostIcon = "assets/instagram-colored-icon.png";
                 articleElement.setAttribute('post-type', "INSTAGRAM");
                 break;
             case "TWITTER":
                 data.platType = "TWITTER";
-                currentPostIcon = "../scheduler/assets/twitter-colored-icon.png";
+                currentPostIcon = "assets/twitter-colored-icon.png";
                 articleElement.setAttribute('post-type', "TWITTER");
                 break;
             default:
                 articleElement.setAttribute('post-type', "");
-                currentPostIcon = "../scheduler/assets/default-icon.png";
+                currentPostIcon = "assets/default-icon.png";
                 break;
         }
 

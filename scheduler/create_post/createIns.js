@@ -53,7 +53,7 @@ function checkEverything() {
     }
 
     // checks character constraint
-    if (postDescription.value.length > instagramCharlimit ||
+    if (postDescription.value.length > instagramCharlimit || 
         postDescription.value.length == 0) {
         submitButton.disabled = true;
         if (postDescription.value.length == 0) {
@@ -100,7 +100,7 @@ function checkEverything() {
 function countChars() {
     characterLimit.innerText = "Character Limit: " +
         postDescription.value.length + "/" + instagramCharlimit;
-    if (postDescription.value.length > instagramCharlimit) {
+    if(postDescription.value.length > instagramCharlimit) {
         characterLimit.style.color = 'red';
     }
     else {
@@ -130,7 +130,7 @@ imgElement.addEventListener('change', () => {
 });
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
-    if (!validPost) {
+    if(!validPost) {
         return;
     }
     let formData = new FormData(formEle);
@@ -188,5 +188,5 @@ function savePostsToStorage(posts) {
 
 const backButton = document.querySelector("#back-button");
 backButton.addEventListener('click', () => {
-    window.location.replace("../index.html");
+    window.location.replace("https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html");
 });
