@@ -1,12 +1,11 @@
-const summary = document.getElementById('post-summary');
+// Create way to set constraints in the post based on what platform
+// the post is for. i.e. Twitter posts need a character limit, Insta posts
+// need a picture, etc..
+// Done by Antonio
 const postDescription = document.getElementById('desc-input');
-const date = document.getElementById('date-to-post');
-const time = document.getElementById('time-to-post');
+const postTag = document.getElementById('tag');
 const imageInput = document.getElementById('image-input');
 const submitButton = document.getElementById('submit');
-const characterLimit = document.getElementById('char-limit');
-const twitterCharlimit = 280;
-let validPost = false;
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -16,77 +15,18 @@ function init() {
 // Function called when clicking the submit button to check
 // if the text constraints are respected
 // The submit button is disabled for 1 second
-function checkEverything() {
-    // checks summary requirement
-    if (summary.value.length == 0) {
+function checkText() {
+    if (postDescription.value.length > postDescription.maxLength) {
         submitButton.disabled = true;
-        alert("Post needs a summary!");
+        alert("Too many characters!");
         setTimeout(() => {
             submitButton.disabled = false;
         }, 1000);
-        validPost = false;
-        return;
-    }
-
-    // checks character constraint
-    if (postDescription.value.length > twitterCharlimit || 
-        postDescription.value.length == 0) {
-        submitButton.disabled = true;
-        if (postDescription.value.length == 0) {
-            alert("Post needs a description!");
-        }
-        else {
-            alert("Too many characters!");
-        }
-        setTimeout(() => {
-            submitButton.disabled = false;
-        }, 1000);
-        validPost = false;
-        return;
-    }
-
-    // checks date requirement
-    if (date.value.length == 0) {
-        submitButton.disabled = true;
-        alert("Post needs a date!");
-        setTimeout(() => {
-            submitButton.disabled = false;
-        }, 1000);
-        validPost = false;
-        return;
-    }
-
-    // checks time requirement
-    if (time.value.length == 0) {
-        submitButton.disabled = true;
-        alert("Post needs a time!");
-        setTimeout(() => {
-            submitButton.disabled = false;
-        }, 1000);
-        validPost = false;
-        return;
-    }
-    validPost = true;
-}
-
-/**
- * Called when description is changed. Changes current char count displays
- * and checks to see is char count is exceeded
- */
-function countChars() {
-    characterLimit.innerText = "Character Limit: " +
-        postDescription.value.length + "/280";
-    if(postDescription.value.length > twitterCharlimit) {
-        characterLimit.style.color = 'red';
-    }
-    else {
-        characterLimit.style.color = 'black';
     }
 }
 
 // Event listeners
-submitButton.addEventListener('click', checkEverything);
-postDescription.addEventListener('keypress', countChars);
+submitButton.addEventListener('click', checkText);
 
 // OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
@@ -105,9 +45,6 @@ imgElement.addEventListener('change', () => {
 });
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
-    if(!validPost) {
-        return;
-    }
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
@@ -163,5 +100,5 @@ function savePostsToStorage(posts) {
 
 const backButton = document.querySelector("#back-button");
 backButton.addEventListener('click', () => {
-    window.location.replace("../index.html");
+    window.location.replace("https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html");
 });
