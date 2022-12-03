@@ -30,11 +30,13 @@ body {
     position: relative;
     background-color: red;
     border-radius: .5vw;
-    width: 2vw;
-    height: 2vw;
+    width: fit-content;
+    height: fit-content;
     border: none;
     font-size: 1vw;
-    left: 35%;
+    left: 38%;
+    color: white;
+    padding: 0.5vw;
 }
 
 #post-creator {
