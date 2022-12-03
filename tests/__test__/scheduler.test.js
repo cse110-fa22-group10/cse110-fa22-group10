@@ -22,18 +22,18 @@ describe('Basic user flow for Website', () => {
       let curr_url;
 
       await page.click('button[id=facebook-create]');
-      jest.setTimeout(50000);
       await page.reload();
-      await page.waitForSelector('button[id=back-button]');
-      jest.setTimeout(50000);
+      await page.waitForSelector('button[id=back-button]' , {
+        timeout: 50000
+      });
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createFb.html');
 
       await page.click('button[id=back-button]');
-      jest.setTimeout(50000);
       await page.reload();
-      await page.waitForSelector('button[id=facebook-create]');
-      jest.setTimeout(50000);
+      await page.waitForSelector('button[id=facebook-create]', {
+        timeout: 50000
+      });
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
@@ -72,8 +72,9 @@ describe('Basic user flow for Website', () => {
       await page.click('button[id=facebook-create]');
 
       await page.reload();
-      await page.waitForSelector('input[name=post-summary]');
-      jest.setTimeout(50000)
+      await page.waitForSelector('input[name=post-summary]', {
+        timeout: 50000
+      });
       
       // Fill out the required fields to create a post
       await page.$eval('input[name=post-summary]', el => el.value = 'E2E Testing on createFb');
@@ -114,8 +115,9 @@ describe('Basic user flow for Website', () => {
       })
 
       await page.reload();
-      await page.waitForSelector('input[name=post-summary]');
-      jest.setTimeout(50000)
+      await page.waitForSelector('input[name=post-summary]', {
+        timeout: 50000
+      });
       
       // Fill out the required fields to create a post
       await page.$eval('input[name=post-summary]', el => el.value = 'E2E Testing on createFb');
@@ -127,7 +129,9 @@ describe('Basic user flow for Website', () => {
       await page.click('input[type=submit]')
       
       await page.reload();
-      await page.waitForSelector('button[id=back-button]');
+      await page.waitForSelector('button[id=back-button]', {
+        timeout: 50000
+      });
       //Get the post from local Storage
       const post = await page.evaluate(() => {
         return window.localStorage.getItem('posts');
@@ -146,8 +150,9 @@ describe('Basic user flow for Website', () => {
       await page.click('button[id=back-button]');
         
       await page.reload(); 
-      await page.waitForSelector('post-card');    
-      jest.setTimeout(50000)  
+      await page.waitForSelector('post-card', {
+        timeout: 50000
+      });    
       // Query select all of the <post-card> elements and return the length of that array
       const numCards = await page.$$eval('post-card', (postCards) => {
         return postCards.length;
