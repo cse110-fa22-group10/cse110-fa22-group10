@@ -83,14 +83,10 @@ body {
     padding: 0.5vw;
 }
 
+#desc-char-limit,
 #summary-char-limit {
     position: relative;
     float: right;
-}
-
-#char-limit {
-    position: relative;
-    left: 41.7vw;
 }
 
 #date-time-container {
@@ -128,7 +124,7 @@ body {
     font-size: 1vw;
 }
 
-#subit:hover {
+#submit:hover {
     background-attachment: #970797;
     box-shadow: 0px 5px #736B6B;
 }
