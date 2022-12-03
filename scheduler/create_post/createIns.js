@@ -145,6 +145,8 @@ function getPostsFromStorage() {
 function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
+
+// event listener to head back to the main page
 backButton.addEventListener('click', () => {
     window.location.replace("../index.html");
 });
