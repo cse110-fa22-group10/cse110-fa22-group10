@@ -1,12 +1,18 @@
-// Create way to set constraints in the post based on what platform
-// the post is for. i.e. Twitter posts need a character limit, Insta posts
-// need a picture, etc..
-// Done by Antonio
 const postDescription = document.getElementById('desc-input');
+const postSummary = document.getElementById('post-summary');
 const postTag = document.getElementById('tag');
-const imgPreview = document.querySelector(".image-container");
+const imgPreview = document.getElementById("main-image-container");
 const imageInput = document.getElementById('image-input');
-const submitButton = document.getElementById('submit');
+const deleteImgDataButton = document.getElementById('remove-image-data-button');
+const formEle = document.querySelector('form');
+let imgElement = document.querySelector("[type='file']");
+const backButton = document.querySelector("#back-button");
+const descriptionCharLimit = document.getElementById('desc-char-limit');
+const summaryCharLimit = document.getElementById('summary-char-limit');
+const INSTAGRAM_CHAR_LIMIT = 2200;
+const SUMMARY_CHAR_LIMIT = 100;
+let file;
+let dataUrl = "";
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -59,10 +65,6 @@ submitButton.addEventListener('click', checkText);
 // OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
 // be posted 
-const formEle = document.querySelector('form');
-let imgElement = document.querySelector("[type='file']");
-let file;
-let dataUrl = "";
 imgElement.addEventListener('change', () => {
     file = imgElement.files[0];
     const reader = new FileReader();
@@ -125,8 +127,6 @@ function getPostsFromStorage() {
 function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
-
-const backButton = document.querySelector("#back-button");
 backButton.addEventListener('click', () => {
     window.location.replace("../index.html");
 });
