@@ -157,6 +157,7 @@ function configureFormConstraints() {
         imageInput.setAttribute('required', true);
     }
 }
+
 // Event listeners
 postTag.addEventListener('change', configureFormConstraints);
 imageInput.addEventListener("change", configureFormConstraints);
@@ -176,6 +177,10 @@ imgElement.addEventListener('change', () => {
     reader.readAsDataURL(file);
     getImgData();
 });
+
+postDescription.addEventListener('input', countDescriptionChars);
+postSummary.addEventListener('input', countSummaryChars);
+
 //event listener for form on submit
 formEle.addEventListener('submit', (event) => {
     event.preventDefault();
