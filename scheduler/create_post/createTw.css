@@ -32,9 +32,14 @@ body {
     border-radius: .5vw;
     width: 2vw;
     height: 2vw;
+    box-shadow: 0.2vw 0.2vw #736B6B;
     border: none;
     font-size: 1vw;
-    left: 36%;
+    left: 35%;
+}
+
+#back-button:hover {
+    box-shadow: 0.2vw 0.2vw brown;
 }
 
 #post-creator {
