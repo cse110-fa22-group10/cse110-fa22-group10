@@ -181,10 +181,14 @@ imgElement.addEventListener('change', () => {
     reader.readAsDataURL(file);
     getImgData();
 });
-//event listener for submit botton
+//event listener for form on submit
 formEle.addEventListener('submit', (event) => {
     event.preventDefault();
     let formData = new FormData(formEle);
+    if (formData.get('desc-input').length > postDescription.getAttribute('maxlength')) {
+        alert('Platform Type Character Limit Violation!');
+        return;
+    }
     //store user entered image, description, data .. into postObject
     let postObject = {};
     postObject['currentContainer'] = 'upcoming';
