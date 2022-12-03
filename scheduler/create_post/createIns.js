@@ -19,6 +19,11 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
 }
 
+/**
+ * This function is in charge of previewing the image selected by the user
+ * exclusivley for instragram creation page. It achieves this by populating
+ * the inner HTML of the container with correct and valid information
+ */
 function getImgData() {
     const files = imageInput.files[0];
     if (files) {
