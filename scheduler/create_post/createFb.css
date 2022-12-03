@@ -110,6 +110,20 @@ body {
     font-size: 1vw;
 }
 
+#image-input {
+    position: relative;
+    font-size: 0.8vw;
+}
+
+#remove-image-data-button {
+    position: relative;
+    background-color: brown;
+    color: white;
+    font-size: 1vw;
+    border-radius: 1vw;
+    top: 3vw;
+}
+
 #submit {
     position: absolute;
     left: 100%;
