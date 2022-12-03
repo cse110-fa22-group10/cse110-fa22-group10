@@ -181,6 +181,36 @@ imgElement.addEventListener('change', () => {
 postDescription.addEventListener('input', countDescriptionChars);
 postSummary.addEventListener('input', countSummaryChars);
 
+/**
+ * Called when description is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countDescriptionChars() {
+    descriptionCharLimit.innerText = "Character Limit: " +
+        postDescription.value.length + "/" + postDescription.getAttribute('maxlength');
+    if (postDescription.value.length == postDescription.getAttribute('maxlength')) {
+        descriptionCharLimit.style.color = 'red';
+    }
+    else {
+        descriptionCharLimit.style.color = 'black';
+    }
+}
+
+/**
+ * Called when summary is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countSummaryChars() {
+    summaryCharLimit.innerText = "Character Limit: " +
+        postSummary.value.length + "/" + SUMMARY_CHAR_LIMIT;
+    if (postSummary.value.length == SUMMARY_CHAR_LIMIT) {
+        summaryCharLimit.style.color = 'red';
+    }
+    else {
+        summaryCharLimit.style.color = 'black';
+    }
+}
+
 //event listener for form on submit
 formEle.addEventListener('submit', (event) => {
     event.preventDefault();
