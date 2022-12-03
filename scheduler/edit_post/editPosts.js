@@ -162,24 +162,9 @@ function configureFormConstraints() {
         }
     }
 }
-/**
-* Function called when clicking the submit button to check
-* if the text constraints are respected
-* The submit button is disabled for 1 second if not
-*/
-function checkText() {
-    if (postDescription.value.length > postDescription.maxLength) {
-        submitButton.disabled = true;
-        alert("Too many characters!");
-        setTimeout(() => {
-            submitButton.disabled = false;
-        }, 1000);
-    }
-}
 // Event listeners
-postTag.addEventListener('change', configureConstraints);
-imageInput.addEventListener("change", configureConstraints);
-submitButton.addEventListener('click', checkText);
+postTag.addEventListener('change', configureFormConstraints);
+imageInput.addEventListener("change", configureFormConstraints);
 
 // store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
