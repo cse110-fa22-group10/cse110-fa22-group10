@@ -29,6 +29,10 @@ imgElement.addEventListener('change', () => {
     });
     reader.readAsDataURL(file);
 });
+
+postDescription.addEventListener('input', countDescriptionChars);
+postSummary.addEventListener('input', countSummaryChars);
+
 //event listener for form on submit
 formEle.addEventListener('submit', () => {
     let formData = new FormData(formEle);
