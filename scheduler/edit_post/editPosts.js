@@ -228,7 +228,7 @@ submitButton.addEventListener('click', (event) => {
     //delete the old instance of the post to be edited 
     postFromLocal.splice(indexToDelete, 1);
     savePostsToStorage(postFromLocal);
-    window.location.replace('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html')
+    window.location.replace('../index.html')
 });
 
 // an event listener for the delete image data button in charge of removing images
@@ -267,5 +267,5 @@ const backButton = document.querySelector("#back-button");
 // an event listener to take the user back to the main page, 
 // when the back button is pressed
 backButton.addEventListener('click', () => {
-    window.location.replace("https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html");
+    window.location.replace("../index.html");
 });
