@@ -110,6 +110,11 @@ body {
     font-size: 1vw;
 }
 
+#image-input {
+    position: relative;
+    font-size: 0.8vw;
+}
+
 #submit {
     position: absolute;
     left: 100%;
