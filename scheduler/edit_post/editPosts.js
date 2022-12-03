@@ -107,7 +107,7 @@ function populateForm(index) {
         });
         reader.readAsDataURL(file);
     }
-    configureFormConstraints
+    configureFormConstraints();
 }
 
 /**
