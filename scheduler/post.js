@@ -125,51 +125,46 @@ class Post extends HTMLElement {
     .post-container{
         position: relative;
     }
-    #edit-button-withimg{
-        position: absolute;
-        z-index: 2;
-        top: 3%;
-        display: none;
-        left: 5%;	
-        border-radius: 15px;
-        width: 5vw;
-        height: 3vw;
-        font-size: 1vw;
+    #edit-button-withimg{	
+        position: relative;	
+        display: none;	
+        float: left;		
+        border-radius: 1vw;	
+        width: 5vw;	
+        height: 3vw;	
+        font-size: 1vw;	
+        margin: 0.5vw;	
+    }	
+    #delete-button-withimg{	
+        position: relative;	
+        display: none;	
+        float: right;		
+        border-radius: 1vw;	
+        width: 5vw;	
+        height: 3vw;	
+        font-size: 1vw;	
+        margin: 0.5vw;	
+    }	
+    #edit-button-noimg{	
+        position: relative;	
+        display: none;	
+        float: left;		
+        border-radius: 1vw;	
+        width: 5vw;	
+        height: 3vw;	
+        font-size: 1vw;	
+        margin: 0.5vw;	
+    }	
+    #delete-button-noimg{	
+        position: relative;	
+        display: none;	
+        float: right;		
+        border-radius: 1vw;	
+        width: 5vw;	
+        height: 3vw;	
+        font-size: 1vw;	
+        margin: 0.5vw;	
     }
-    #delete-button-withimg{
-        position: absolute;
-        z-index: 2;
-        top: 3%;
-        display: none;
-        left: 75%;	
-        border-radius: 15px;
-        width: 5vw;
-        height: 3vw;
-        font-size: 1vw;
-    }
-    #edit-button-noimg{
-        position: absolute;
-        z-index: 2;
-        top: 3%;
-        display: none;
-        left: 5%;	
-        border-radius: 15px;
-        width: 5vw;
-        height: 3vw;
-        font-size: 1vw;
-    }
-    #delete-button-noimg{
-        position: absolute;
-        z-index: 2;
-        top:3%;
-        display: none;
-        left: 75%;	
-        border-radius: 15px;
-        width: 5vw;
-        height: 3vw;
-        font-size: 1vw;
-    }
-
      .post-container:hover #edit-button-withimg{
         display: block
      }
@@ -254,7 +249,6 @@ class Post extends HTMLElement {
                         <summary id="summary-of-post">${data.postSummary}</summary>
                         <p id="main-text">${data.mainTxt}</p>
                     </details>
-
                 </div>
                 <span class="platform-type">
                     <div class="platform-title">
