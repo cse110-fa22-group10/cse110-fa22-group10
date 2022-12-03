@@ -79,6 +79,15 @@ submitButton.addEventListener('click', () => {
     savePostsToStorage(postFromLocal);
 });
 
+// an event listener for the delete image data button in charge of removing images
+// when creating  a post
+deleteImgDataButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    dataUrl = '';
+    imgPreview.innerHTML = '';
+    imageInput.value = '';
+});
+
 /**
  * Reads 'posts' from localStorage and returns an array of
  * all of the posts found (parsed, not in string form). If
