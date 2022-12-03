@@ -105,7 +105,7 @@ jobs:
             force: true
           
 
-  E2E_test:
+  E2E_and_unit_test:
       # The type of runner that the job will run on
       runs-on: ubuntu-latest
       
@@ -122,7 +122,7 @@ jobs:
 
         # Install required deps for action
         - name: Install Dependencies
-          run: npm install
+          run: npm install --save-dev jest babel-jest @babel/core @babel/preset-env puppeteer jest-puppeteer
 
         # Finally, run our tests
         - name: Run the tests
