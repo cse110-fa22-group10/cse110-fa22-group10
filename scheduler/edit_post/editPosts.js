@@ -239,6 +239,12 @@ formEle.addEventListener('submit', (event) => {
     let postFromLocal = getPostsFromStorage();
     postObject['currentIndex'] = postFromLocal.length;
     postFromLocal.push(postObject);
+    postFromLocal.sort((post1, post2) => {
+        let postDate1 = new Date(post1['dateCompare']);
+        let postDate2 = new Date(post2['dateCompare']);
+        return postDate1 - postDate2;
+    });
+
     //delete the old instance of the post to be edited 
     postFromLocal.splice(indexToDelete, 1);
     savePostsToStorage(postFromLocal);
