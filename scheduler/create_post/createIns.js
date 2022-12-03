@@ -45,6 +45,7 @@ imgElement.addEventListener('change', () => {
         dataUrl = reader.result;
     });
     reader.readAsDataURL(file);
+    getImgData();
 });
 //event listener for submit botton
 submitButton.addEventListener('click', () => {
