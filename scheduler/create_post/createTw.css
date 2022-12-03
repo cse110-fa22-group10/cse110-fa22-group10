@@ -83,9 +83,10 @@ body {
     padding: 0.5vw;
 }
 
-#char-limit {
+#desc-char-limit,
+#summary-char-limit {
     position: relative;
-    left: 41.7vw;
+    float: right;
 }
 
 #date-time-container {
