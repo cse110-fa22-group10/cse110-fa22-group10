@@ -182,7 +182,7 @@ imgElement.addEventListener('change', () => {
     getImgData();
 });
 //event listener for submit botton
-submitButton.addEventListener('click', (event) => {
+formEle.addEventListener('submit', (event) => {
     event.preventDefault();
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
