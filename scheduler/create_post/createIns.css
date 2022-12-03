@@ -60,12 +60,11 @@ body {
 
 .image-container {
     display: flex;
+    flex-direction: column;
     margin-top: 0.5vw;
     width: 30%;
-    height: 95%;
-    background-color: white;
+    height: 100%;
     font-size: 0.8vw;
-    padding: 1vw;
     border-radius: 1vw;
 }
 
