@@ -97,10 +97,11 @@ body {
     border-radius: 1vw;
 }
 
-.image-container img {
-    width: 100%;
-    height: auto;
+#main-image-container img {
+    width: inherit;
+    height: inherit;
     display: block;
+    border-radius: 1vw;
 }
 
 .text-container {
