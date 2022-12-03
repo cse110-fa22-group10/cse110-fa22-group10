@@ -1,5 +1,4 @@
-
-const { add, subtract, multiply } = require('./math.js');
+const { add, subtract, multiply } = require('../code-to-unit-test/math.js');
 
 describe("simple arithmetic", () => {
   describe("addition", () => {
