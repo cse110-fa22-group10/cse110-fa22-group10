@@ -48,8 +48,8 @@ imgElement.addEventListener('change', () => {
     reader.readAsDataURL(file);
     getImgData();
 });
-//event listener for submit botton
-submitButton.addEventListener('click', () => {
+//event listener for form on submit
+formEle.addEventListener('submit', () => {
     let formData = new FormData(formEle);
     //store user entered image, description, data .. into postObject
     let postObject = {};
