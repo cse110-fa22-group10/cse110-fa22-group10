@@ -31,10 +31,6 @@ function getImgData() {
     }
 }
 
-// Event listeners
-imageInput.addEventListener('change', constraints);
-submitButton.addEventListener('click', checkText);
-
 // OnSubmit - store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
 // be posted 
