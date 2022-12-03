@@ -17,18 +17,6 @@ let dataUrl = "";
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    constraints();
-}
-
-// Instagram posts must have at least one image
-function constraints() {
-    if (imageInput.files.length == 0) {
-        submitButton.disabled = true;
-    }
-    else {
-        submitButton.disabled = false;
-    }
-    getImgData();
 }
 
 function getImgData() {
@@ -40,21 +28,6 @@ function getImgData() {
             imgPreview.style.display = "block";
             imgPreview.innerHTML = '<img src="' + this.result + '" />';
         });
-    }
-}
-
-
-
-// Function called when clicking the submit button to check
-// if the text constraints are respected
-// The submit button is disabled for 1 second
-function checkText() {
-    if (postDescription.value.length > postDescription.maxLength) {
-        submitButton.disabled = true;
-        alert("Too many characters!");
-        setTimeout(() => {
-            submitButton.disabled = false;
-        }, 1000);
     }
 }
 
