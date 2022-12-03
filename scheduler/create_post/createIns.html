@@ -18,9 +18,13 @@
             </div>
             <form id="post-creator">
                 <div class="image-container">
-                    <label for="image-input" id="image-label">Images:</label>
-                    <input type="file" name="image-input" id="image-input" multiple accept=".jpg, .jpeg, .png, .bmp"
-                        required>
+                    <div id="img-file-selection-container">
+                        <label for="image-input" id="image-label">Images:</label>
+                        <input type="file" name="image-input" id="image-input" multiple accept=".jpg, .jpeg, .png, .bmp"
+                            required>
+                    </div>
+                    <div id="main-image-container">
+                    </div>
                 </div>
                 <div class="text-container">
                     <div id="summary-container">
