@@ -36,7 +36,7 @@ function init() {
     }
 
     //set the constraints accordingly and display the image in the container
-    configureConstraints();
+    configureFormConstraints();
     getImgData();
 }
 
@@ -134,7 +134,7 @@ function dataURItoBlob(dataURI) {
 * this function limits the amount of characters permited for every type of posts 
 * instagram posts must have an image
 */
-function configureConstraints() {
+function configureFormConstraints() {
     let currentCharacterLimit = document.getElementById('char-limit');
     let selectedTag = postTag.selectedOptions[0];
     // Facebook 63,206char max
