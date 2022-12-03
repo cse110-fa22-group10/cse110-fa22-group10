@@ -2,7 +2,6 @@ describe('Basic user flow for Website', () => {
     // First, visit the scheduler website
     beforeAll(async () => {
       await page.goto('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
-      jest.setTimeout(10000)
     });
   
     // Next, check to make sure that all 0 <post-card> elements have loaded
