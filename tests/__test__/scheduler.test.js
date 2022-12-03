@@ -22,17 +22,17 @@ describe('Basic user flow for Website', () => {
 
       await page.click('button[id=facebook-create]');
       await page.reload();
-      // await page.waitForSelector('button[id=back-button]' , {
-      //   timeout: 50000
-      // });
+      await page.waitForSelector('button[id=back-button]' , {
+        timeout: 50000
+      });
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createFb.html');
 
       await page.click('button[id=back-button]');
       await page.reload();
-      // await page.waitForSelector('button[id=facebook-create]', {
-      //   timeout: 50000
-      // });
+      await page.waitForSelector('button[id=facebook-create]', {
+        timeout: 50000
+      });
       curr_url = await page.url();
       expect(curr_url).toBe('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html');
 
