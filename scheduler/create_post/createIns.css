@@ -76,6 +76,16 @@ body {
     border-radius: 1vw;
 }
 
+#img-file-selection-container {
+    display: flex;
+    width: 20vw;
+    height: 2vw;
+    background-color: white;
+    font-size: 0.8vw;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+
 .image-container img {
     width: 100%;
     height: auto;
