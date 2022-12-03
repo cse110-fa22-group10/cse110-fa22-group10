@@ -86,6 +86,17 @@ body {
     border-radius: 1vw;
 }
 
+#main-image-container {
+    display: flex;
+    margin-top: 0.5vw;
+    width: 20vw;
+    height: 30vw;
+    background-color: white;
+    font-size: 0.8vw;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+
 .image-container img {
     width: 100%;
     height: auto;
