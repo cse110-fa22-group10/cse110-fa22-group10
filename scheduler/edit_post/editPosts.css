@@ -106,7 +106,7 @@ body {
 
 #main-image-container img {
     width: 100%;
-    height: auto;
+    height: inherit;
     display: block;
     border-radius: 1vw;
 }
