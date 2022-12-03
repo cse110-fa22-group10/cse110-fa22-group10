@@ -61,8 +61,7 @@ body {
 }
 
 #image-input {
-    position: absolute;
-    left: 5vw;
+    position: relative;
     font-size: 0.8vw;
 }
 
