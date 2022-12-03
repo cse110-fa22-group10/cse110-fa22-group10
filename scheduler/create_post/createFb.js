@@ -60,6 +60,14 @@ formEle.addEventListener('submit', () => {
     savePostsToStorage(postFromLocal);
 });
 
+// an event listener for the delete image data button in charge of removing images
+// when creating a post
+deleteImgDataButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    dataUrl = '';
+    imageInput.value = '';
+});
+
 /**
  * Reads 'posts' from localStorage and returns an array of
  * all of the posts found (parsed, not in string form). If
@@ -84,6 +92,7 @@ function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
 
+// event listener to head back to the main page
 backButton.addEventListener('click', () => {
     window.location.replace("../index.html");
 });
