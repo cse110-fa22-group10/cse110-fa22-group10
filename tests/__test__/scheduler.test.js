@@ -72,9 +72,7 @@ describe('Basic user flow for Website', () => {
       await page.click('button[id=facebook-create]');
 
       await page.reload();
-      await page.waitForSelector('input[name=post-summary]', {
-        timeout: 50000
-      });
+      await page.waitForSelector('input[name=post-summary]');
       
       // Fill out the required fields to create a post
       await page.$eval('input[name=post-summary]', el => el.value = 'E2E Testing on createFb');
@@ -115,9 +113,7 @@ describe('Basic user flow for Website', () => {
       })
 
       await page.reload();
-      await page.waitForSelector('input[name=post-summary]', {
-        timeout: 50000
-      });
+      await page.waitForSelector('input[name=post-summary]');
       
       // Fill out the required fields to create a post
       await page.$eval('input[name=post-summary]', el => el.value = 'E2E Testing on createFb');
@@ -150,9 +146,7 @@ describe('Basic user flow for Website', () => {
       await page.click('button[id=back-button]');
         
       await page.reload(); 
-      await page.waitForSelector('post-card', {
-        timeout: 50000
-      });    
+      await page.waitForSelector('post-card');    
       // Query select all of the <post-card> elements and return the length of that array
       const numCards = await page.$$eval('post-card', (postCards) => {
         return postCards.length;
