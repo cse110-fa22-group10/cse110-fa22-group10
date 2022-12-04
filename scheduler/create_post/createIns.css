@@ -107,6 +107,7 @@ body {
     height: inherit;
     display: block;
     border-radius: 1vw;
+    object-fit: contain;
 }
 
 .text-container {
