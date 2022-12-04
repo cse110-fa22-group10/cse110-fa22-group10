@@ -1,5 +1,5 @@
 body {
-    background: url('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/assets/create-post-background.png') no-repeat center center fixed;
+    background: url('../assets/create-post-background.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -32,9 +32,14 @@ body {
     border-radius: .5vw;
     width: 2vw;
     height: 2vw;
+    box-shadow: 0.2vw 0.2vw #736B6B;
     border: none;
     font-size: 1vw;
     left: 35%;
+}
+
+#back-button:hover {
+    box-shadow: 0.2vw 0.2vw brown;
 }
 
 #post-creator {
@@ -83,9 +88,10 @@ body {
     padding: 0.5vw;
 }
 
-#char-limit {
+#desc-char-limit,
+#summary-char-limit {
     position: relative;
-    left: 41.7vw;
+    float: right;
 }
 
 #date-time-container {
@@ -109,6 +115,20 @@ body {
     font-size: 1vw;
 }
 
+#image-input {
+    position: relative;
+    font-size: 0.8vw;
+}
+
+#remove-image-data-button {
+    position: relative;
+    background-color: brown;
+    color: white;
+    font-size: 1vw;
+    border-radius: 1vw;
+    top: 3vw;
+}
+
 #submit {
     position: absolute;
     left: 100%;
@@ -123,7 +143,6 @@ body {
     font-size: 1vw;
 }
 
-#subit:hover {
-    background-attachment: #970797;
-    box-shadow: 0px 5px #736B6B;
+#submit:hover {
+    box-shadow: 0.2vw 0.2vw brown;
 }

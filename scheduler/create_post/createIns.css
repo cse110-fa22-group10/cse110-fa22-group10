@@ -1,5 +1,5 @@
 body {
-    background: url('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/assets/create-post-background.png') no-repeat center center fixed;
+    background: url('../assets/create-post-background.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -32,9 +32,14 @@ body {
     border-radius: .5vw;
     width: 2vw;
     height: 2vw;
+    box-shadow: 0.2vw 0.2vw #736B6B;
     border: none;
     font-size: 1vw;
     left: 35%;
+}
+
+#back-button:hover {
+    box-shadow: 0.2vw 0.2vw brown;
 }
 
 #post-creator {
@@ -54,26 +59,54 @@ body {
 }
 
 #image-input {
-    position: absolute;
-    left: 5vw;
+    position: relative;
     font-size: 0.8vw;
 }
 
 .image-container {
     display: flex;
+    flex-direction: column;
     margin-top: 0.5vw;
     width: 30%;
-    height: 95%;
+    height: 100%;
+    font-size: 0.8vw;
+    border-radius: 1vw;
+}
+
+#remove-image-data-button {
+    background-color: brown;
+    color: white;
+    margin-bottom: 0.5vw;
+    font-size: 1vw;
+    border-radius: 1vw;
+}
+
+#img-file-selection-container {
+    display: flex;
+    width: 20vw;
+    height: 2vw;
     background-color: white;
     font-size: 0.8vw;
     padding: 1vw;
     border-radius: 1vw;
 }
 
-.image-container img {
-    width: 100%;
-    height: auto;
+#main-image-container {
+    display: flex;
+    margin-top: 0.5vw;
+    width: 20vw;
+    height: 30vw;
+    background-color: white;
+    font-size: 0.8vw;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+
+#main-image-container img {
+    width: inherit;
+    height: inherit;
     display: block;
+    border-radius: 1vw;
 }
 
 .text-container {
@@ -111,9 +144,10 @@ body {
     padding: 0.5vw;
 }
 
-#char-limit {
+#desc-char-limit,
+#summary-char-limit {
     position: relative;
-    left: 14.5vw;
+    float: right;
 }
 
 #date-time-container {
@@ -151,7 +185,6 @@ body {
     font-size: 1vw;
 }
 
-#subit:hover {
-    background-attachment: #970797;
-    box-shadow: 0px 5px #736B6B;
+#submit:hover {
+    box-shadow: 0.2vw 0.2vw brown;
 }

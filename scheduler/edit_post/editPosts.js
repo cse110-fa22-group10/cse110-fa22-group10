@@ -1,13 +1,15 @@
-// TODO: Create way to set constraints in the post based on what platform
-// the post is for. i.e. Twitter posts need a character limit, Insta posts
-// need a picture, etc..
-// Done by Antonio
 const postDescription = document.getElementById('desc-input');
+const postSummary = document.getElementById('post-summary');
 const postTag = document.getElementById('tag');
 const imgPreview = document.getElementById("main-image-container");
 const imageInput = document.getElementById('image-input');
-const submitButton = document.getElementById('submit');
 const deleteImgDataButton = document.getElementById('remove-image-data-button');
+const formEle = document.querySelector('form');
+let imgElement = document.querySelector("[type='file']");
+const backButton = document.querySelector("#back-button");
+const descriptionCharLimit = document.getElementById('desc-char-limit');
+const summaryCharLimit = document.getElementById('summary-char-limit');
+const SUMMARY_CHAR_LIMIT = 100;
 let dataUrl = "";
 let file;
 let indexToDelete;
@@ -34,7 +36,7 @@ function init() {
     }
 
     //set the constraints accordingly and display the image in the container
-    configureConstraints();
+    configureFormConstraints();
     getImgData();
 }
 
@@ -105,6 +107,7 @@ function populateForm(index) {
         });
         reader.readAsDataURL(file);
     }
+    configureFormConstraints();
 }
 
 /**
@@ -132,57 +135,36 @@ function dataURItoBlob(dataURI) {
 * this function limits the amount of characters permited for every type of posts 
 * instagram posts must have an image
 */
-function configureConstraints() {
-    let currentCharacterLimit = document.getElementById('char-limit');
+function configureFormConstraints() {
     let selectedTag = postTag.selectedOptions[0];
+    summaryCharLimit.innerHTML = 'Character Limit: ' + postSummary.value.length + '/100';
     // Facebook 63,206char max
-    if (selectedTag == postTag.options[0]) {
-        postDescription.maxLength = 63206;
-        currentCharacterLimit.innerHTML = 'Character Limit: 63206';
-        submitButton.disabled = false;
+    if (selectedTag.value == 'facebook') {
+        postDescription.setAttribute('maxlength', '63206');
+        descriptionCharLimit.innerHTML = 'Character Limit: ' + postDescription.value.length + '/63206';
+        imageInput.removeAttribute('required');
     }
     // Twitter 280char max
-    if (selectedTag == postTag.options[1]) {
-        postDescription.maxLength = 280;
-        currentCharacterLimit.innerHTML = 'Character Limit: 280';
-        submitButton.disabled = false;
+    if (selectedTag.value == 'twitter') {
+        postDescription.setAttribute('maxlength', '280');
+        descriptionCharLimit.innerHTML = 'Character Limit: ' + postDescription.value.length + '/280';
+        imageInput.removeAttribute('required');
     }
     // Instagram 2,200char max and check if there is an image uploaded
-    if (selectedTag == postTag.options[2]) {
-        postDescription.maxLength = 2200;
-        currentCharacterLimit.innerHTML = 'Character Limit: 2200';
-        if (imageInput.files.length == 0) {
-            submitButton.disabled = true;
-        }
-        else {
-            submitButton.disabled = false;
-        }
+    if (selectedTag.value == 'instagram') {
+        postDescription.setAttribute('maxlength', '2200');
+        descriptionCharLimit.innerHTML = 'Character Limit: ' + postDescription.value.length + '/2200';
+        imageInput.setAttribute('required', true);
     }
 }
-/**
-* Function called when clicking the submit button to check
-* if the text constraints are respected
-* The submit button is disabled for 1 second if not
-*/
-function checkText() {
-    if (postDescription.value.length > postDescription.maxLength) {
-        submitButton.disabled = true;
-        alert("Too many characters!");
-        setTimeout(() => {
-            submitButton.disabled = false;
-        }, 1000);
-    }
-}
+
 // Event listeners
-postTag.addEventListener('change', configureConstraints);
-imageInput.addEventListener("change", configureConstraints);
-submitButton.addEventListener('click', checkText);
+postTag.addEventListener('change', configureFormConstraints);
+imageInput.addEventListener("change", configureFormConstraints);
 
 // store the formdata into localStorage to wherever we want
 // it to be stored. Should also store the time and date of when the post should
 // be posted
-const formEle = document.querySelector('form');
-let imgElement = document.querySelector("[type='file']");
 imgElement.addEventListener('change', () => {
     file = imgElement.files[0];
     if (file == undefined) {
@@ -195,10 +177,48 @@ imgElement.addEventListener('change', () => {
     reader.readAsDataURL(file);
     getImgData();
 });
-//event listener for submit botton
-submitButton.addEventListener('click', (event) => {
+
+postDescription.addEventListener('input', countDescriptionChars);
+postSummary.addEventListener('input', countSummaryChars);
+
+/**
+ * Called when description is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countDescriptionChars() {
+    descriptionCharLimit.innerText = "Character Limit: " +
+        postDescription.value.length + "/" + postDescription.getAttribute('maxlength');
+    if (postDescription.value.length == postDescription.getAttribute('maxlength')) {
+        descriptionCharLimit.style.color = 'red';
+    }
+    else {
+        descriptionCharLimit.style.color = 'black';
+    }
+}
+
+/**
+ * Called when summary is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countSummaryChars() {
+    summaryCharLimit.innerText = "Character Limit: " +
+        postSummary.value.length + "/" + SUMMARY_CHAR_LIMIT;
+    if (postSummary.value.length == SUMMARY_CHAR_LIMIT) {
+        summaryCharLimit.style.color = 'red';
+    }
+    else {
+        summaryCharLimit.style.color = 'black';
+    }
+}
+
+//event listener for form on submit
+formEle.addEventListener('submit', (event) => {
     event.preventDefault();
     let formData = new FormData(formEle);
+    if (formData.get('desc-input').length > postDescription.getAttribute('maxlength')) {
+        alert('Platform Type Character Limit Violation!');
+        return;
+    }
     //store user entered image, description, data .. into postObject
     let postObject = {};
     postObject['currentContainer'] = 'upcoming';
@@ -219,16 +239,15 @@ submitButton.addEventListener('click', (event) => {
     let postFromLocal = getPostsFromStorage();
     postObject['currentIndex'] = postFromLocal.length;
     postFromLocal.push(postObject);
+    //delete the old instance of the post to be edited 
+    postFromLocal.splice(indexToDelete, 1);
     postFromLocal.sort((post1, post2) => {
         let postDate1 = new Date(post1['dateCompare']);
         let postDate2 = new Date(post2['dateCompare']);
         return postDate1 - postDate2;
     });
-
-    //delete the old instance of the post to be edited 
-    postFromLocal.splice(indexToDelete, 1);
     savePostsToStorage(postFromLocal);
-    window.location.replace('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html')
+    window.location.replace('../index.html')
 });
 
 // an event listener for the delete image data button in charge of removing images
@@ -263,9 +282,8 @@ function savePostsToStorage(posts) {
     localStorage.setItem('posts', JSON.stringify(posts));
 }
 
-const backButton = document.querySelector("#back-button");
 // an event listener to take the user back to the main page, 
 // when the back button is pressed
 backButton.addEventListener('click', () => {
-    window.location.replace("https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/index.html");
+    window.location.replace("../index.html");
 });

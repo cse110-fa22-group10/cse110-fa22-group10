@@ -66,7 +66,7 @@ function init() {
         let currentShadow = finishedPostCardCollection[currentPost].shadowRoot;
         let currentEditButton = currentShadow.querySelector(".edit-button");
         currentEditButton.addEventListener("click", () => {
-            console.log("finished edit!");
+            window.location.reload();
             let url = "./edit_post/editPosts.html?currentIndex=" + finishedPostCardCollection[currentPost].getAttribute("index");
             window.location.replace(url);
         });
@@ -97,7 +97,7 @@ function init() {
         let currentShadow = upcomingPostCardCollection[currentPost].shadowRoot;
         let currentEditButton = currentShadow.querySelector(".edit-button");
         currentEditButton.addEventListener("click", () => {
-            console.log("upcoming edit!");
+            window.location.reload();
             let url = "./edit_post/editPosts.html?currentIndex=" + upcomingPostCardCollection[currentPost].getAttribute("index");
             window.location.replace(url);
         });
@@ -225,7 +225,7 @@ function savePostsToStorage(posts) {
  */
 
 function createFb() {
-    window.location.replace("https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createFb.html");
+    window.location.replace("../scheduler/create_post/createFb.html");
 }
 
 
@@ -236,7 +236,7 @@ function createFb() {
  */
 
 function createIns() {
-    window.location.replace("https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createIns.html");
+    window.location.replace("../scheduler/create_post/createIns.html");
 
 }
 
@@ -248,7 +248,7 @@ function createIns() {
  */
 
 function createTw() {
-    window.location.replace("https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/create_post/createTw.html");
+    window.location.replace("../scheduler/create_post/createTw.html");
 }
 
 /**

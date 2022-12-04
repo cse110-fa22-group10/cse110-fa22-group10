@@ -1,5 +1,5 @@
 body {
-    background: url('https://cse110-fa22-group10.github.io/cse110-fa22-group10/scheduler/assets/create-post-background.png') no-repeat center center fixed;
+    background: url('../assets/create-post-background.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -30,11 +30,18 @@ body {
     position: relative;
     background-color: red;
     border-radius: .5vw;
-    width: 2vw;
-    height: 2vw;
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 0.2vw 0.2vw #736B6B;
     border: none;
     font-size: 1vw;
-    left: 35%;
+    left: 38%;
+    color: white;
+    padding: 0.5vw;
+}
+
+#back-button:hover {
+    box-shadow: 0.2vw 0.2vw #970797;
 }
 
 #post-creator {
@@ -54,8 +61,7 @@ body {
 }
 
 #image-input {
-    position: absolute;
-    left: 5vw;
+    position: relative;
     font-size: 0.8vw;
 }
 
@@ -91,7 +97,7 @@ body {
     display: flex;
     margin-top: 0.5vw;
     width: 20vw;
-    height: 100%;
+    height: 30vw;
     background-color: white;
     font-size: 0.8vw;
     padding: 1vw;
@@ -100,7 +106,7 @@ body {
 
 #main-image-container img {
     width: 100%;
-    height: auto;
+    height: inherit;
     display: block;
     border-radius: 1vw;
 }
@@ -140,9 +146,10 @@ body {
     padding: 0.5vw;
 }
 
-#char-limit {
+#desc-char-limit,
+#summary-char-limit {
     position: relative;
-    left: 14.5vw;
+    float: right;
 }
 
 #date-time-container {
@@ -181,7 +188,7 @@ body {
     font-size: 1vw;
 }
 
-#subit:hover {
+#submit:hover {
     background-attachment: #970797;
-    box-shadow: 0px 5px #736B6B;
+    box-shadow: 0.2vw 0.2vw brown;
 }
