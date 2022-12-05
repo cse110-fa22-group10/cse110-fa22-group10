@@ -226,9 +226,9 @@ describe('Basic user flow for Website', () => {
       // });
     }, 1000000);
 
-    // Finally, testing if the sorting algorithm of time works
-    it('every posts should be ordered chronologically', async () => {
-      console.log('Testing sorting alogorithm...');
+    // Finally, testing if the delete all finished posts buttons work as intended
+    it('Delete-all finished button should remove all the finished posts but not upcoming post', async () => {
+      console.log('Clicking on the button...');
 
       // Delete all the localStorage before Starting
       await page.evaluate(() => {
@@ -280,7 +280,18 @@ describe('Basic user flow for Website', () => {
             mainTxt : "Second",
             platType : "twitter",
             postSummary : "asdasdasdasdsa",
-          }      
+          },
+          {
+            currentContainer : "upcoming",
+            currentIndex : 4,
+            dateCompare : "2022-12-04T21:13:00",
+            dateData : "2022-12-04, 21:33",
+            imgAlt : "",
+            mainImg : "",
+            mainTxt : "Fourth",
+            platType : "twitter",
+            postSummary : "asdasdasdasdsa",
+          }  
         ];
         window.localStorage.setItem('posts',JSON.stringify(posts));
       })
@@ -298,7 +309,8 @@ describe('Basic user flow for Website', () => {
         return window.localStorage.getItem('posts');
       });
       
-      console.log(post);
+      // expect to receive only upcoming posts 
+      expect(post).toBe('[{"currentContainer":"upcoming","currentIndex":0,"dateCompare":"2022-12-04T21:13:00","dateData":"2022-12-04, 21:33","imgAlt":"","mainImg":"","mainTxt":"Fourth","platType":"twitter","postSummary":"asdasdasdasdsa"}]');
 
     }, 1000000);
 })
