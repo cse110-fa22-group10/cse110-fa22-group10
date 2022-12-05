@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addPostsToMain">addPostsToMain</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkIfPostFinish">checkIfPostFinish</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createFb">createFb</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createIns">createIns</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createTw">createTw</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#displayDate">displayDate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getPostsFromStorage">getPostsFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#savePostsToStorage">savePostsToStorage</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addPostsToMain">addPostsToMain</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkIfPostFinish">checkIfPostFinish</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#countDescriptionChars">countDescriptionChars</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#countSummaryChars">countSummaryChars</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createFb">createFb</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createIns">createIns</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createTw">createTw</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#dataURItoBlob">dataURItoBlob</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#displayDate">displayDate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getImgData">getImgData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getPostsFromStorage">getPostsFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#populateForm">populateForm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#savePostsToStorage">savePostsToStorage</a></span></li>
 </nav>
 
 <div id="main">
@@ -42,23 +42,108 @@
             <pre class="prettyprint source linenums"><code>// Run the init() function when the page has loaded
 window.addEventListener('DOMContentLoaded', init);
 
+let Fb = document.querySelector('#facebook-create');
+let Ins = document.querySelector('#instagram-create');
+let Tw = document.querySelector('#twitter-create');
 // Starts the program, all function calls trace back here
 function init() {
-    // Get the posts from localStorage
-    let posts = getPostsFromStorage();
+    let facebookButton = document.getElementById('facebook-create');
+    let instagramButton = document.getElementById('instagram-create');
+    let twitterButton = document.getElementById('twitter-create');
 
-    // Add each Post to the &lt;main> element
-    addPostsToMain(posts);
+    let postsArray = getPostsFromStorage();
+    for (let index = 0; index &lt; postsArray.length; index++) {
+        postsArray[index].currentIndex = index;
+    }
+    savePostsToStorage(postsArray);
+
+    let deleteFinishedPostsButton = document.querySelector('.delete-all');
+    deleteFinishedPostsButton.addEventListener('click', () => {
+        let finishedPosts = document.querySelector(".finished-posts");
+        finishedPosts.innerHTML = '';
+        let currentPostsArray = getPostsFromStorage();
+        while (currentPostsArray.length != 0 &amp;&amp; currentPostsArray[0].currentContainer != 'upcoming') {
+            currentPostsArray.shift();
+        }
+        savePostsToStorage(currentPostsArray);
+    });
+
+    facebookButton.addEventListener('click', () => createFb());
+    instagramButton.addEventListener('click', () => createIns());
+    twitterButton.addEventListener('click', () => createTw());
 
     //check posts is finised every 10 miliseconds
-    setInterval(checkIfPostFinish, 10);
+    setInterval(checkIfPostFinish, 100);
+
+    // Get the posts from localStorage
+    let posts = getPostsFromStorage();
+    // Add each Post to the &lt;main> element
+    addPostsToMain(posts);
 
     //display date on main page
     setInterval(displayDate, 100);
 
+    // accessing all finished posts delete buttons and adding event listeners to them
+    let finishedPosts = document.querySelector(".finished-posts");
+    let finishedPostCardCollection = finishedPosts.getElementsByTagName("post-card");
+    for (let currentPost = 0; currentPost &lt; finishedPostCardCollection.length; currentPost++) {
+        let currentShadow = finishedPostCardCollection[currentPost].shadowRoot;
+        let currentDeleteButton = currentShadow.querySelector(".delete-button");
+        currentDeleteButton.addEventListener("click", () => {
+            let currentLocalSotrage = getPostsFromStorage();
+            let currentIndex = finishedPostCardCollection[currentPost].getAttribute('index');
+            for (let index = 0; index &lt; currentLocalSotrage.length; index++) {
+                if (currentLocalSotrage[index].currentIndex == currentIndex) {
+                    currentLocalSotrage.splice(currentIndex, 1);
+                    savePostsToStorage(currentLocalSotrage);
+                    window.location.reload();
+                    break;
+                }
+            }
+        });
+    }
+    // accessing all finished posts edit buttons and adding event listeners to them
+    for (let currentPost = 0; currentPost &lt; finishedPostCardCollection.length; currentPost++) {
+        let currentShadow = finishedPostCardCollection[currentPost].shadowRoot;
+        let currentEditButton = currentShadow.querySelector(".edit-button");
+        currentEditButton.addEventListener("click", () => {
+            window.location.reload();
+            let url = "./edit_post/editPosts.html?currentIndex=" + finishedPostCardCollection[currentPost].getAttribute("index");
+            window.location.replace(url);
+        });
+    }
+
+    // accessing all upcoming posts delete buttons and adding event listeners to them
+    let upcomingPosts = document.querySelector(".upcoming-posts");
+    let upcomingPostCardCollection = upcomingPosts.getElementsByTagName("post-card");
+    for (let currentPost = 0; currentPost &lt; upcomingPostCardCollection.length; currentPost++) {
+        let currentShadow = upcomingPostCardCollection[currentPost].shadowRoot;
+        let currentDeleteButton = currentShadow.querySelector(".delete-button");
+        currentDeleteButton.addEventListener("click", () => {
+            let currentLocalSotrage = getPostsFromStorage();
+            let currentIndex = upcomingPostCardCollection[currentPost].getAttribute('index');
+            for (let index = 0; index &lt; currentLocalSotrage.length; index++) {
+                if (currentLocalSotrage[index].currentIndex == currentIndex) {
+                    currentLocalSotrage.splice(currentIndex, 1);
+                    savePostsToStorage(currentLocalSotrage);
+                    window.location.reload();
+                    break;
+                }
+            }
+        });
+    }
+
+    // accessing all upcoming posts edit buttons and adding event listeners to them
+    for (let currentPost = 0; currentPost &lt; upcomingPostCardCollection.length; currentPost++) {
+        let currentShadow = upcomingPostCardCollection[currentPost].shadowRoot;
+        let currentEditButton = currentShadow.querySelector(".edit-button");
+        currentEditButton.addEventListener("click", () => {
+            window.location.reload();
+            let url = "./edit_post/editPosts.html?currentIndex=" + upcomingPostCardCollection[currentPost].getAttribute("index");
+            window.location.replace(url);
+        });
+    }
 }
-
-
 /**
  * This function is used to check 
  * and move the posts from upcoming posts
@@ -97,6 +182,14 @@ function checkIfPostFinish() {
         // do nothing, so that the error is caught and dealt with accordingly
         // nothing should purposley be done
     }
+    let currentPostsArray = getPostsFromStorage();
+    for (let currentPost = 0; currentPost &lt; currentPostsArray.length; currentPost++) {
+        let currentPostDate = new Date(currentPostsArray[currentPost].dateCompare);
+        if (currentPostDate &lt; date) {
+            currentPostsArray[currentPost].currentContainer = 'finished';
+        }
+    }
+    savePostsToStorage(currentPostsArray);
 }
 
 /**
@@ -116,6 +209,7 @@ function addPostsToMain(posts) {
 
         //set an extra attribute so that we can use it in checkIfPostFinish
         postcard.setAttribute('class', posts[currentPost].dateData);
+        postcard.setAttribute('index', currentPost);
 
         postcard.data = {
             'postSummary': posts[currentPost].postSummary,
@@ -125,6 +219,7 @@ function addPostsToMain(posts) {
             'mainTxt': posts[currentPost].mainTxt,
             'platType': posts[currentPost].platType
         };
+
 
         //extract the Date property from post
         let currentPostDate = new Date(posts[currentPost].dateCompare);
@@ -156,40 +251,46 @@ function getPostsFromStorage() {
 }
 
 /**
+ * Takes in an array of posts, converts it to a string, and then
+ * saves that string to 'posts' in localStorage
+ * @param {Array&lt;Object>} posts An array of posts
+ */
+function savePostsToStorage(posts) {
+    localStorage.setItem('posts', JSON.stringify(posts));
+}
+
+/**
  * Once the Facebook button is clicked, the user is redirected
  * toward the creat post page specicially for Facebook posts 
  * where they can upload texts, images and etc. 
  */
+
 function createFb() {
-    window.location.replace("./create_post.html");
+    window.location.replace("../scheduler/create_post/createFb.html");
 }
+
 
 /**
  * Once the Instagram button is clicked, the user is redirected
  * toward the creat post page specicially for Instagram posts 
  * where they can upload texts, images and etc. 
  */
+
 function createIns() {
-    window.location.replace("./create_post/createIns.html");
+    window.location.replace("../scheduler/create_post/createIns.html");
 
 }
+
 
 /**
  * Once the Twitter button is clicked, the user is redirected
  * toward the creat post page specicially for Twitter posts 
  * where they can upload texts, images and etc. 
  */
+
 function createTw() {
-    window.location.replace("./create_post/createTw.html");
+    window.location.replace("../scheduler/create_post/createTw.html");
 }
-
-const Fb = document.getElementById('Fb');
-const Ins = document.getElementById('Ins');
-const Tw = document.getElementById('Tw');
-
-Fb.addEventListener('click', () => createFb());
-Ins.addEventListener('click', () => createIns());
-Tw.addEventListener('click', () => createTw());
 
 /**
  * get the date from api and display it and the 
@@ -205,8 +306,9 @@ function displayDate() {
     let dateTime = currentDate + " " + currentTime;
 
     //display on the main page
-    document.getElementById("currDate").innerHTML = dateTime;
-}</code></pre>
+    document.getElementById("current-date").innerHTML = dateTime;
+}
+</code></pre>
         </article>
     </section>
 
@@ -218,7 +320,7 @@ function displayDate() {
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Nov 22 2022 19:32:21 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Mon Dec 05 2022 02:08:51 GMT+0000 (Coordinated Universal Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

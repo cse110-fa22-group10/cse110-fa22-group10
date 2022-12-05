@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>create_post/createIns.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addPostsToMain">addPostsToMain</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkIfPostFinish">checkIfPostFinish</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#countDescriptionChars">countDescriptionChars</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#countSummaryChars">countSummaryChars</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createFb">createFb</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createIns">createIns</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createTw">createTw</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#dataURItoBlob">dataURItoBlob</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#displayDate">displayDate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getImgData">getImgData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getPostsFromStorage">getPostsFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#populateForm">populateForm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#savePostsToStorage">savePostsToStorage</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">create_post/createIns.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const postDescription = document.getElementById('desc-input');
+const postSummary = document.getElementById('post-summary');
+const postTag = document.getElementById('tag');
+const imgPreview = document.getElementById("main-image-container");
+const imageInput = document.getElementById('image-input');
+const deleteImgDataButton = document.getElementById('remove-image-data-button');
+const formEle = document.querySelector('form');
+let imgElement = document.querySelector("[type='file']");
+const backButton = document.querySelector("#back-button");
+const descriptionCharLimit = document.getElementById('desc-char-limit');
+const summaryCharLimit = document.getElementById('summary-char-limit');
+const INSTAGRAM_CHAR_LIMIT = 2200;
+const SUMMARY_CHAR_LIMIT = 100;
+let file;
+let dataUrl = "";
+
+window.addEventListener('DOMContentLoaded', init);
+
+function init() {
+}
+
+/**
+ * This function is in charge of previewing the image selected by the user
+ * exclusivley for instragram creation page. It achieves this by populating
+ * the inner HTML of the container with correct and valid information
+ */
+function getImgData() {
+    const files = imageInput.files[0];
+    if (files) {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(files);
+        fileReader.addEventListener("load", function () {
+            imgPreview.style.display = "block";
+            imgPreview.innerHTML = '&lt;img src="' + this.result + '" />';
+        });
+    }
+}
+
+// OnSubmit - store the formdata into localStorage to wherever we want
+// it to be stored. Should also store the time and date of when the post should
+// be posted 
+imgElement.addEventListener('change', () => {
+    file = imgElement.files[0];
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        dataUrl = reader.result;
+    });
+    reader.readAsDataURL(file);
+    getImgData();
+});
+
+postDescription.addEventListener('input', countDescriptionChars);
+postSummary.addEventListener('input', countSummaryChars);
+
+/**
+ * Called when description is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countDescriptionChars() {
+    descriptionCharLimit.innerText = "Character Limit: " +
+        postDescription.value.length + "/" + INSTAGRAM_CHAR_LIMIT;
+    if (postDescription.value.length == INSTAGRAM_CHAR_LIMIT) {
+        descriptionCharLimit.style.color = 'red';
+    }
+    else {
+        descriptionCharLimit.style.color = 'black';
+    }
+}
+
+/**
+ * Called when summary is changed. Changes current char count displays
+ * and checks to see is char count is exceeded
+ */
+function countSummaryChars() {
+    summaryCharLimit.innerText = "Character Limit: " +
+        postSummary.value.length + "/" + SUMMARY_CHAR_LIMIT;
+    if (postSummary.value.length == SUMMARY_CHAR_LIMIT) {
+        summaryCharLimit.style.color = 'red';
+    }
+    else {
+        summaryCharLimit.style.color = 'black';
+    }
+}
+
+//event listener for form on submit
+formEle.addEventListener('submit', () => {
+    let formData = new FormData(formEle);
+    //store user entered image, description, data .. into postObject
+    let postObject = {};
+    postObject['currentIndex'] = 0;
+    postObject['currentContainer'] = 'upcoming';
+    postObject['postSummary'] = formData.get('post-summary');
+    postObject['mainTxt'] = formData.get('desc-input');
+    postObject['dateData'] = formData.get('date-to-post') + ', ' + formData.get('time-to-post');
+    postObject['dateCompare'] = formData.get('date-to-post') + 'T' + formData.get('time-to-post') + ":" + "00";
+    postObject['platType'] = formData.get('tag');
+    postObject['mainImg'] = dataUrl;
+    if (dataUrl === "") {
+        postObject['imgAlt'] = "";
+    } else {
+        postObject['imgAlt'] = formData.get('tag') + ' image';
+    }
+    dataUrl = ""; //Once the information is stored, set it back to ""
+
+    //combine local posts and user entered post, store back into local
+    let postFromLocal = getPostsFromStorage();
+    postFromLocal.push(postObject);
+    postFromLocal.sort((post1, post2) => {
+        let postDate1 = new Date(post1['dateCompare']);
+        let postDate2 = new Date(post2['dateCompare']);
+        return postDate1 - postDate2;
+    });
+    savePostsToStorage(postFromLocal);
+});
+
+// an event listener for the delete image data button in charge of removing images
+// when creating  a post
+deleteImgDataButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    dataUrl = '';
+    imgPreview.innerHTML = '';
+    imageInput.value = '';
+});
+
+/**
+ * Reads 'posts' from localStorage and returns an array of
+ * all of the posts found (parsed, not in string form). If
+ * nothing is found in localStorage for 'posts', an empty array
+ * is returned.
+ * @returns {Array&lt;Object>} An array of posts found in localStorage
+ */
+function getPostsFromStorage() {
+    let posts = JSON.parse(localStorage.getItem("posts"));
+    if (posts === null) {
+        return [];
+    }
+    return posts;
+}
+
+/**
+ * Takes in an array of posts, converts it to a string, and then
+ * saves that string to 'posts' in localStorage
+ * @param {Array&lt;Object>} posts An array of posts
+ */
+function savePostsToStorage(posts) {
+    localStorage.setItem('posts', JSON.stringify(posts));
+}
+
+// event listener to head back to the main page
+backButton.addEventListener('click', () => {
+    window.location.replace("../index.html");
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Mon Dec 05 2022 02:08:51 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
