@@ -146,3 +146,9 @@ body {
 #submit:hover {
     box-shadow: 0.2vw 0.2vw brown;
 }
+
+#remove-image-data-button:hover {
+    border-color: red;
+    transition: all .2s ease;
+    border-width: 2px 2px 2px 2px;
+}
