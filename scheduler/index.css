@@ -154,6 +154,12 @@ html {
     margin-left: 5%;
 }
 
+button:hover {
+    border-color: whitesmoke;
+    transition: all .2s ease;
+    border-width: 4px 4px 4px 4px;
+}
+
 .button-text {
     font-size: 1.5vw;
     position: relative;
