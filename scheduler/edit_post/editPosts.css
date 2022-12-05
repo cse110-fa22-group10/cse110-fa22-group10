@@ -83,6 +83,12 @@ body {
     border-radius: 1vw;
 }
 
+#remove-image-data-button:hover {
+    border-color: red;
+    transition: all .2s ease;
+    border-width: 2px 2px 2px 2px;
+}
+
 #img-file-selection-container {
     display: flex;
     width: 20vw;
