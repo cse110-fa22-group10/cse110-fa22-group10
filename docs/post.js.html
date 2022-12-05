@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addPostsToMain">addPostsToMain</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkIfPostFinish">checkIfPostFinish</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createFb">createFb</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createIns">createIns</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createTw">createTw</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#displayDate">displayDate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getPostsFromStorage">getPostsFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#savePostsToStorage">savePostsToStorage</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#addPostsToMain">addPostsToMain</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkIfPostFinish">checkIfPostFinish</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#countDescriptionChars">countDescriptionChars</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#countSummaryChars">countSummaryChars</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createFb">createFb</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createIns">createIns</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#createTw">createTw</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#dataURItoBlob">dataURItoBlob</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#displayDate">displayDate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getImgData">getImgData</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#getPostsFromStorage">getPostsFromStorage</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#populateForm">populateForm</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#savePostsToStorage">savePostsToStorage</a></span></li>
 </nav>
 
 <div id="main">
@@ -133,6 +133,9 @@ class Post extends HTMLElement {
         max-height: 100%;
         word-break: break-all;
     }
+    #text-body-details-tab {
+        padding: 0.5vw;
+    }
     #summary-of-post {
         font-size: 1.5vw;
     }
@@ -152,14 +155,73 @@ class Post extends HTMLElement {
         position: relative;
         font-size: 1vw;
         text-align: center;
-        left: 40%;
+        left: 35.5%;
     }
     #platform-image {
         position: relative;
         height: 10%;
         width: 10%;
-        left: 40%;
+        left: 85%;
     }
+    .post-container{
+        position: relative;
+    }
+    #edit-button-withimg{	
+        position: relative;	
+        display: none;	
+        float: left;		
+        border-radius: 1vw;	
+        width: 5vw;	
+        height: 3vw;	
+        font-size: 1vw;	
+        margin: 0.5vw;	
+    }	
+    #delete-button-withimg{	
+        position: relative;	
+        display: none;	
+        float: right;		
+        border-radius: 1vw;	
+        width: 5vw;	
+        height: 3vw;	
+        font-size: 1vw;	
+        margin: 0.5vw;	
+    }	
+    #edit-button-noimg{	
+        position: relative;	
+        display: none;	
+        float: left;		
+        border-radius: 1vw;	
+        width: 5vw;	
+        height: 3vw;	
+        font-size: 1vw;	
+        margin: 0.5vw;	
+    }	
+    #delete-button-noimg{	
+        position: relative;	
+        display: none;	
+        float: right;		
+        border-radius: 1vw;	
+        width: 5vw;	
+        height: 3vw;	
+        font-size: 1vw;	
+        margin: 0.5vw;	
+    }
+     .post-container:hover #edit-button-withimg{
+        display: block
+     }
+     .post-container:hover #delete-button-withimg{
+        display: block
+     }
+     .post-container:hover #edit-button-noimg{
+        display: block
+     }
+     .post-container:hover #delete-button-noimg{
+        display: block
+     }
+     button:hover {
+        border-color: whitesmoke;
+     }
+
         `;
 
         // append the elements to the shadow DOM
@@ -200,74 +262,80 @@ class Post extends HTMLElement {
             case "FACEBOOK":
                 data.platType = "FACEBOOK";
                 articleElement.setAttribute('post-type', "FACEBOOK");
-                currentPostIcon = "assets/facebook-colored-icon.png";
+                currentPostIcon = "../scheduler/assets/facebook-colored-icon.png";
                 break;
             case "INSTAGRAM":
                 data.platType = "INSTAGRAM";
-                currentPostIcon = "assets/instagram-colored-icon.png";
+                currentPostIcon = "../scheduler/assets/instagram-colored-icon.png";
                 articleElement.setAttribute('post-type', "INSTAGRAM");
                 break;
             case "TWITTER":
                 data.platType = "TWITTER";
-                currentPostIcon = "assets/twitter-colored-icon.png";
+                currentPostIcon = "../scheduler/assets/twitter-colored-icon.png";
                 articleElement.setAttribute('post-type', "TWITTER");
                 break;
             default:
                 articleElement.setAttribute('post-type', "");
-                currentPostIcon = "assets/default-icon.png";
+                currentPostIcon = "../scheduler/assets/default-icon.png";
                 break;
         }
 
         if (data.mainImg == "") {
             articleElement.innerHTML = `
-            &lt;div class="post-head">
-                &lt;p id="post-date-data">${data.dateData}&lt;/p>
-            &lt;/div>
-            &lt;div class="post-body">
-                &lt;details id="text-body-details-tab">
-                    &lt;summary id="summary-of-post">${data.postSummary}&lt;/summary>
-                    &lt;p id="main-text">${data.mainTxt}&lt;/p>
-                &lt;/details>
-
-            &lt;/div>
-            &lt;span class="platform-type">
-                &lt;div class="platform-title">
-                    &lt;h3 id="platform-name">${data.platType}&lt;/h3>
+            &lt;div class="post-container">
+                &lt;button type="button" class="edit-button" id="edit-button-noimg">Edit&lt;/button>
+                &lt;button type="button" class="delete-button" id="delete-button-noimg">Delete&lt;/button>
+                &lt;div class="post-head">
+                    &lt;p id="post-date-data">${data.dateData}&lt;/p>
                 &lt;/div>
-                &lt;div class="platform-media">
-                    &lt;img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                &lt;div class="post-body">
+                    &lt;details id="text-body-details-tab">
+                        &lt;summary id="summary-of-post">${data.postSummary}&lt;/summary>
+                        &lt;p id="main-text">${data.mainTxt}&lt;/p>
+                    &lt;/details>
                 &lt;/div>
-            &lt;/span>
+                &lt;span class="platform-type">
+                    &lt;div class="platform-title">
+                        &lt;h3 id="platform-name">${data.platType}&lt;/h3>
+                    &lt;/div>
+                    &lt;div class="platform-media">
+                        &lt;img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                    &lt;/div>
+                &lt;/span>
+            &lt;/div>
             `;
         } else {
             articleElement.innerHTML = `
-            &lt;div class="post-head">
-                &lt;p id="post-date-data">${data.dateData}&lt;/p>
-            &lt;/div>
-            &lt;div class="post-image">
-                &lt;img id="main-image" src="${data.mainImg}" alt="${data.imgAlt}">
-            &lt;/div>
-            &lt;div class="post-body">
-                &lt;details id="text-body-details-tab">
-                    &lt;summary id="summary-of-post">${data.postSummary}&lt;/summary>
-                    &lt;p id="main-text">${data.mainTxt}&lt;/p>
-                &lt;/details>
-            &lt;/div>
-            &lt;span class="platform-type">
-                &lt;div class="platform-title">
-                    &lt;h3 id="platform-name">${data.platType}&lt;/h3>
+            &lt;div class="post-container">
+                &lt;button type="button" class="edit-button" id="edit-button-withimg">Edit&lt;/button>
+                &lt;button type="button" class="delete-button" id="delete-button-withimg">Delete&lt;/button>
+                &lt;div class="post-head">
+                    &lt;p id="post-date-data">${data.dateData}&lt;/p>
                 &lt;/div>
-                &lt;div class="platform-media">
-                    &lt;img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                &lt;div class="post-image">
+                    &lt;img id="main-image" src="${data.mainImg}" alt="${data.imgAlt}">
                 &lt;/div>
-            &lt;/span>
+                &lt;div class="post-body">
+                    &lt;details id="text-body-details-tab">
+                        &lt;summary id="summary-of-post">${data.postSummary}&lt;/summary>
+                        &lt;p id="main-text">${data.mainTxt}&lt;/p>
+                    &lt;/details>
+                &lt;/div>
+                &lt;span class="platform-type">
+                    &lt;div class="platform-title">
+                        &lt;h3 id="platform-name">${data.platType}&lt;/h3>
+                    &lt;/div>
+                    &lt;div class="platform-media">
+                        &lt;img id="platform-image" src="${currentPostIcon}" alt="${data.platType} icon">
+                    &lt;/div>
+                &lt;/span>
+            &lt;/div>
             `;
         }
     }
 }
 
-customElements.define("post-card", Post);
-</code></pre>
+customElements.define("post-card", Post);</code></pre>
         </article>
     </section>
 
@@ -279,7 +347,7 @@ customElements.define("post-card", Post);
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Nov 22 2022 19:32:22 GMT+0000 (Coordinated Universal Time) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Mon Dec 05 2022 02:08:51 GMT+0000 (Coordinated Universal Time) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>
