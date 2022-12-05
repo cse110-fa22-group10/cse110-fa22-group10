@@ -177,6 +177,9 @@ class Post extends HTMLElement {
      .post-container:hover #delete-button-noimg{
         display: block
      }
+     button:hover {
+        border-color: whitesmoke;
+     }
 
         `;
 
