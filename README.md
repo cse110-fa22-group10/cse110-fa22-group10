@@ -16,3 +16,5 @@ Section to be included:
 5. How to Use the Project
 6. Include Credits
 7. Add a License
+
+Onboard.md is located in /admin/
