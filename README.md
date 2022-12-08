@@ -40,3 +40,5 @@ The main page of the project displays all created posts as well as has buttons w
 </div>
 
 https://youtu.be/4UHYRnW2Eso
+
+https://youtu.be/O_GXIycNMPE
